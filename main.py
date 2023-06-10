@@ -8,7 +8,7 @@ def analyze(filePath):
     path = Path(filePath)
     if path.exists() == False: return
 
-    newName = path.stem + "-Lat" + ".txt"
+    newName = path.stem + ".utf8"
 
     stopwords = [line.replace('\n', '') for line in open("stopwords.txt", 'r', encoding='utf-8').readlines()]
     s = set()
@@ -43,7 +43,7 @@ def analyze(filePath):
             # remove cyrillic
             line = re.sub(r'[А-їЁІЇҐґ]', " ", line).strip()
 
-            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0]
+            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www', item, re.IGNORECASE)]
             line = ' '.join(text)
 
             #print(line)

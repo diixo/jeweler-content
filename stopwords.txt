@@ -287,6 +287,7 @@ not
 nothing
 now
 nowaday
+nowaday's
 nowadays
 nowhere
 obviously
@@ -437,6 +438,7 @@ thus
 till
 to
 today
+today's
 todays
 together
 tomorrow
