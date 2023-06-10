@@ -34,10 +34,10 @@ def analyze(filePath):
             line = line.replace('&#124;', '|')
 
             # normalize apostrophs
-            translation = { 
+            translation = {
                 0x201c: 0x0022, 0x201d: 0x0022, 0x021f: 0x0022, 
-                0x2019: 0x0027, 0x2018: 0x0027, 0x201b: 0x0027, 0x0060 : 0x0027, 
-                0x00ab : 0x0020, 0x00bb : 0x0020 }
+                0x2019: 0x0027, 0x2018: 0x0027, 0x201b: 0x0027, 0x0060: 0x0027, 
+                0x00ab: 0x0020, 0x00bb: 0x0020 }
             line = line.translate(translation)
 
             # remove cyrillic
