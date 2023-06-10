@@ -1,0 +1,180 @@
+===Database viixco_main
+
+== Table structure for table jeweler_content
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int(11)|No|
+|type|varchar(10)|No|domain
+|domain_id|int(11)|No|0
+|channel_id|int(11)|Yes|NULL
+|**id_url**|int(10)|No|
+|lang|varchar(10)|Yes|NULL
+|country|varchar(10)|Yes|NULL
+|title|varchar(500)|Yes|NULL
+|description|varchar(2000)|Yes|NULL
+|image|varchar(1000)|Yes|NULL
+|created_page|timestamp|Yes|NULL
+|sorted_at|timestamp|Yes|NULL
+|elastic_index|int(11)|No|0
+|created_at|timestamp|No|current_timestamp()
+|updated_at|timestamp|No|0000-00-00 00:00:00
+== Dumping data for table jeweler_content
+
+|Відомо, у яких випадках не потрібне оновлення Windows – Програми &#124; iTechua|Відомо, у яких випадках не потрібне оновлення Windows.Останні новини Програми на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Techopedia: Educating IT Professionals To Make Smarter Decisions - Techopedia|Your go-to source for professional IT insight, from defining complex tech jargon to exploring the latest tech trends.
+|What is a Micro App? - Definition from Techopedia|This definition explains the meaning of Micro App and why it matters.
+|IT Dictionary for Computer Terms and Tech Definitions on Techopedia| More than just a glossary, our dictionary of information technology covers everything from the basics of hardware and software to cloud computing and ERP.
+|What is a Computer? - Definition from Techopedia|This definition explains the meaning of Computer and why it matters.
+|What is a Stack? - Definition from Techopedia|This definition explains the meaning of Stack and why it matters.
+|What is Microsoft Word? - Definition from Techopedia|This definition explains the meaning of Microsoft Word and why it matters.
+|What is Media? - Definition from Techopedia|This definition explains the multiple meanings of the term Media and why it matters in the tech industry.
+|What is the Internet? - Definition from Techopedia|This definition explains the meaning of Internet and why it matters.
+|What is MLOps (Machine Learning Operations)? - Definition from Techopedia|This definition explains the meaning of MLOps and why it matters.
+|What is Lorem Ipsum? - Definition from Techopedia|This definition explains the meaning of Lorem Ipsum and why it matters.
+|What is a Peripheral Device? - Definition from Techopedia|This definition explains the meaning of Peripheral Device and why it matters.
+|What is a Website? - Definition from Techopedia|This definition explains the meaning of Website and why it matters.
+|What is Information and Communications Technology (ICT)? - Definition from Techopedia|This definition explains the meaning of Information and Communications Technology and why it matters.
+|Information Technology Terms beginning with numbers and special characters - Techopedia|List of all dictionary terms starting with numbers and special characters
+|Information Technology Terms beginning with A - Techopedia|List of all dictionary terms starting with A
+|Information Technology Terms beginning with B - Techopedia|List of all dictionary terms starting with B
+|Information Technology Terms beginning with C - Techopedia|List of all dictionary terms starting with C
+|Information Technology Terms beginning with D - Techopedia|List of all dictionary terms starting with D
+|Information Technology Terms beginning with E - Techopedia|List of all dictionary terms starting with E
+|Information Technology Terms beginning with F - Techopedia|List of all dictionary terms starting with F
+|Information Technology Terms beginning with G - Techopedia|List of all dictionary terms starting with G
+|Information Technology Terms beginning with H - Techopedia|List of all dictionary terms starting with H
+|Information Technology Terms beginning with I - Techopedia|List of all dictionary terms starting with I
+|Information Technology Terms beginning with J - Techopedia|List of all dictionary terms starting with J
+|Information Technology Terms beginning with K - Techopedia|List of all dictionary terms starting with K
+|Information Technology Terms beginning with L - Techopedia|List of all dictionary terms starting with L
+|Information Technology Terms beginning with M - Techopedia|List of all dictionary terms starting with M
+|Information Technology Terms beginning with N - Techopedia|List of all dictionary terms starting with N
+|Information Technology Terms beginning with O - Techopedia|List of all dictionary terms starting with O
+|Information Technology Terms beginning with P - Techopedia|List of all dictionary terms starting with P
+|Information Technology Terms beginning with Q - Techopedia|List of all dictionary terms starting with Q
+|Information Technology Terms beginning with R - Techopedia|List of all dictionary terms starting with R
+|Information Technology Terms beginning with S - Techopedia|List of all dictionary terms starting with S
+|Information Technology Terms beginning with T - Techopedia|List of all dictionary terms starting with T
+|Information Technology Terms beginning with U - Techopedia|List of all dictionary terms starting with U
+|Information Technology Terms beginning with V - Techopedia|List of all dictionary terms starting with V
+|Information Technology Terms beginning with W - Techopedia|List of all dictionary terms starting with W
+|Information Technology Terms beginning with X - Techopedia|List of all dictionary terms starting with X
+|Information Technology Terms beginning with Y - Techopedia|List of all dictionary terms starting with Y
+|Information Technology Terms beginning with Z - Techopedia|List of all dictionary terms starting with Z
+|Artificial Intelligence|This AI Knowledge Center will help you learn about the technologies that support AI, including machine learning, robotic engineering and software bots.
+|Cloud Computing|Use the microlearning resources below to create a learning path for your personal professional development and IT certification needs.
+|Data Management|We have what you need to stay in the know. Find Techopedia's data management content here. 
+|Networking|We have what you need to stay in the know. Find Techopedia's content about networks and networking here. 
+|IT Careers|Use the microlearning resources below to create a personal learning path for your job hunting, professional development and IT certification needs.
+|Cybersecurity|We have what you need to stay in the know. Find Techopedia's cybersecurity content here. 
+|Trending IT Professionals Article Topics on Techopedia|Dive into an at-a-glance overview of Techopedia’s articles and pinpoint the most valuable topics for you and your business:
+|Technology and Computing Tutorials|Techopedia’s tutorials are designed to help you dive deep into the foremost concepts in technology and business. Start learning now:
+|Technology FAQs from Techopedia Experts|Techopedia staff and experts have answered many commonly asked technology questions across a wide range of topics including machine learning, programming, etc.
+|Free Tools and Downloads Library|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Technology and Innovation Webinars on Techopedia|Discover actionable insights on the latest innovations in tech, straight from industry experts, through Techopedia’s webinars. Check out our on-demand catalog:
+|About Us: Techopedia|Techopedia is a go-to source for professional IT insight. Check in for actionable advice from tech experts.
+|Advertising Opportunities &amp; Media Kit &#124; Techopedia|Advertise with Techopedia to reach thousands of IT pros and tech enthusiasts.
+|Techopedia Contributors|Techopedia teams up with tech enthusiasts to help you learn through experience and make the best business decisions possible. Check out our contributors:
+|Subscribe To the Techopedia Newsletter|Subscribe to Techopedia Newsletters
+|Write for Techopedia|We’re looking for tech experts who work in the field, follow the news and know how to tell a good story.
+|Terms of Use: Techopedia.com|Terms and Conditions of Use - Techopedia.com
+|Privacy Policy: Techopedia.com|Privacy Policy - Techopedia.com
+|Social Engineering Attacks: 3 Strategies to Mitigate Risk|While there is no tool or level of education that can fully prevent organizations from social engineering attacks, these three strategies can help:
+|Personal Tech|Discover insights to help you better navigate the personal tech you use everyday
+|Jennifer Seaton Contributor Bio - Techopedia|All content by Jennifer Seaton on Techopedia. J. Seaton is a freelance writer who specializes in breaking down complex technical topics. She...
+|Yann LeCun: How to Develop Autonomous AI|Computer scientist Yann LeCun has developed his own roadmap to create autonomous artificial intelligence. Here’s how it works:
+|Dr. Tehseen Zia Contributor Bio - Techopedia|All content by Dr. Tehseen Zia on Techopedia. Dr. Tehseen Zia has Doctorate and more than 10 years of post-Doctorate...
+|Predictive Maintenance: Ensuring Business Continuity with AI|While there is no surefire way to predict mishaps, predictive maintenance and AI get you as close to it as possible. Here’s how:
+|Kevin Miller Contributor Bio - Techopedia|All content by Kevin Miller on Techopedia. Kevin Miller is the Chief Technology Officer of &lt;a href=&quot;https://www.ifs.com/&quot; rel=&quot;noopener...
+|Software Development|This section includes all content related to programming and software development. 
+|What is Refactoring? - Definition from Techopedia|This definition explains the meaning of Refactoring and why it is important.
+|What is Soft Skills? - Definition from Techopedia|This definition explains the meaning of Soft Skills and why they are important.
+|What is a Certified Authorization Professional (CAP)? - Definition from Techopedia|This definition explains the meaning of Certified Authorization Professional and why it matters.
+|What's the difference between a mobile hotspot and tethering|Mobile hotspots and tethering services offer similar results for users, but work a little bit differently.
+|Justin Stoltzfus Contributor Bio - Techopedia|All content by Justin Stoltzfus on Techopedia. Justin Stoltzfus is a freelance writer for various Web and print publications. His work has...
+|What's the difference between a host name, a domain name and|A fully qualified domain name (FQDN) contains both a host name and a domain name. For a landing page, the FQDN usually represents the full URL.
+|Techopedia Staff Contributor Bio - Techopedia|All content by Techopedia Staff on Techopedia. At Techopedia, we aim to provide insight and inspiration to IT professionals, technology...
+|What is the difference between a composite key, primary key|The difference between a composite key, a foreign key and a primary key is a good illustration of the complex nature of relational database standards.
+|Iliya Garakh Contributor Bio - Techopedia|All content by Iliya Garakh on Techopedia. 
+|The 5 Risks of Sharing your Password|A third of workers share passwords with their colleagues. Here are five major risks that causes, and how Passwork can help mitigate them:
+|Unraveling SoLoMo and the Future of Search|SoLoMo is a portmanteau of the terms 'social,' 'mobile' and 'local.' Here’s why it matters in 2022, and where it might go from here:
+|IT Business Alignment|We have what you need to stay in the know. Find Techopedia's IT business alignment content here. 
+|Kaushik Pal Contributor Bio - Techopedia|All content by Kaushik Pal on Techopedia. Kaushik is a technical architect and software consultant, having over 20 years of experience in...
+|The Top 10 Trends in Mobile Computing|As more and more of our lives can be managed through mobile devices, these 12 mobile computing trends will have an increasing impact on our day-to-day lives:
+|AWS Cloud Migration: Dos and Don'ts|AWS cloud migration is hard. And while you might think rushing will save you time, the opposite often happens. Here are other common mistakes to avoid:
+|Pavel Khrulev Contributor Bio - Techopedia|All content by Pavel Khrulev on Techopedia. 
+|Linda Rosencrance Contributor Bio - Techopedia|All content by Linda Rosencrance on Techopedia. Linda Rosencrance is a freelance writer/editor/author in the Boston area. Rosencrance...
+|DevOps Security: 3 Challenges Facing the Enterprise|DevSecOps can help marry security with DevOps pipelines, but enterprises face numerous challenges in practice. Here are three of the most prominent:
+|Claudio Buttice Contributor Bio - Techopedia|All content by Claudio Buttice on Techopedia. Dr. Claudio Buttic&amp;egrave;, Pharm.D., is a former clinical and hospital pharmacist who worked...
+|5 IT Infrastructure Skills That Are Often Overlooked|Continuously learning and updating your IT skills is very important to stay competitive in the job market. Here are 5 IT skills to boost your resume this year:
+|6 Tips For A Standout IT Resume|Techopedia spoke with expert technical recruiters to find out what makes an IT resumé stand out from the pile. Here’s what they had to say:
+|Gabby Dumonceaux Contributor Bio - Techopedia|All content by Gabby Dumonceaux on Techopedia. Gabby Dumonceaux is a resident editor at Techopedia who combines her understanding of digital...
+|Cloud Migration Strategy: 10 Mistakes to Avoid|The cloud is the future. Ensure a smooth and successful cloud migration strategy by avoiding these 10 common mistakes:
+|Anas Baig Contributor Bio - Techopedia|All content by Anas Baig on Techopedia. Anas Baig is a digital evangelist who is passionate about cybersecurity and the search industry....
+|Experts Share the Top Cloud Computing Trends to Watch for in|Staying on top of cloud computing trends will give organizations a competitive edge. Here are the five most important in 2022, according to experts:
+|Human Factor of Cybersecurity: What's Putting You At Risk|Most cyberattacks succeed because a human made a mistake. Here’s how cybercriminals are exploiting this human factor, and how to keep your data safe:
+|CISSP CISM CISA: What's the Difference Between Security Cer|Considering furthering your education? Here's what you need to know about CISSP, CISM and CISA security certification.
+|John Meah Contributor Bio - Techopedia|All content by John Meah on Techopedia. John Meah is a writer and a CISSP&#124;MCIIS&#124;CCSK Certified Cybersecurity Consultant. John has 20...
+|DevOps Jobs: What Every Engineer Must Know in 2022|DevOps jobs are in high demand in today’s tech market. Here’s how engineers can enhance their skills to fill the talent gap:
+|Sashank Purighalla Contributor Bio - Techopedia|All content by Sashank Purighalla on Techopedia. Sashank Purighalla is a serial entrepreneur with a strong software product development...
+|What is the difference between a VPN and a firewall?|Techopedia asks the experts: 'What is the difference between a VPN and a firewall – and which one should I use?'
+|Machine learning algorithm or machine learning model?|Techopedia asks the experts, what is the difference between a machine learning algorithm and a machine learning model?
+|Doug Kersten Contributor Bio - Techopedia|All content by Doug Kersten on Techopedia. Doug Kersten is the Chief Information Security Officer at &lt;a href=&quot;https://appfire.com/&quot;...
+|Andrew Amann Contributor Bio - Techopedia|All content by Andrew Amann on Techopedia. 
+|What is the difference between batch and stream processing?|Techopedia asks the experts: What is the difference between batch processing and stream processing?
+|Rob Malnati Contributor Bio - Techopedia|All content by Rob Malnati on Techopedia. Rob Malnati is the COO of &lt;a data-saferedirecturl=&quot;https://www...
+|Is artificial intelligence a tool or a threat to cybersecuri|On one hand, artificial intelligence can improve cybersecurity in many ways. On the other hand, it's a devastating tool in the hands of malicious hackers. What's the truth?The GoodArtificial intelligence is going to be (and...
+|Which medical professions can ethically be replaced with AI?|The introduction of artificial intelligence (AI) into health care is revolutionizing the delivery of care. Right now, hospitals are buying AI systems, not with the intention of replacing humans, but to improve care or...
+|Robotic Process Automation: What You Need to Know|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Data Governance Is Everyone's Business|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Service Mesh for Mere Mortals|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Do You Need a Head of Remote?|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Web Data Collection in 2022|Browse Techopedia’s selection of free whitepapers, presentation slides, reports and other resources for tech and business professionals:
+|Greg Elliott Contributor Bio - Techopedia|All content by Greg Elliott on Techopedia. 
+|Edge Data Centers: The Key to Digital Transformation?|Many organizations today use edge strategies to prepare for the future. But the most successful will rely on data gravity-driven data centers. Here’s why:
+|4 Common Machine Learning Pitfalls and How To Avoid Them|Most machine learning project failures can be traced back to four main pitfalls. Here’s what they are and how you can avoid them:
+|Lior Gavish Contributor Bio - Techopedia|All content by Lior Gavish on Techopedia. Lior Gavish is the CTO and co-founder of data reliability company &lt;a href=&quot;https://www...
+|Editorial Review Policy: Techopedia|Techopedia’s publishing policies prioritize accuracy, authority and integrity. Here are our editorial and advertising policies:
+|Contact the staff at Techopedia.com|Contact the staff at Techopedia.com
+|Techopedia Sitemap|From defining the latest tech buzzword to exploring enterprise-level decisions, Techopedia aims to help you understand technology.
+|Privacy and Compliance|Here you will find everything and anything related to data privacy and compliance.
+|What is an App? - Definition from Techopedia|This definition explains the meaning of App and why it matters.
+|What is a Smartphone? - Definition from Techopedia|This definition explains the meaning of Smartphone and why it matters.
+|What is a Web Browser? - Definition from Techopedia|This definition explains the meaning of Web Browser and why it matters.
+|What is Codebase? - Definition from Techopedia|This definition explains the meaning of Codebase and why it matters.
+|What is a Plug-In? - Definition from Techopedia|This definition explains the meaning of Plug-In and why it matters.
+|What are Microservices or Microservice Architectures? - Definition from Techopedia|This definition explains the meaning of Microservices and why it matters.
+|5 Issues That the Mobile Device Industry Needs to Solve, Pronto|The latest in smartphone development has brought several industry life cycle issues to the fore. Here are a few problems the industry needs to solve.
+|A Look at the OWASP Top 10 Project: Protecting Your Web Apps|Numerous techniques can allow hackers access to your web apps, but what are the biggest risks? According to the Open Web Application Security Project (OWASP), here's what you should be protecting against.
+|Edge Computing: The Next Phase of IT|The IoT edge is not new; it's an expansion of today's infrastructure. So the data center, the cloud and the edge will combine for next-generation services
+|How Microservices Impact Software Development|Microservices are becoming a more common way to develop software. Compared to their monolithic ancestors, microservices are more flexible, allowing for changes to be made more easily.
+|Productivity Software|From defining the latest tech buzzword to exploring enterprise-level decisions, Techopedia aims to help you understand technology.
+|Alon Levin Contributor Bio - Techopedia|All content by Alon Levin on Techopedia. Alon Levin is the VP of Product Management at &lt;a href=&quot;https://seraphicsecurity.com/&quot;...
+|What is a Data Analyst? - Definition from Techopedia|This definition explains the meaning of Data Analyst and why it matters.
+|What is Infrastructure as a Service (IaaS)? - Definition from Techopedia|This definition explains the meaning of Infrastructure as a Service and why it matters.
+|What is Zero Trust (ZTNA)? - Definition from Techopedia|This definition explains the meaning of Zero Trust, how it works and how it compares to risk-based authentication.
+|What is Shift Left? - Definition from Techopedia|This definition explains the meaning of the Shift Left in software testing and the role it plays in DevSecOps.
+|What is Data Lakehouse? - Definition from Techopedia|This definition provides the meaning of Data Lakehouse and explains its benefits.
+|What is Confidential Computing? - Definition from Techopedia|This definition explains the meaning of Confidential Computing and the role it plays in cybersecurity.
+|What is Feature Engineering? - Definition from Techopedia|This definition explains the meaning of Feature Engineering and the role it plays in machine learning.
+|What is Julia Programming Language? - Definition from Techopedia|This definition is explains the Julia Programming Language and how relates to R and Python.
+|Нейробиолог: “Сознание человека может быть энергетическим полем”|Необычная новая гипотеза нейробиологов предполагает, что наше сознание возникает не из материи, а из поля электромагнитных волн, образуемых при активации нейронов мозга.
+|Лучшая доставка пиццы во Львове: как «La П’єц» заслужили любовь 87% клиентов|В одном из последних выпусков Big Money Евгений Черняк встретился с Романом Боднаром. В 2017 году он основал сеть пиццерий «La П’єц». К 2021 году компания разрослась в национальную сеть – пиццу «La П’єц» готовят в 11 городах по всей Украине.
+|З'явилися подробиці про новий процесор Xiaomi для смартфонів – Смартфони &#124; iTechua|З'явилися подробиці про новий процесор Xiaomi для смартфонів.Останні новини Смартфони на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Військовий експерт назвав кількість гаубиць та HIMARS, необхідних для перемоги – Новини України та Світу &#124; iTechua|Військовий експерт назвав кількість гаубиць та HIMARS, необхідних для перемоги.Останні новини Новини України та Світу на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Samsung випустить нові навушники у дизайні «фасолини» – Ґаджети &#124; iTechua|Samsung випустить нові навушники у дизайні «фасолини».Останні новини Ґаджети на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Навушники-боби від Samsung показали на відео – Ґаджети &#124; iTechua|Навушники-боби від Samsung показали на відео.Останні новини Ґаджети на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Нові навушники Samsung Galaxy Buds за формою нагадують квасолю – Ґаджети &#124; iTechua|Ресурс WinFuture повідомляє про те, що компанія Samsung готує до випуску нові повністю бездротові навушники Galaxy Buds: виріб буде виділятися своєю вельми незвичайною формою.
+|Samsung Galaxy Buds X порадують активним шумозаглушенням – Ґаджети &#124; iTechua|Samsung Galaxy Buds X порадують активним шумозаглушенням.Останні новини Ґаджети на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Samsung випустила альтернативу Galaxy Buds+ із неприємним цінником – Смартфони &#124; iTechua|Samsung випустила альтернативу Galaxy Buds+ із неприємним цінником.Останні новини Смартфони на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Samsung Galaxy Buds + отримали перше оновлення ПЗ – Ґаджети &#124; iTechua|Розробники Samsung викотили перше оновлення системи для своїх нових бездротових навушників Galaxy Buds+
+|Представлені навушники Samsung Galaxy Buds+. Ціна в Україні – Смартфони &#124; iTechua|Крім нових смартфонів Samsung сьогодні очікувано представила і навушники Galaxy Buds+. Як і смартфони, ця новинка давно була нам відома завдяки множинним витокам. А сьогодні вранці ми навіть знайомилися з повноцінним оглядом.
+|Новини Galaxy Buds: останні новини про Galaxy Buds &#124; iTechua|Всі новини Galaxy Buds в світі. Стрічка свіжих новин про Galaxy Buds. Останні новини на порталі - iTechua.
+|Новини Galaxy Buds: останні новини про Galaxy Buds &#124; iTechua|Всі новини Galaxy Buds в світі. Стрічка свіжих новин про Galaxy Buds. Останні новини на порталі - iTechua.
+|У Росії розпочали створення ракет &quot;Сармат&quot; - деталі – Новини України та Світу &#124; iTechua|У Росії розпочали створення ракет &quot;Сармат&quot; - деталі.Останні новини Новини України та Світу на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|В росії заблокував сайт «Страна.UA» та кілька українських інтернет-ЗМІ – Новини України та Світу &#124; iTechua|В росії заблокував сайт «Страна.UA» та кілька українських інтернет-ЗМІ.Останні новини Новини України та Світу на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Huawei анонсувала презентацію нового смартфона та навушників, яка пройде вже сьогодні – Новини України та Світу &#124; iTechua|Huawei анонсувала презентацію нового смартфона та навушників, яка пройде вже сьогодні.Останні новини Новини України та Світу на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Як не можна заряджати смартфон: 5 помилок, яких припускається кожен – Статті &#124; iTechua|Як не можна заряджати смартфон: 5 помилок, яких припускається кожен.Останні новини Статті на сайті - iTechua. Свіжа стрічка новин сьогодні.
+|Відомо, у яких випадках не потрібне оновлення Windows – Програми &#124; iTechua|Відомо, у яких випадках не потрібне оновлення Windows.Останні новини Програми на сайті - iTechua. Свіжа стрічка новин сьогодні.
