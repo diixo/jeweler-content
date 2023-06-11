@@ -24,7 +24,7 @@ def analyze(filePath):
         if not line:
             break
 
-        if count > -1:
+        if count > 23:
 
             # remove html-blocks
             line = line.replace('&amp;' , '&')
@@ -32,12 +32,18 @@ def analyze(filePath):
             line = line.replace('&gt;'  , '>')
             line = line.replace('&quot;', '"')
             line = line.replace('&#124;', '|')
+            line = line.replace('&#39;', '\'')
+
+
+            line = line.replace('&amp;' , '&')
+            line = line.replace('&#39;', '\'')
+            line = line.replace('&nbsp;', ' ')
 
             # normalize apostrophs
             translation = {
                 0x201c: 0x0022, 0x201d: 0x0022, 0x021f: 0x0022, 
                 0x2019: 0x0027, 0x2018: 0x0027, 0x201b: 0x0027, 0x0060: 0x0027, 
-                0x00ab: 0x0020, 0x00bb: 0x0020 }
+                0x00ab: 0x0020, 0x00bb: 0x0020, 0x2026: 0x002e }
             line = line.translate(translation)
 
             # remove cyrillic
@@ -47,7 +53,16 @@ def analyze(filePath):
             
             word_it = "IT"
             for id, word in enumerate(text):
-                text[id] = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
+                word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
+
+                word = re.sub("\|", "| ", word)
+
+                cword = word.strip("|!?:,;.\'\"").lower()
+
+                if cword in stopwords:
+                    text[id] = re.sub(cword, "_", word, flags=re.I)
+                else:
+                    text[id] = word
 
             line = ' '.join(text)
 
@@ -66,4 +81,4 @@ def analyze(filePath):
 
 ###############################################
 
-analyze("dataset.txt")
+analyze("E:/jeweler_content.txt")

@@ -13,7 +13,7 @@ Conversation is interacting and communicating with with a personal assistant usi
 About Data management:
 Data management is the practice of collecting, accessing, maintaining, and driving value from data in an agile, secure, and cost-effective manner. Key components of a data management strategy include data governance, processing, security, and storage.
 About Data privacy:
-Data privacy refers to processing, storing, and transmiting personal and sensitive data in compliance with government and industry regulations.
+Data privacy refers to processing, storing, and transmitting personal and sensitive data in compliance with government and industry regulations.
 About Data science:
 Data science is the process of using algorithms, methods, and systems to extract knowledge and insights from structured and unstructured data. It can be used to make predictions and decisions using analytics and machine learning.
 About Data storage:
