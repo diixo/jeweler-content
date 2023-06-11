@@ -52,19 +52,22 @@ def analyze(filePath):
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
             
             word_it = "IT"
+            punct = "$|!?:,;.\'\""
             for id, word in enumerate(text):
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
                 word = re.sub("\|", "| ", word)
 
-                cword = word.strip("|!?:,;.\'\"").lower()
+                cword = word.strip(punct).lower()
 
-                if cword in stopwords:
+                if cword.isdigit():
+                    text[id] = re.sub(cword, " ", word)
+                elif cword in stopwords:
                     text[id] = re.sub(cword, "_", word, flags=re.I)
                 else:
                     text[id] = word
 
-            line = ' '.join(text)
+            line = ' '.join([w for w in text if len(w.strip()) > 0])
 
             #print(line)
 
@@ -81,4 +84,4 @@ def analyze(filePath):
 
 ###############################################
 
-analyze("E:/jeweler_content.txt")
+analyze("jeweler-content.txt")
