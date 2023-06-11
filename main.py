@@ -60,10 +60,12 @@ def analyze(filePath):
 
                 cword = word.strip(punct).lower()
 
+                #if re.sub(r'[\%\$\-\:\,\.]', "", cword).isdigit():
                 if cword.isdigit():
-                    text[id] = re.sub(cword, " ", word)
+                    print(cword)
+                    text[id] = re.sub(cword, "", word)
                 elif cword in stopwords:
-                    text[id] = re.sub(cword, "_", word, flags=re.I)
+                    text[id] = re.sub(cword, "", word, flags=re.I)
                 else:
                     text[id] = word
 

@@ -22,6 +22,8 @@
 |updated_at|timestamp|No|0000-00-00 00:00:00
 == Dumping data for table jeweler_content
 
+== Dumping data for table jeweler_content
+0000-00-00 00:00:00 $0000.00,00
 |Відомо, у яких випадках не потрібне оновлення Windows – Програми &#124; iTechua|Відомо, у яких випадках не потрібне оновлення Windows.Останні новини Програми на сайті - iTechua. Свіжа стрічка новин сьогодні.
 |Techopedia: Educating IT Professionals To Make Smarter Decisions - Techopedia|Your go-to source for professional IT insight, from defining complex tech jargon to exploring the latest tech trends.
 |What is a Micro App? - Definition from Techopedia|This definition explains the meaning of Micro App and why it matters.
