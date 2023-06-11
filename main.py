@@ -24,7 +24,7 @@ def analyze(filePath):
         if not line:
             break
 
-        if count > 23:
+        if count > -1:
 
             # remove html-blocks
             line = line.replace('&amp;' , '&')
@@ -43,12 +43,18 @@ def analyze(filePath):
             # remove cyrillic
             line = re.sub(r'[А-їЁІЇҐґ]', " ", line).strip()
 
-            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www', item, re.IGNORECASE)]
+            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
+            
+            word_it = "IT"
+            for id, word in enumerate(text):
+                text[id] = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
+
             line = ' '.join(text)
 
             #print(line)
 
-            fw.writelines([line + "\n"])
+            if len(line) > 0:
+                fw.write(line + "\n")
 
             print(count)
 
@@ -60,4 +66,4 @@ def analyze(filePath):
 
 ###############################################
 
-analyze("jeweler-content.txt")
+analyze("dataset.txt")
