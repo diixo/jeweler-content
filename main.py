@@ -52,7 +52,7 @@ def analyze(filePath):
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
             
             word_it = "IT"
-            punct = "$|!?:,;.\'\""
+            punct = "$|!?:,;.\'\" "
             for id, word in enumerate(text):
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
@@ -62,7 +62,6 @@ def analyze(filePath):
 
                 #if re.sub(r'[\%\$\-\:\,\.]', "", cword).isdigit():
                 if cword.isdigit():
-                    print(cword)
                     text[id] = re.sub(cword, "", word)
                 elif cword in stopwords:
                     text[id] = re.sub(cword, "", word, flags=re.I)
