@@ -54,15 +54,14 @@ def analyze(filePath):
             word_it = "IT"
             punct = "$|!?:,;.\'\" "
             for id, word in enumerate(text):
-                print(word)
+
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
-                word = re.sub("\|", "| ", word)
-
                 # remove digits: "$-0.5%. |"
-                if re.search(r"\A([$]?[-+]?[\d]*[.,\:]?[\d]+[ ,:%\"\']?)", word):
-                    print("OK->>", word)
-                    word = re.sub(r"[$]?[-+]?[\d]*[.,\:]?[\d]+[%\"\']", "", word)
+                if re.search(r"\A([|]?[$]?[-+]?[\d]*[.,\:]?[\d]+[ ,:%\"\']?)", word):
+                    word = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[%\"\']?', "", word)
+
+                word = re.sub("\|", "| ", word)
 
                 cword = word.strip(punct).lower()
 
@@ -84,8 +83,8 @@ def analyze(filePath):
                 fw.write(line + "\n")
 
             print(count)
-            if count > 23:
-                break
+            #if count > 26:
+            #    break
 
         count += 1
 
@@ -96,6 +95,5 @@ def analyze(filePath):
 ###############################################
 
 #analyze("E:/jeweler_content.txt")
-
 analyze("jeweler-content.txt")
 

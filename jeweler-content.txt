@@ -24,9 +24,9 @@
 
 == Dumping data for table jeweler_content
 0000-00-00 00:00:00 $0000.00,00
-|Відомо, у яких випадках не потрібне оновлення Windows – Програми &#124; iTechua|Відомо, у яких випадках не потрібне оновлення Windows.Останні новини Програми на сайті - iTechua. Свіжа стрічка новин сьогодні.
-|Techopedia: Educating IT Professionals To Make Smarter Decisions - Techopedia|Your go-to source for professional IT insight, from defining complex tech jargon to exploring the latest tech trends.
-|What is a Micro App? - Definition from Techopedia|This definition explains the meaning of Micro App and why it matters.
+
+|3-D 3-D 3D (S3-D) S3-D 5 Techopedia: Educating IT Professionals To Make Smarter Decisions - Techopedia|Your go-to source for professional IT insight, from defining complex tech jargon to exploring the latest tech trends.
+|5 What is a Micro App? - Definition from Techopedia|This definition explains the meaning of Micro App and why it matters.
 |IT Dictionary for Computer Terms and Tech Definitions on Techopedia| More than just a glossary, our dictionary of information technology covers everything from the basics of hardware and software to cloud computing and ERP.
 |What is a Computer? - Definition from Techopedia|This definition explains the meaning of Computer and why it matters.
 |What is a Stack? - Definition from Techopedia|This definition explains the meaning of Stack and why it matters.
