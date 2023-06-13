@@ -60,10 +60,15 @@ def analyze(filePath):
 
                 word = re.sub("\|", "| ", word)
 
-                if is_digit_inside(word):
-                    word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
+                cword = word.strip(punct)
 
-                cword = word.strip(punct).lower()
+                if is_digit_inside(cword.lower()):
+                    #print(word)
+                    #word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
+                    word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?:,\d*)?|(?::\d*)?|\.\d+)[%]*', "", word)
+                    #print(word)
+                else:
+                    cword = cword.lower()
 
                 if cword in stopwords:
                     text[id] = re.sub(cword, "", word, flags=re.I)
