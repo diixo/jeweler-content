@@ -58,8 +58,8 @@ def analyze(filePath):
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
                 # remove digits: "$-0.5%. |"
-                if re.search(r"\A([|]?[$]?[-+]?[\d]*[.,\:]?[\d]+[ ,:%\"\']?)", word):
-                    word = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[%\"\']?', "", word)
+                if re.search(r"\A([|]?[$]?[-+]?[\d]*[.,:]?[\d]+[ ,:%\"\']?)", word):
+                    word = re.sub(r'[$]?[-+]?[\d]*[.,:]?[\d]+[%\"\']?', "", word)
 
                 word = re.sub("\|", "| ", word)
 

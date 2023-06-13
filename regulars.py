@@ -26,7 +26,17 @@ print("-->>", ss)
 ss = "$.225% |"
 #ss = "05%. |"
 ss = "225 "
-ss = re.search(r"\A([$]?[-+]?[\d]*[.,\:]?[\d]+[ ,:%\"\']?)", ss)
+#ss = "3-D"
+ss = re.search(r"\A([$]?[-+]?[\d]*[.,:]?[\d]+[ ,:%\"\']?)[^a-zA-Z\-:]+", ss)
+if ss:
+    print(ss.group())
+else:
+    print("wrong")
+
+print("------------------------------")
+ss = "333.3D"
+
+ss = re.search(r"\A(?:[$]?[-+]?[\d]*[.,:]?[\d]+[a-zA-Z]+)+", ss)
 if ss:
     print(ss.group())
 else:
