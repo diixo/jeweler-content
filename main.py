@@ -2,6 +2,7 @@
 import re
 import string
 from pathlib import Path
+from regulars import is_digit_inside
 
 def analyze(filePath):
 
@@ -47,7 +48,7 @@ def analyze(filePath):
             line = line.translate(translation)
 
             # remove cyrillic
-            line = re.sub(r'[А-їЁІЇҐґ]', " ", line).strip()
+            line = re.sub(r'[А-їЁІЇҐґ_]', " ", line).strip()
 
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
             
@@ -57,18 +58,12 @@ def analyze(filePath):
 
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
-                # remove digits: "$-0.5%. |"
-                if re.search(r"\A([|]?[$]?[-+]?[\d]*[.,:]?[\d]+[ ,:%\"\']?)", word):
-                    word = re.sub(r'[$]?[-+]?[\d]*[.,:]?[\d]+[%\"\']?', "", word)
-
                 word = re.sub("\|", "| ", word)
 
-                cword = word.strip(punct).lower()
+                if is_digit_inside(word):
+                    word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
 
-                #if re.sub(r'[\%\$\-\:\,\.]', "", cword).isdigit():
-                # TODO: join for text[id]
-                #if cword.isdigit():
-                #    text[id] = re.sub(cword, "", word)
+                cword = word.strip(punct).lower()
 
                 if cword in stopwords:
                     text[id] = re.sub(cword, "", word, flags=re.I)

@@ -7,7 +7,7 @@ import re
 # re.search('[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?', str)
 
 def is_digit_inside(str):
-    if re.search('(?<![A-Za-z0-9$])[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)(?![^\ ])', str) is None:
+    if re.search('(?<![A-Za-z0-9$])[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)(?![^\ ,!?])', str) is None:
         return False
     return True
 
@@ -37,40 +37,9 @@ ss = "$+55%%%   "
 ss = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[ %\"\']*', " ", ss)
 print("-->>", ss)
 
-ss = "$.225% |"
-#ss = "05%. |"
-ss = "225 "
-ss = "33333.33%% D"
-ss = "3.33"
-
-true_test = [ '33.33', '33.33%', '33.33%%', '33.33%% ', '33.33%D', '33.33%D', "3 D", "3%% D",  '33.33 D']
-false_test = [ '3D', '3-D', '333D', '333DDD' ]
-
-rgx = "\A([$]?[-+]?[\d]*[.,:]?[\d]+[%\"\' ]+)[^a-zA-Z-]?"
-
-for item in true_test:
-    break
-    ss = re.search(rgx, item)
-    if ss:
-        print(ss.group())
-    else:
-        print("wrong")
-
-
-for item in false_test:
-    break
-    ss = re.search(rgx, item)
-    if ss:
-        print(ss.group())
-    else:
-        print("wrong")
-
-print("-----------")
-
-ss = "22.22%D"
-
 # should return true
 t_test = [
+    "160.", "160. ", "160,", "160, ",
     "160", "$$160", "-160,0 ", "-160.0 ", "-160:0 ", "160.0 ", " -160,0", " -160.0", " -160:0", " 160.0"
     "A 160.0 Z", "A 1600 Z", "A 160,0 Z", "A 160:0 Z", "A 1600 Z", "A 160:0 Z", "-160,0", "-160.0", "-160:0", "160.0"
     "A $$160.0 Z", "A $$1600 Z", "A $$160,0 Z", "A $$160:0 Z", "A $$1600 Z", "A $$160:0 Z", "$$-160,0", "$$-160.0", "$$-160:0", "$$160.0" 
