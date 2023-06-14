@@ -4,6 +4,8 @@ import string
 from pathlib import Path
 from regulars import is_digit_inside
 
+from sentencizer import Sentencizer
+
 def analyze(filePath):
 
     path = Path(filePath)
@@ -50,13 +52,13 @@ def analyze(filePath):
             line = line.translate(translation)
 
             # remove cyrillic
-            line = re.sub(r'[А-їЁІЇҐґ_\(\)]', " ", line)
+            line = re.sub(r'[А-їЁІЇҐґ№]', "", line)
+            line = re.sub(r'[_\(\)<>]', " ", line)
             line = re.sub("\|", " ! ", line).strip()
-            #line = re.sub("<>\"", "", line)
 
             # L' ', L',', L'!', L';', L'\"', L'|'
 
-            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
+            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=', item, re.IGNORECASE)]
             
             word_it = "IT"
 
@@ -80,6 +82,9 @@ def analyze(filePath):
                     text[id] = word
 
             line = ' '.join([w for w in text if len(w.strip()) > 0])
+            #print(line)
+
+            ############################################################################
 
             #print(line)
 
@@ -98,6 +103,9 @@ def analyze(filePath):
 
 ###############################################
 
-analyze("E:/jeweler_content.txt")
-#analyze("jeweler-content.txt")
+#sentencizer = Sentencizer()
+#sentencizer.readFile("jeweler-content.txt")
+
+#analyze("E:/jeweler_content.txt")
+analyze("jeweler-content.txt")
 
