@@ -20,13 +20,16 @@ def tokenize(line):
         work_sentence = []
         for w in sentences[i]:
             w = w.strip(string.punctuation)
-            if ((w != '') and (w not in stopwords) and not w.isdigit()):
+            if ((w != '') and (w not in stopwords) and not w.isdigit() and len(w) > 1):
                 work_sentence.append(w)
 
         #if (len(work_sentence) > 0):
         #    print("<< ", ' '.join(work_sentence))
-        result.append(work_sentence)
+        if work_sentence:
+            result.append(work_sentence)
+    ###################################
     return result
+#######################################
 
 def analyze(filePath):
     global stopwords
@@ -44,7 +47,7 @@ def analyze(filePath):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
     
-    punct = "%$!?:,;.\'\" "
+    punct = "-%$!?:,;.\'\" "
     
     count = 0
     while True:
@@ -109,8 +112,17 @@ def analyze(filePath):
             #print(line)
 
 
+            ###########################
             #sentences = tokenize(line)
+            #bigrams=[]
+            #trigrams=[]
+            #for content in sentences:
+            #    print(content)
+            #    bigrams.extend(ngrams(content, 2))
+            #    trigrams.extend(ngrams(content, 3))
             #print(sentences)
+            ############################
+            #if bigrams: print(bigrams)
 
             if len(line) > 0:
                 fw.write(line + "\n")

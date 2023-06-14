@@ -78,4 +78,5 @@ def test():
         else:
             print(" is OK")
 
+#print(is_digit_inside("i5-13500"))
 #test()
