@@ -18,7 +18,9 @@ def analyze(filePath):
     ##########################################
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
-
+    
+    punct = "$|!?:,;.\'\" "
+    
     count = 0
     while True:
         line = fh.readline()
@@ -48,25 +50,26 @@ def analyze(filePath):
             line = line.translate(translation)
 
             # remove cyrillic
-            line = re.sub(r'[А-їЁІЇҐґ_]', " ", line).strip()
+            line = re.sub(r'[А-їЁІЇҐґ_]', " ", line)
+            line = re.sub("\|", " | ", line).strip()
+
+            # L' ', L',', L'!', L';', L'\"', L'|'
 
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href', item, re.IGNORECASE)]
             
             word_it = "IT"
-            punct = "$|!?:,;.\'\" "
+
             for id, word in enumerate(text):
 
                 word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
-                word = re.sub("\|", "| ", word)
-
                 cword = word.strip(punct)
 
                 if is_digit_inside(cword.lower()):
-                    #print(word)
+                    #print(">>", word)
                     #word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
-                    word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?:,\d*)?|(?::\d*)?|\.\d+)[%]*', "", word)
-                    #print(word)
+                    word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
+                    #print("<<", word)
                 else:
                     cword = cword.lower()
 
