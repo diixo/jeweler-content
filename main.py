@@ -19,7 +19,7 @@ def analyze(filePath):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
     
-    punct = "$|!?:,;.\'\" "
+    punct = "$!?:,;.\'\" "
     
     count = 0
     while True:
@@ -44,14 +44,15 @@ def analyze(filePath):
 
             # normalize apostrophs
             translation = {
-                0x201c: 0x0022, 0x201d: 0x0022, 0x021f: 0x0022, 
+                0x201c: 0x0020, 0x201d: 0x0020, 0x021f: 0x0020, 0x0022: 0x0020,
                 0x2019: 0x0027, 0x2018: 0x0027, 0x201b: 0x0027, 0x0060: 0x0027, 
-                0x00ab: 0x0020, 0x00bb: 0x0020, 0x2026: 0x002e }
+                0x00ab: 0x0020, 0x00bb: 0x0020, 0x2026: 0x002e, 0x2014: 0x0020 }
             line = line.translate(translation)
 
             # remove cyrillic
-            line = re.sub(r'[А-їЁІЇҐґ_]', " ", line)
-            line = re.sub("\|", " | ", line).strip()
+            line = re.sub(r'[А-їЁІЇҐґ_\(\)]', " ", line)
+            line = re.sub("\|", " ! ", line).strip()
+            #line = re.sub("<>\"", "", line)
 
             # L' ', L',', L'!', L';', L'\"', L'|'
 
@@ -97,6 +98,6 @@ def analyze(filePath):
 
 ###############################################
 
-#analyze("E:/jeweler_content.txt")
-analyze("jeweler-content.txt")
+analyze("E:/jeweler_content.txt")
+#analyze("jeweler-content.txt")
 
