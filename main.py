@@ -6,8 +6,9 @@ from regulars import is_digit_inside
 
 stopwords = []
 
-def grammify(line):
+def tokenize(line):
     global stopwords
+    result = []
 
     line1 = re.sub('[!?.;,:]', "><", line)
     sentences = [x.strip().lower() for x in line1.split("><") if x !='']
@@ -22,9 +23,10 @@ def grammify(line):
             if ((w != '') and (w not in stopwords) and not w.isdigit()):
                 work_sentence.append(w)
 
-        if (len(work_sentence) > 0):
-            print("<< ", ' '.join(work_sentence))
-    return
+        #if (len(work_sentence) > 0):
+        #    print("<< ", ' '.join(work_sentence))
+        result.append(work_sentence)
+    return result
 
 def analyze(filePath):
     global stopwords
@@ -42,7 +44,7 @@ def analyze(filePath):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
     
-    punct = "$!?:,;.\'\" "
+    punct = "%$!?:,;.\'\" "
     
     count = 0
     while True:
@@ -93,6 +95,7 @@ def analyze(filePath):
                     #print(">>", word)
                     #word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
                     word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
+                    cword = word.lower()
                     #print("<<", word)
                 else:
                     cword = cword.lower()
@@ -105,7 +108,9 @@ def analyze(filePath):
             line = ' '.join([w for w in text if len(w.strip()) > 0])
             #print(line)
 
-            #grammify(line)
+
+            #sentences = tokenize(line)
+            #print(sentences)
 
             if len(line) > 0:
                 fw.write(line + "\n")
