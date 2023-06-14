@@ -5,7 +5,7 @@ from operator import itemgetter
 
 class Sentencizer: #from NLPTools
 
-    def __init__(self, split_characters=['.', '?', '!', ':', ';', ','], delimiter_token='<split>'):
+    def __init__(self, split_characters=['.', '?', '!', ':', ';', ',', '|'], delimiter_token='<split>'):
         self.sentences = []
         self._split_characters = split_characters
         self._delimiter_token = delimiter_token
@@ -27,11 +27,13 @@ class Sentencizer: #from NLPTools
             work_sentence = work_sentence.replace(character, character + "" + self._delimiter_token)
 
         sentences = [x.strip().lower() for x in work_sentence.split(self._delimiter_token) if x !='']
+        #print(">>", sentences)
 
         token_boundaries = [' ', ',', '.']
 
         for i in range(len(sentences)):
             work_sentence = sentences[i]
+            #print("[]", work_sentence)
 
             for delimiter in token_boundaries:
                 work_sentence = work_sentence.replace(delimiter, self._delimiter_token)

@@ -4,9 +4,30 @@ import string
 from pathlib import Path
 from regulars import is_digit_inside
 
-from sentencizer import Sentencizer
+stopwords = []
+
+def grammify(line):
+    global stopwords
+
+    line1 = re.sub('[!?.;,:]', "><", line)
+    sentences = [x.strip().lower() for x in line1.split("><") if x !='']
+
+    for i, item in enumerate(sentences):
+        
+        sentences[i] = [x.strip() for x in item.split(" ") if (x != '')]
+
+        work_sentence = []
+        for w in sentences[i]:
+            w = w.strip(string.punctuation)
+            if ((w != '') and (w not in stopwords) and not w.isdigit()):
+                work_sentence.append(w)
+
+        if (len(work_sentence) > 0):
+            print("<< ", ' '.join(work_sentence))
+    return
 
 def analyze(filePath):
+    global stopwords
 
     path = Path(filePath)
     if path.exists() == False: return
@@ -84,9 +105,7 @@ def analyze(filePath):
             line = ' '.join([w for w in text if len(w.strip()) > 0])
             #print(line)
 
-            ############################################################################
-
-            #print(line)
+            #grammify(line)
 
             if len(line) > 0:
                 fw.write(line + "\n")
@@ -103,9 +122,5 @@ def analyze(filePath):
 
 ###############################################
 
-#sentencizer = Sentencizer()
-#sentencizer.readFile("jeweler-content.txt")
-
 #analyze("E:/jeweler_content.txt")
 analyze("jeweler-content.txt")
-
