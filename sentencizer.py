@@ -44,6 +44,10 @@ class Sentencizer:
         s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
         self.stopwords = sorted(s)
 
+        self.ngram1_freq_dict = {}  # freq_dict for unigrams
+        self.ngram2_freq_dict = {}  # freq_dict for bigrams
+        self.ngram3_freq_dict = {}  # freq_dict for trigrams
+
     def __iter__(self):
         return self
 
@@ -90,10 +94,16 @@ class Sentencizer:
             #    print("<< ", ' '.join(work_sentence))
             #if work_sentence:
             #    result.append(work_sentence)
-            
-            self.unigrams.update(ngrams(work_sentence, 1))  # unique inserting
-            self.bigrams.update(ngrams(work_sentence, 2))   # unique inserting
-            self.trigrams.update(ngrams(work_sentence, 3))  # unique inserting
+
+            ngrams_1 = ngrams(work_sentence, 1)
+            ngrams_2 = ngrams(work_sentence, 2)
+            ngrams_3 = ngrams(work_sentence, 3)
+            self.add_ngrams_freqDict(self.ngram1_freq_dict, ngrams_1)
+            self.add_ngrams_freqDict(self.ngram2_freq_dict, ngrams_2)
+            self.add_ngrams_freqDict(self.ngram3_freq_dict, ngrams_3)
+            self.unigrams.update(ngrams_1)  # unique inserting
+            self.bigrams.update(ngrams_2)   # unique inserting
+            self.trigrams.update(ngrams_3)  # unique inserting
         #}
         return
     ################################################
@@ -106,10 +116,21 @@ class Sentencizer:
 
             print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
 
+            print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
+                len(self.ngram1_freq_dict), len(self.ngram2_freq_dict), len(self.ngram3_freq_dict)))   
+
             f = open("unigrams.utf8", 'w', encoding='utf-8')
             for w in self.unigrams:
                 f.write(str(w[0]) + "\n")
             f.close()
         #}
+        return
+    ################################################
+    def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
+        for ngram in ngramList:
+            if ngram in ngram_freq_dict:
+                ngram_freq_dict[ngram] += 1
+            else:
+                ngram_freq_dict[ngram] = 1
         return
     ################################################
