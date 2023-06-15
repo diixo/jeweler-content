@@ -52,7 +52,8 @@ def analyze(filePath):
             line = re.sub(r'[_\(\)<>/]', " ", line)
             line = re.sub("\|", " ! ", line).strip()
 
-            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=', item, re.IGNORECASE)]
+            text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=|text=', 
+                item, re.IGNORECASE)]
             
             word_it = "IT"
 
