@@ -16,7 +16,7 @@ def analyze(filePath):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
     
-    punct = "®-%$!?:,;.\'\" "
+    punct = "©®-%$!?:,;.\'\" "
     
     count = 0
     while True:
@@ -51,7 +51,7 @@ def analyze(filePath):
 
             # remove cyrillic
             line = re.sub(r'[А-їЁІЇҐґ№]', "", line)
-            line = re.sub(r'[_\(\)<>/]', " ", line)
+            line = re.sub(r'[_\(\)<>/\[\]]', " ", line)
             line = re.sub("\|", " ! ", line).strip()
 
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=|text=', 
