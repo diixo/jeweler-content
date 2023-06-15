@@ -95,16 +95,18 @@ class Sentencizer:
         return
     ################################################
     def finalize(self):
+        if len(self.unigrams) > 0:
+        #{
+            self.unigrams = sorted(self.unigrams)
+            self.bigrams = sorted(self.bigrams)
+            self.trigrams = sorted(self.trigrams)
 
-        self.unigrams = sorted(self.unigrams)
-        self.bigrams = sorted(self.bigrams)
-        self.trigrams = sorted(self.trigrams)
+            print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
 
-        print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
-        return
-        f = open("unigrams.utf8", 'w', encoding='utf-8')
-        for w in self.unigrams:
-            f.write(str(w[0]) + "\n")
-        f.close()
+            f = open("unigrams.utf8", 'w', encoding='utf-8')
+            for w in self.unigrams:
+                f.write(str(w[0]) + "\n")
+            f.close()
+        #}
         return
     ################################################
