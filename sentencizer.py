@@ -67,25 +67,22 @@ class Sentencizer:
 
         for i, item in enumerate(sentences):
         #{    
-            sentences[i] = [x.strip() for x in item.split(" ") if (x != '')]
+            sentences = [x.strip() for x in item.split(" ") if (x != '')]
 
             work_sentence = []
-            for w in sentences[i]:
+            for w in sentences:
                 w = w.strip(string.punctuation)
                 if ((w != '') and (w not in self.stopwords) and not w.isdigit() and len(w) > 1):
                     work_sentence.append(w)
 
-            #if (len(work_sentence) > 0):
-            #    print("<< ", ' '.join(work_sentence))
-            #if work_sentence:
-            #    result.append(work_sentence)
-
             ngrams_1 = ngrams(work_sentence, 1)
             ngrams_2 = ngrams(work_sentence, 2)
             ngrams_3 = ngrams(work_sentence, 3)
+
             self.add_ngrams_freqDict(self.ngram1_freq_dict, ngrams_1)
             self.add_ngrams_freqDict(self.ngram2_freq_dict, ngrams_2)
             self.add_ngrams_freqDict(self.ngram3_freq_dict, ngrams_3)
+
             self.unigrams.update(ngrams_1)  # unique inserting
             self.bigrams.update(ngrams_2)   # unique inserting
             self.trigrams.update(ngrams_3)  # unique inserting
@@ -119,3 +116,7 @@ class Sentencizer:
                 ngram_freq_dict[ngram] = 1
         return
     ################################################
+    def predict(line):
+        work_line = tokenize(line)
+        #ngramsList = ngrams()
+        return
