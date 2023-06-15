@@ -216,6 +216,7 @@ is
 isn't
 it
 it'd
+it'l
 it'll
 it's
 its
