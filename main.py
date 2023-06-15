@@ -3,33 +3,11 @@ import re
 import string
 from pathlib import Path
 from regulars import is_digit_inside
+from sentencizer import Sentencizer
 
 stopwords = []
 
-def tokenize(line):
-    global stopwords
-    result = []
-
-    line1 = re.sub('[!?.;,:]', "><", line)
-    sentences = [x.strip().lower() for x in line1.split("><") if x !='']
-
-    for i, item in enumerate(sentences):
-        
-        sentences[i] = [x.strip() for x in item.split(" ") if (x != '')]
-
-        work_sentence = []
-        for w in sentences[i]:
-            w = w.strip(string.punctuation)
-            if ((w != '') and (w not in stopwords) and not w.isdigit() and len(w) > 1):
-                work_sentence.append(w)
-
-        #if (len(work_sentence) > 0):
-        #    print("<< ", ' '.join(work_sentence))
-        if work_sentence:
-            result.append(work_sentence)
-    ###################################
-    return result
-#######################################
+sentencizer = Sentencizer()
 
 def analyze(filePath):
     global stopwords
@@ -82,8 +60,6 @@ def analyze(filePath):
             line = re.sub(r'[_\(\)<>]', " ", line)
             line = re.sub("\|", " ! ", line).strip()
 
-            # L' ', L',', L'!', L';', L'\"', L'|'
-
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=', item, re.IGNORECASE)]
             
             word_it = "IT"
@@ -111,19 +87,8 @@ def analyze(filePath):
             line = ' '.join([w for w in text if len(w.strip()) > 0])
             #print(line)
 
-
             ###########################
-            #sentences = tokenize(line)
-            #bigrams=[]
-            #trigrams=[]
-            #for tokens in sentences:
-            #    print(tokens)
-            #    bigrams.extend(ngrams(tokens, 2))
-            #    trigrams.extend(ngrams(tokens, 3))
-            #    print(output = list(ngrams(tokens, 5)))
-            #print(sentences)
-            ############################
-            #if bigrams: print(bigrams)
+            #sentencizer.tokenize(line)
 
             if len(line) > 0:
                 fw.write(line + "\n")
@@ -142,3 +107,5 @@ def analyze(filePath):
 
 #analyze("E:/jeweler_content.txt")
 analyze("jeweler-content.txt")
+
+sentencizer.finalize()
