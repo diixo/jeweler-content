@@ -33,13 +33,16 @@ class Sentencizer:
     def __init__(self, stopwordsPath="stopwords.txt"):
         self.sentences = []
         self._index = 0
-        self.stopwords = [line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()]
+        self.stopwords = set()
         self.vocab = set()
         self.vocab_freq = {}
         self.vocab_freq_sorted = {}
         self.unigrams = set()
         self.bigrams = set()
         self.trigrams = set()
+        s = set()
+        s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
+        self.stopwords = sorted(s)
 
     def __iter__(self):
         return self

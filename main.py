@@ -5,23 +5,14 @@ from pathlib import Path
 from regulars import is_digit_inside
 from sentencizer import Sentencizer
 
-stopwords = []
-
-sentencizer = Sentencizer()
-
 def analyze(filePath):
-    global stopwords
-
     path = Path(filePath)
     if path.exists() == False: return
 
+    sentencizer = Sentencizer()
+
     newName = path.stem + ".utf8"
 
-    stopwords = [line.replace('\n', '') for line in open("stopwords.txt", 'r', encoding='utf-8').readlines()]
-    s = set()
-    s.update(stopwords)
-    stopwords = sorted(s)
-    ##########################################
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
     
@@ -35,7 +26,7 @@ def analyze(filePath):
 
         if count > 23:
 
-            # remove html-blocks
+            # remove html
             line = line.replace('&amp;' , '&')
             line = line.replace('&lt;'  , '<')
             line = line.replace('&gt;'  , '>')
@@ -50,6 +41,7 @@ def analyze(filePath):
 
             # normalize apostrophs
             translation = {
+                0x2013: 0x0020, 0x00a0: 0x0020, 0x2705: 0x0020,
                 0x201c: 0x0020, 0x201d: 0x0020, 0x021f: 0x0020, 0x0022: 0x0020,
                 0x2019: 0x0027, 0x2018: 0x0027, 0x201b: 0x0027, 0x0060: 0x0027, 
                 0x00ab: 0x0020, 0x00bb: 0x0020, 0x2026: 0x002e, 0x2014: 0x0020 }
@@ -57,7 +49,7 @@ def analyze(filePath):
 
             # remove cyrillic
             line = re.sub(r'[А-їЁІЇҐґ№]', "", line)
-            line = re.sub(r'[_\(\)<>]', " ", line)
+            line = re.sub(r'[_\(\)<>/]', " ", line)
             line = re.sub("\|", " ! ", line).strip()
 
             text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=', item, re.IGNORECASE)]
@@ -71,18 +63,16 @@ def analyze(filePath):
                 cword = word.strip(punct)
 
                 if is_digit_inside(cword.lower()):
-                    #print(">>", word)
                     #word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
                     word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
                     cword = word.lower()
-                    #print("<<", word)
                 else:
                     cword = cword.lower()
 
-                if cword in stopwords:
+                if cword in sentencizer.stopwords:
                     text[id] = re.sub(cword, "", word, flags=re.I)
                 else:
-                    text[id] = word
+                    text[id] = word if (len(word)) else ""
 
             line = ' '.join([w for w in text if len(w.strip()) > 0])
             #print(line)
@@ -101,11 +91,10 @@ def analyze(filePath):
 
     fh.close()
     fw.close()
+    sentencizer.finalize()
     return
 
 ###############################################
 
 #analyze("E:/jeweler_content.txt")
 analyze("jeweler-content.txt")
-
-sentencizer.finalize()
