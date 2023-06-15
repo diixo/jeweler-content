@@ -1,15 +1,15 @@
 
-import re
-import string
 from pathlib import Path
 from sentencizer import Sentencizer
 from tokenizer import tokenize
 
+sentencizer = Sentencizer()
+
 def analyze(filePath):
+    global sentencizer
+
     path = Path(filePath)
     if path.exists() == False: return
-
-    sentencizer = Sentencizer()
 
     newName = path.stem + ".utf8"
 
