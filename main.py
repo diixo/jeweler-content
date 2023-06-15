@@ -116,10 +116,11 @@ def analyze(filePath):
             #sentences = tokenize(line)
             #bigrams=[]
             #trigrams=[]
-            #for content in sentences:
-            #    print(content)
-            #    bigrams.extend(ngrams(content, 2))
-            #    trigrams.extend(ngrams(content, 3))
+            #for tokens in sentences:
+            #    print(tokens)
+            #    bigrams.extend(ngrams(tokens, 2))
+            #    trigrams.extend(ngrams(tokens, 3))
+            #    print(output = list(ngrams(tokens, 5)))
             #print(sentences)
             ############################
             #if bigrams: print(bigrams)
