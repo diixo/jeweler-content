@@ -45,5 +45,5 @@ def analyze(filePath, lines_indent = -1):
 
 ###############################################
 
-#analyze("E:/jeweler_content.txt", 23)
-analyze("jeweler-content.txt", 23)
+analyze("train-nn.txt")
+sentencizer.predict_next("text")
