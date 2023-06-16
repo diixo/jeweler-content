@@ -82,10 +82,16 @@ def test():
 #test()
 
 #nltk-version
+def word_tokenize_all():
+    s = "John's mom went there, but he wasn't there at-all'. So' she said: 'Where are viix.co. !!' 'A a'"
+    s = re.findall("(\w[\w'\.-]*\w|\w|[\'%:!;,\$\?\.])", s) # nltk-version
+    if s:
+        print(s)
+    return
+##########################################
 def word_tokenize():
-    s = "John's mom went there, but he wasn't there'. So' she said: 'Where are viix.co. !!' 'A a'"
-    #s = re.findall("(\w[\w'\.]*\w|\w)", s)
-    s = re.findall("(\w[\w'\.]*\w|\w|[\'%:!;,\$\?\.])", s) # nltk-version
+    s = "John's mom went there, but he wasn't there at-all'. So' she said: 'Where are viix.co. !!' 'A a'"
+    s = re.findall("(\w[\w'\.-]*\w|\w)", s)
     if s:
         print(s)
     return
