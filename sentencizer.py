@@ -4,14 +4,41 @@ import re
 import string
 from operator import itemgetter
 from tokenizer import tokenize
+from collections import Counter
 
-####################################################################################################
+########################################################################
 # nltk.ngrams
 def ngrams(content, n):
     ngramList = [tuple(content[i:i+n]) for i in range(len(content)-n+1)]
-    #print(ngramList)
     return ngramList
-####################################################################################################
+########################################################################
+def predict_next_word(last_word, probDist):
+    next_word = {}
+    for k in probDist:
+        if k[0:2] == last_word:
+            next_word[k[2]] = probDist[k]
+    k = Counter(next_word)
+    high = k.most_common(1) 
+    return high[0]
+########################################################################
+def predict_next_3_words(token, probDist):
+    pred = []
+    next_word = {}
+    for i in probDist:
+        if i[0:2] == token:
+            next_word[i[2]] = probDist[i]
+    k = Counter(next_word)
+    high = k.most_common(2) 
+    w1a = high[0]
+    tup = (token[1], w1a[0])
+    w2a = predict_next_word(tup,probDist)
+    tup = (w1a[0], w2a[0])
+    w3a = predict_next_word(tup,probDist)
+    pred.append(w1a)
+    pred.append(w2a)
+    pred.append(w3a)
+    return pred
+########################################################################
 
 class Sentencizer:
 
@@ -116,14 +143,23 @@ class Sentencizer:
                 ngram_freq_dict[ngram] = 1
         return
     ################################################
-    def word_tokenize(self, in_str):
-        str_list = re.findall("(\w[\w'\.]*\w|\w)", in_str)
-        if str_list:
-            return str_list
+    def word_tokenize(self, in_str, stopwords = None):
+        word_list = re.findall("(\w[\w'\.-]*\w|\w)", in_str)
+        if word_list:
+            if stopwords:
+                return [w for w in word_list if w not in stopwords]
+            else:
+                return word_list
         return []
     ################################################
     def predict(self, line):
         work_line = tokenize(line)
-        ngramsList = self.word_tokenize(work_line)
+        tokenList = self.word_tokenize(work_line)
+        
+        ngram = {1:[], 2:[]}
+
+        for i in range(2):
+            ngram[i+1] = list(ngrams(tokenList, i+1))[-1]
+
         return
     ################################################
