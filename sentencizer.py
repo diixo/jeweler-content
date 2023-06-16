@@ -144,7 +144,7 @@ class Sentencizer:
         return
     ################################################
     def word_tokenize(self, in_str, stopwords = None):
-        word_list = re.findall("(\w[\w'\.-]*\w|\w)", in_str)
+        word_list = re.findall("(\w[\w'\.-\&]*\w|\w)", in_str)
         if word_list:
             if stopwords:
                 return [w for w in word_list if w not in stopwords]
