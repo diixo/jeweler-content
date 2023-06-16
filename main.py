@@ -45,5 +45,5 @@ def analyze(filePath, lines_indent = -1):
 
 ###############################################
 
-analyze("train-nn.txt")
+analyze("data/train-nn.txt")
 sentencizer.predict_next("text")
