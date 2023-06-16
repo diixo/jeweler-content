@@ -5,7 +5,7 @@ from tokenizer import tokenize
 
 sentencizer = Sentencizer()
 
-def analyze(filePath):
+def analyze(filePath, lines_indent = -1):
     global sentencizer
 
     path = Path(filePath)
@@ -22,7 +22,7 @@ def analyze(filePath):
         if not line:
             break
 
-        if count > 23:
+        if count > lines_indent:
 
             line = tokenize(line, sentencizer.stopwords)
             #print(line)
@@ -45,5 +45,5 @@ def analyze(filePath):
 
 ###############################################
 
-#analyze("E:/jeweler_content.txt")
-analyze("jeweler-content.txt")
+#analyze("E:/jeweler_content.txt", 23)
+analyze("jeweler-content.txt", 23)
