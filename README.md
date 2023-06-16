@@ -1,1 +1,3 @@
-# jeweler-content
+## jeweler-content
+
+NLP text handler.
