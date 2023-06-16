@@ -80,3 +80,13 @@ def test():
 
 #print(is_digit_inside("i5-13500"))
 #test()
+
+#nltk-version
+def word_tokenize():
+    s = "John's mom went there, but he wasn't there'. So' she said: 'Where are viix.co. !!' 'A a'"
+    #s = re.findall("(\w[\w'\.]*\w|\w)", s)
+    s = re.findall("(\w[\w'\.]*\w|\w|[\'%:!;,\$\?\.])", s) # nltk-version
+    if s:
+        print(s)
+    return
+##########################################

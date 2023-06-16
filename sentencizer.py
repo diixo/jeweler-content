@@ -116,7 +116,14 @@ class Sentencizer:
                 ngram_freq_dict[ngram] = 1
         return
     ################################################
-    def predict(line):
+    def word_tokenize(self, in_str):
+        str_list = re.findall("(\w[\w'\.]*\w|\w)", in_str)
+        if str_list:
+            return str_list
+        return []
+    ################################################
+    def predict(self, line):
         work_line = tokenize(line)
-        #ngramsList = ngrams()
+        ngramsList = self.word_tokenize(work_line)
         return
+    ################################################
