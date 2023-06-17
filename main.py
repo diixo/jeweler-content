@@ -3,6 +3,7 @@ from pathlib import Path
 from sentencizer import Sentencizer
 from tokenizer import tokenize
 
+###############################################################
 sentencizer = Sentencizer()
 
 def analyze(filePath, lines_indent = -1):
@@ -18,14 +19,14 @@ def analyze(filePath, lines_indent = -1):
        
     count = 0
     while True:
+    #{
         line = fh.readline()
         if not line:
             break
 
         if count > lines_indent:
-
+        #{
             line = tokenize(line, sentencizer.stopwords)
-            #print(line)
 
             sentencizer.update(line)
 
@@ -33,17 +34,25 @@ def analyze(filePath, lines_indent = -1):
                 fw.write(line + "\n")
 
             print(count)
-            #if count > 26:
-            #    break
-
+        #}
         count += 1
-
+    #}
     fh.close()
     fw.close()
     sentencizer.finalize()
     return
 
-###############################################
+###############################################################
 
-analyze("data/train-nn.txt")
-sentencizer.predict_next("text")
+def main():
+    #analyze("data/train-nn.txt")
+    #result = sentencizer.predict_next("text clustering")
+
+    analyze("data/dataset.txt")
+    result = sentencizer.predict_next("data science")
+
+    return result
+
+###############################################################
+if __name__ == "__main__":
+    print(main())

@@ -57,18 +57,20 @@ def predict_next_3_words(token, probDist):
     pred = []
     next_word = {}
     for i in probDist:
-        if i[0:2] == token:
+        if list(i[0:2]) == token:
             next_word[i[2]] = probDist[i]
     k = Counter(next_word)
-    high = k.most_common(2)
-    w1a = high[0]
-    tup = (token[1], w1a[0])
-    w2a = predict_next_word(tup, probDist)
-    tup = (w1a[0], w2a[0])
-    w3a = predict_next_word(tup, probDist)
-    pred.append(w1a)
-    pred.append(w2a)
-    pred.append(w3a)
+    high = k.most_common(10)
+    if len(high) > 0:
+        w1a = high[0]
+        print("<<", token, "<<", w1a[0], ": high", [ item[0] for item in high ])
+        tup = (token[1], w1a[0])
+        w2a = predict_next_word(tup, probDist)
+        tup = (w1a[0], w2a[0])
+        w3a = predict_next_word(tup, probDist)
+        pred.append(w1a)
+        pred.append(w2a)
+        pred.append(w3a)
     return pred
 ########################################################################
 
@@ -221,14 +223,12 @@ class Sentencizer:
 
         if (sz == 1):
             token = tokenList[0]
-
             pred1, pred2 = predict_next_3_words_smoothed(token, bigrams_probDist)
-            print(pred1, pred2)
+            return [[item1[0] for item1 in pred1], [item2[0] for item2 in pred2]]
 
         if (sz == 2):
             pair = [tokenList[0], tokenList[1]]
-
-            pred1, pred2 = predict_next_3_words(pair, trigrams_probDist)
-            print(pred1, pred2)
-        return
+            pred_3 = predict_next_3_words(pair, trigrams_probDist)
+            return [item[0] for item in pred_3]
+        return []
     ##########################################################
