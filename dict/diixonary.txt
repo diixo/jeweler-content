@@ -2122,8 +2122,6 @@ equity
 leader
 gaming
 titles
-sony
-blizzard
 division
 computers
 wire
@@ -2294,7 +2292,6 @@ ram
 gpu
 ports
 multi-core
-ipad
 keyboard
 sd
 card
@@ -2308,10 +2305,6 @@ chips
 face
 id
 wireless
-ibm
-macs
-imac
-ipads
 arriving
 frequencies
 coolest
@@ -2329,7 +2322,6 @@ employing
 cyberspace
 unpatched
 faulty
-macos
 arbitrary
 screens
 unauthorized
@@ -2824,7 +2816,6 @@ dataframe
 rows
 well-defined
 react-native
-macintosh
 macos-specific
 docker
 dockerfiles
@@ -3033,7 +3024,6 @@ inbuilt
 google-sheets-formula
 odm
 web-scraping
-adobe
 flash
 air
 two-dimensional
@@ -3044,8 +3034,6 @@ jquery-ui
 widgets
 themes
 net-assembly
-intellij-idea
-intellij
 rss
 hybris
 application-development
@@ -3102,7 +3090,6 @@ net-web-api
 mechanics
 jsf
 stored-procedures
-adobe's
 multimedia
 animations
 flas
@@ -3110,8 +3097,6 @@ plaintext
 unreadable
 ciphertext
 secondary
-tablet
-ipados
 facebook-graph-api
 facebook's
 touch-based
@@ -3265,12 +3250,9 @@ invoices
 user-level
 colors
 google-analytics
-usa
 knockout
-uis
 mvvm
 outlook
-ssis
 enterprise-level
 etl
 drupal
@@ -3382,7 +3364,6 @@ django-templates
 angularjs-directive
 tricks
 vocabulary
-nhibernate
 diagnostics
 emacs
 customizable
@@ -3399,7 +3380,6 @@ time-based
 scheduler
 daemon
 safari
-doctrine-orm
 doctrine
 processin
 jmeter
@@ -3414,7 +3394,6 @@ ef
 enclosing
 unclear
 pagination
-gethostb
 version-control
 applicability
 con
@@ -3423,7 +3402,6 @@ url-rewriting
 url's
 rewriting
 relevant-looking
-obso
 responsive-design
 rwd
 crafting
@@ -3436,7 +3414,6 @@ bluetooth
 distances
 wavelength
 transmissions
-netw
 linux-kernel
 internals
 raspberry-pi
@@ -3475,9 +3452,7 @@ widely-used
 tree-like
 pyqt
 company's
-nullpointerexception
 android-listview
-adapterview
 vertically
 datagrid
 grep
@@ -3534,14 +3509,12 @@ jquery-plugins
 add-ons
 rabbitmq
 amqp
-inv
 lacks
 discriminating
 html-heading
 email-header
 drag-and-drop
 drag
-newtonsoft
 multiprocessing
 cpus
 ms-office
@@ -3556,7 +3529,6 @@ unrecoverable
 mfc
 leaflet
 mobile-friendly
-r-leaflet
 gulp
 js-based
 runner
@@ -3565,7 +3537,6 @@ code-over-configuration
 continuous-integration
 segmentation-fault
 net-core-mvc
-razor
 type-conversion
 hierarchies
 data-type
@@ -3579,7 +3550,6 @@ py
 interfacing
 pycord
 fork
-android-gradle-plugin
 android's
 backing-build-system
 shiny
@@ -3601,7 +3571,6 @@ mockito
 easymock
 stubbing
 verification
-xampp
 automated-tests
 preconditions
 mapreduce
@@ -3644,7 +3613,6 @@ confirmation
 touch-interface
 fulltext
 eco-system
-zend-search-lucene
 cors
 devtools
 cross-origin
@@ -3756,7 +3724,6 @@ electricity
 underway
 sciences
 excellence
-centre
 pathway
 affordable
 renewable
@@ -7577,7 +7544,6 @@ personality
 personalization
 personified
 photography
-photoshop
 php-developer
 pitch-battle
 pitch-training
@@ -7721,7 +7687,6 @@ misconception
 full-fledged
 sails
 salary
-samsung
 scale-out
 scanline
 sceptical
