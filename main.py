@@ -47,15 +47,11 @@ def analyze(filePath, lines_indent = -1):
 def main():
     #analyze("data/jeweler-content.txt", 23)
 
-    #analyze("data/train-nn.txt")
+    analyze("data/train-nn.txt")
     #phrase, result = sentencizer.predict_next("text clustering")
 
-    analyze("data/dataset.txt")
-    phrase, result = sentencizer.predict_next("data science")
-
-    print(phrase, ":", result)
-
-    return result
+    #analyze("data/dataset.txt")
+    #phrase, result = sentencizer.predict_next("data science")
 
 ###############################################################
 if __name__ == "__main__":
