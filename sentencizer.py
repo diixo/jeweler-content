@@ -5,6 +5,7 @@ import string
 from operator import itemgetter
 from tokenizer import tokenize
 from collections import Counter
+from pathlib import Path
 
 ########################################################################
 # nltk.ngrams
@@ -63,7 +64,7 @@ def predict_next_3_words(token, probDist):
     high = k.most_common(10)
     if len(high) > 0:
         w1a = high[0]
-        print("<<", token, "<<", w1a[0], ": high", [ item[0] for item in high ])
+        print("<< high:", [ item[0] for item in high ])
         tup = (token[1], w1a[0])
         w2a = predict_next_word(tup, probDist)
         tup = (w1a[0], w2a[0])
@@ -93,6 +94,7 @@ class Sentencizer:
         self.unigrams_freq_dict = {}  # freq_dict for unigrams
         self.bigrams_freq_dict  = {}  # freq_dict for bigrams
         self.trigrams_freq_dict = {}  # freq_dict for trigrams
+        self.dictionary         = set()
 
     def __iter__(self):
         return self
@@ -159,10 +161,22 @@ class Sentencizer:
         return
     ##########################################################
     def finalize(self):
+
+        self.dictionary.update(self.stopwords)
+        diix = Path("./dict/diixonary.txt")
+        if diix.exists():
+            self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
+            #print("diixonary.sz=", len(self.dictionary))
+
+        diix = Path("./dict/dictionary.txt")
+        if diix.exists():
+            self.dictionary.update([line.replace('\n', '') for line in open("./dict/dictionary.txt", 'r', encoding='utf-8').readlines()])
+            #print("dictionary.sz=", len(self.dictionary))
+
         if len(self.unigrams) > 0:
         #{
             self.unigrams = sorted(self.unigrams)
-            self.bigrams = sorted(self.bigrams)
+            self.bigrams  = sorted(self.bigrams)
             self.trigrams = sorted(self.trigrams)
 
             print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
@@ -172,7 +186,8 @@ class Sentencizer:
 
             f = open("unigrams.utf8", 'w', encoding='utf-8')
             for w in self.unigrams:
-                f.write(str(w[0]) + "\n")
+                if w[0] not in self.dictionary:
+                    f.write(w[0] + "\n")
             f.close()
         #}
         return
@@ -224,11 +239,11 @@ class Sentencizer:
         if (sz == 1):
             token = tokenList[0]
             pred1, pred2 = predict_next_3_words_smoothed(token, bigrams_probDist)
-            return [[item1[0] for item1 in pred1], [item2[0] for item2 in pred2]]
+            return (work_line, [[item1[0] for item1 in pred1], [item2[0] for item2 in pred2]])
 
         if (sz == 2):
             pair = [tokenList[0], tokenList[1]]
             pred_3 = predict_next_3_words(pair, trigrams_probDist)
-            return [item[0] for item in pred_3]
+            return (work_line, [item[0] for item in pred_3])
         return []
     ##########################################################

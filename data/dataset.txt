@@ -1223,7 +1223,7 @@ Use Cases
 Frequently Asked Questions
 You can use Question Answering (QA) models to automate the response to frequently asked questions by using a knowledge base (documents) as context. Answers to customer questions can be drawn from those documents.
 
-⚡⚡ If you’d like to save inference time, you can first use passage ranking models to see which document might contain the answer to the question and iterate over that document with the QA model instead.
+If you’d like to save inference time, you can first use passage ranking models to see which document might contain the answer to the question and iterate over that document with the QA model instead.
 
 Task Variants
 There are different QA variants based on the inputs and outputs:

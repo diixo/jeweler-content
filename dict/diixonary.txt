@@ -1,6 +1,5 @@
 cross-platform
 library
-ios
 devices
 bunch
 libraries
@@ -11,13 +10,10 @@ native
 protocols
 services
 reimplementation
-apple
 programming
 language
 linux
-mac
 windows
-android
 arm
 socs
 architecture
@@ -31,8 +27,6 @@ enthusiasts
 great
 incompatible
 hardware
-iphone
-itunes
 goal
 freedom
 device
@@ -84,9 +78,6 @@ platform
 choice
 instructions
 source
-debian
-ubuntu
-opensuse
 terminal
 machine
 commands
@@ -100,7 +91,6 @@ cables
 fast
 news
 website
-github
 picture
 contributions
 logo
@@ -156,9 +146,7 @@ e-mail
 stackoverflow
 best
 questions
-twitter
 chat
-telegram
 hands
 developers
 ascii

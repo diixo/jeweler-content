@@ -48,13 +48,15 @@ def main():
     #analyze("data/jeweler-content.txt", 23)
 
     #analyze("data/train-nn.txt")
-    #result = sentencizer.predict_next("text clustering")
+    #phrase, result = sentencizer.predict_next("text clustering")
 
     analyze("data/dataset.txt")
-    result = sentencizer.predict_next("data science")
+    phrase, result = sentencizer.predict_next("data science")
+
+    print(phrase, ":", result)
 
     return result
 
 ###############################################################
 if __name__ == "__main__":
-    print(main())
+    main()
