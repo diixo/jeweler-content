@@ -106,7 +106,7 @@ class Sentencizer:
         raise StopIteration
 
     ##########################################################
-    def update(self, line):
+    def update(self, line, buildPredict=False):
         result = []
 
         line1 = re.sub('[!?.;,:]', "><", line)
@@ -125,7 +125,7 @@ class Sentencizer:
                     self.vocab.add(w)
                     self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
-            if False:
+            if buildPredict:
             #
                 ngrams_1 = ngrams(tokens, 1)
                 ngrams_2 = ngrams(tokens, 2)
@@ -175,29 +175,29 @@ class Sentencizer:
                     f.write(w[0] + "\n")
             f.close()
         #}
+        else:
+        #{
+            print(">> vocab")
+            self.vocab = sorted(self.vocab)
+            self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
+            f = open("dict.utf8", 'w', encoding='utf-8')
+            for w in self.vocab:
+                if w not in self.dictionary:
+                    f.write(w + "\n")
+            f.close()
 
-        self.vocab = sorted(self.vocab)
-        self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
+            print("<< vocab")
+            print(">> vocab-freq")
 
-        print(">> vocab")
+            f = open("dict-freq.utf8", 'w', encoding='utf-8')
+            for kv in self.vocab_freq:
+                if kv[0] not in self.dictionary:
+                    f.write(kv[0] + " ; " + str(kv[1]) + "\n")
+            f.close()
 
-        f = open("unigrams.utf8", 'w', encoding='utf-8')
-        for w in self.vocab:
-            if w not in self.dictionary:
-                f.write(w + "\n")
-        f.close()
-
-        print("<< vocab")
-        print(">> vocab-freq")
-
-        f = open("unigrams-freq.utf8", 'w', encoding='utf-8')
-        for kv in self.vocab_freq:
-            if kv[0] not in self.dictionary:
-                f.write(kv[0] + " ; " + str(kv[1]) + "\n")
-        f.close()
-
-        print("<< vocab-freq")
+            print("<< vocab-freq")
+        #}
         print("<< finalizing")
         return
     ##########################################################
