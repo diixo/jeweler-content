@@ -311,7 +311,6 @@ words
 tasks
 procedure
 results
-google
 algorithm
 article
 rankings
@@ -564,14 +563,12 @@ asset
 publishers
 influencers
 vertical
-facebook
 king
 third
 b2b
 platforms
 buffer
 space
-linkedin
 high-engagement
 publications
 negligible
@@ -1032,7 +1029,6 @@ street
 bestselling
 author
 campaigns
-youtube
 podcasts
 best-selling
 writer
@@ -1050,7 +1046,6 @@ ebooks
 webinars
 speaker
 companies
-amazon
 attribution
 referral
 bonus
@@ -1074,7 +1069,6 @@ funnel
 infancy
 targeting
 demographics
-instagram
 creative
 primary
 creatives
@@ -1613,7 +1607,6 @@ tables
 technique
 arithmetic
 international
-microsoft
 directive
 assembler
 highest
@@ -2689,10 +2682,8 @@ typed
 multi-purpose
 high-level
 lib
-microsoft's
 run-times
 php
-google's
 tablets
 iot
 android-s
@@ -2773,7 +2764,6 @@ postgres
 bash
 shell
 shellcheck
-oracle
 multi-model
 corporation
 workflows
@@ -2781,8 +2771,6 @@ git-related
 repo
 multithreading
 multi-threading
-amazon-web-services
-aws
 public-cloud
 iaas
 successor
@@ -2811,7 +2799,6 @@ programming-related
 scala
 fuses
 visual-studio
-twitter-bootstrap
 frontend
 kick-start
 subroutine
@@ -3326,7 +3313,6 @@ push-notification
 alerts
 badges
 triggers
-google-api
 earth
 adsense
 arduino
@@ -3469,7 +3455,6 @@ linq-to-sql
 java-stream
 serial
 population
-google-cloud-functions
 single-purpose
 character-encoding
 pycharm
@@ -3575,7 +3560,6 @@ hashicorp
 hcl
 android-edittext
 edittext
-amazon-dynamodb
 dynamodb
 proprietary
 closed-source
@@ -6583,8 +6567,6 @@ erlang
 odbc
 thread-safety
 unmountable
-microsoft-specific
-################
 entire
 general
 real
@@ -6612,7 +6594,6 @@ day
 current
 free
 well
-################
 functor
 common-api
 grateful
