@@ -122,21 +122,23 @@ class Sentencizer:
                 w = w.strip(string.punctuation)
                 if ((w != '') and (w not in self.stopwords) and not w.isdigit() and len(w) > 1):
                     tokens.append(w)
-                    #self.vocab.add(w)
-                    #self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                    self.vocab.add(w)
+                    self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
+            if False:
+            #
+                ngrams_1 = ngrams(tokens, 1)
+                ngrams_2 = ngrams(tokens, 2)
+                ngrams_3 = ngrams(tokens, 3)
 
-            ngrams_1 = ngrams(tokens, 1)
-            ngrams_2 = ngrams(tokens, 2)
-            ngrams_3 = ngrams(tokens, 3)
+                self.add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
+                self.add_ngrams_freqDict(self.bigrams_freq_dict,  ngrams_2)
+                self.add_ngrams_freqDict(self.trigrams_freq_dict, ngrams_3)
 
-            self.add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
-            self.add_ngrams_freqDict(self.bigrams_freq_dict,  ngrams_2)
-            self.add_ngrams_freqDict(self.trigrams_freq_dict, ngrams_3)
-
-            self.unigrams.update(ngrams_1)  # unique inserting
-            self.bigrams.update(ngrams_2)   # unique inserting
-            self.trigrams.update(ngrams_3)  # unique inserting
+                self.unigrams.update(ngrams_1)  # unique inserting
+                self.bigrams.update(ngrams_2)   # unique inserting
+                self.trigrams.update(ngrams_3)  # unique inserting
+            #
         #}
         return
     ##########################################################
@@ -174,7 +176,7 @@ class Sentencizer:
             f.close()
         #}
 
-        '''
+
         self.vocab = sorted(self.vocab)
         self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
@@ -196,7 +198,6 @@ class Sentencizer:
         f.close()
 
         print("<< vocab-freq")
-        '''
         print("<< finalizing")
         return
     ##########################################################
