@@ -83,7 +83,6 @@ class Sentencizer:
         self.stopwords = set()
         self.vocab = set()
         self.vocab_freq = {}
-        self.vocab_freq_sorted = {}
         self.unigrams = set()
         self.bigrams = set()
         self.trigrams = set()
@@ -106,21 +105,6 @@ class Sentencizer:
             return result
         raise StopIteration
 
-    def readFile(self, filename):
-        f = open(filename, 'r', encoding='utf-8')
-        count = 0;
-        while True:
-            line = f.readline()
-            if not line:
-                break;
-
-            count+=1
-            self.sentencize(line)
-
-        f.close()
-        self.vocab = sorted(self.vocab)
-        self.vocab_freq_sorted = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
-        return
     ##########################################################
     def update(self, line):
         result = []
@@ -130,17 +114,21 @@ class Sentencizer:
 
         for i, item in enumerate(sentences):
         #{    
-            sentences = [x.strip() for x in item.split(" ") if (x != '')]
+            word_sentence = [x.strip() for x in item.split(" ") if (x != '')]
 
-            work_sentence = []
-            for w in sentences:
+            tokens = []
+            for w in word_sentence:
+            #{
                 w = w.strip(string.punctuation)
                 if ((w != '') and (w not in self.stopwords) and not w.isdigit() and len(w) > 1):
-                    work_sentence.append(w)
+                    tokens.append(w)
+                    #self.vocab.add(w)
+                    #self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+            #}
 
-            ngrams_1 = ngrams(work_sentence, 1)
-            ngrams_2 = ngrams(work_sentence, 2)
-            ngrams_3 = ngrams(work_sentence, 3)
+            ngrams_1 = ngrams(tokens, 1)
+            ngrams_2 = ngrams(tokens, 2)
+            ngrams_3 = ngrams(tokens, 3)
 
             self.add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
             self.add_ngrams_freqDict(self.bigrams_freq_dict,  ngrams_2)
@@ -150,19 +138,14 @@ class Sentencizer:
             self.bigrams.update(ngrams_2)   # unique inserting
             self.trigrams.update(ngrams_3)  # unique inserting
         #}
-        self.unigrams = set(sorted(self.unigrams))
-        self.bigrams  = set(sorted(self.bigrams))
-        self.trigrams = set(sorted(self.trigrams))
-
-        #self.add_ngrams_freqDict = OrderedDict(sorted(self.unigrams_freq_dict.items()))
-        #self.add_ngrams_freqDict = OrderedDict(sorted(self.bigrams_freq_dict.items()))
-        #self.add_ngrams_freqDict = OrderedDict(sorted(self.trigrams_freq_dict.items()))
-        
         return
     ##########################################################
     def finalize(self):
+        print("finalizing >>")
 
         self.dictionary.update(self.stopwords)
+        self.dictionary = set(sorted(self.dictionary))
+
         diix = Path("./dict/diixonary.txt")
         if diix.exists():
             self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
@@ -182,7 +165,7 @@ class Sentencizer:
             print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
 
             print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
-                len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))   
+                len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
 
             f = open("unigrams.utf8", 'w', encoding='utf-8')
             for w in self.unigrams:
@@ -190,6 +173,31 @@ class Sentencizer:
                     f.write(w[0] + "\n")
             f.close()
         #}
+
+        '''
+        self.vocab = sorted(self.vocab)
+        self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
+
+        print(">> vocab")
+
+        f = open("unigrams.utf8", 'w', encoding='utf-8')
+        for w in self.vocab:
+            if w not in self.dictionary:
+                f.write(w + "\n")
+        f.close()
+
+        print("<< vocab")
+        print(">> vocab-freq")
+
+        f = open("unigrams-freq.utf8", 'w', encoding='utf-8')
+        for kv in self.vocab_freq:
+            if kv[0] not in self.dictionary:
+                f.write(kv[0] + " ; " + str(kv[1]) + "\n")
+        f.close()
+
+        print("<< vocab-freq")
+        '''
+        print("<< finalizing")
         return
     ##########################################################
     def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):

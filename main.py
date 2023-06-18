@@ -48,6 +48,7 @@ def main():
     #analyze("data/jeweler-content.txt", 23)
 
     analyze("data/train-nn.txt")
+    #analyze("E:/jeweler_content.txt")
     #phrase, result = sentencizer.predict_next("text clustering")
 
     #analyze("data/dataset.txt")

@@ -2128,7 +2128,6 @@ sectors
 splash
 telecom
 unpredictable
-xbox
 conferences
 sortable
 chart
