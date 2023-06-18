@@ -30,7 +30,8 @@ def tokenize(line, stopwords):
     line = line.translate(translation)
 
     # remove cyrillic
-    line = re.sub(r'[A-Za-z]', "", line)
+    line = re.sub(r'[А-їЁІЇҐґ№]', "", line)
+    #line = re.sub(r'[A-Za-z]', "", line)
     line = re.sub(r'[_\(\)<>/\[\]]', " ", line)
     line = re.sub("\|", " ! ", line).strip()
 
