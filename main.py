@@ -6,7 +6,7 @@ from tokenizer import tokenize
 ###############################################################
 sentencizer = Sentencizer()
 
-def analyze(filePath, lines_indent = -1):
+def analyze(filePath, lines_indent = -1, buildPredict = False):
     global sentencizer
 
     path = Path(filePath)
@@ -28,7 +28,7 @@ def analyze(filePath, lines_indent = -1):
         #{
             line = tokenize(line, sentencizer.stopwords)
 
-            sentencizer.update(line)
+            sentencizer.update(line, buildPredict)
 
             if len(line) > 0:
                 fw.write(line + "\n")
@@ -45,10 +45,10 @@ def analyze(filePath, lines_indent = -1):
 ###############################################################
 
 def main():
-    analyze("data/jeweler-content.txt", 23)
+    #analyze("data/jeweler-content.txt", 23)
 
     #analyze("data/train-nn.txt")
-    #analyze("E:/jeweler_content.txt")
+    analyze("E:/jeweler_content.txt", 23)
     #phrase, result = sentencizer.predict_next("text clustering")
 
     #analyze("data/dataset.txt")

@@ -384,7 +384,6 @@ business
 steps
 action
 items
-intel
 pages
 positive
 queries
@@ -3071,8 +3070,6 @@ plaintext
 unreadable
 ciphertext
 secondary
-facebook-graph-api
-facebook's
 touch-based
 surface
 free-form
@@ -4038,7 +4035,6 @@ grade
 pentium
 atx
 sata
-intel's
 acceleration
 featured
 chipsets
@@ -10746,3 +10742,4 @@ waitlist
 whiteboard
 ​​ranked
 exchangeable
+unraveling

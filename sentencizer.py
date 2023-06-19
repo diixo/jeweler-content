@@ -88,6 +88,12 @@ class Sentencizer:
         self.trigrams = set()
         s = set()
         s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
+        
+        #path = Path("./dict/ignore.txt")
+        #if path.exists():
+        #
+        #    s.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+        #
         self.stopwords = sorted(s)
 
         self.unigrams_freq_dict = {}  # freq_dict for unigrams
@@ -202,11 +208,11 @@ class Sentencizer:
         return
     ##########################################################
     def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
-        for ngram in ngramList:
-            if ngram in ngram_freq_dict:
-                ngram_freq_dict[ngram] += 1
+        for tpl in ngramList:
+            if tpl in ngram_freq_dict:
+                ngram_freq_dict[tpl] += 1
             else:
-                ngram_freq_dict[ngram] = 1
+                ngram_freq_dict[tpl] = 1
         return
     ##########################################################
     def word_tokenize(self, in_str, stopwords = None):
@@ -236,7 +242,7 @@ class Sentencizer:
         sz = len(tokenList)
 
         bigrams_probDist = {}
-        V = 1000 #len(self.unigrams_freq_dict)
+        V = len(self.bigrams)
         for i in self.bigrams_freq_dict:
 
             bigrams_probDist[i] = (self.bigrams_freq_dict[i] + 1) / (self.unigrams_freq_dict[tuple([i[0]])] + V)

@@ -18,10 +18,12 @@ def tokenize(line, stopwords):
     line = line.replace('&amp;' , '&')
     line = line.replace('&#39;', '\'')
     line = line.replace('&nbsp;', ' ')
+    line = line.replace('\u0080\u0099', '\u0027')
 
     # normalize apostrophs
     translation = {
-        0x2012: 0x002d,
+        0x2015: 0x002d,
+        0x2012: 0x002d, 0x0080: 0x0020, 0x0094: 0x0020, 0x009c: 0x0020,
         0xFE0F: 0x0020, 0x200a: 0x0020, 0x202f: 0x0020, 0x2033: 0x0020,
         0x2013: 0x0020, 0x00a0: 0x0020, 0x2705: 0x0020, 0x2714: 0x0020, # 0x2013: 0x002d
         0x201c: 0x0020, 0x201d: 0x0020, 0x021f: 0x0020, 0x0022: 0x0020,
@@ -31,7 +33,6 @@ def tokenize(line, stopwords):
 
     # remove cyrillic
     line = re.sub(r'[А-їЁІЇҐґ№]', "", line)
-    #line = re.sub(r'[A-Za-z]', "", line)
     line = re.sub(r'[_\(\)<>/\[\]]', " ", line)
     line = re.sub("\|", " ! ", line).strip()
 
