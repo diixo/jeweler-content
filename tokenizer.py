@@ -48,7 +48,7 @@ def tokenize(line, stopwords):
         cword = word.strip(punct)
 
         if is_digit_inside(cword.lower()):
-            #word = re.sub(r'[-+$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
+            #word = re.sub(r'[-+\$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
             word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
             cword = word.lower()
         else:
