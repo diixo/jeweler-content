@@ -173,7 +173,6 @@ he
 he'd
 he'll
 he's
-hello
 hence
 her
 here
@@ -476,7 +475,6 @@ we'd
 we'll
 we're
 we've
-welcome
 weld
 were
 weren't
