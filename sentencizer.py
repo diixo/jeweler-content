@@ -113,13 +113,13 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
-        result = []
-
         line1 = re.sub('[!?.;,:]', "><", line)
         sentences = [x.strip() for x in line1.split("><") if x !='']
+
         for i, item in enumerate(sentences):
         #{    
-            word_sentence = [x.strip() for x in item.split(" ") if (x != '')]
+            word_sentence = [x for x in item.split(" ") if (x != '')]
+            sentences[i] = word_sentence
 
             tokens = []
             for w in word_sentence:
@@ -145,7 +145,7 @@ class Sentencizer:
                 self.trigrams.update(ngrams_3)  # unique inserting
             #
         #}
-        return
+        return sentences
     ##########################################################
     def finalize(self):
         print("finalizing >>")
