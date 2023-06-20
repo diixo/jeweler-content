@@ -113,7 +113,7 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
-        punct = "©®-%$!?:,;.\'\" @~&()="
+        punctuation = "©®-%$!?:,;.\'\" @~&()=*"
 
         line1 = re.sub('[!?.;,:]', "><", line)
         sentences = [x.strip() for x in line1.split("><") if x !='']
@@ -126,10 +126,12 @@ class Sentencizer:
             tokens = []
             for w in word_sentence:
             #{
-                if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
-                    tokens.append(w)
-                    self.vocab.add(w)
-                    self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                #w = re.search("[\[\]\}\{=@\*]")
+                #if re.sub("[A-Za-z0-9#\'-]", w) == "":
+                    if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
+                        tokens.append(w)
+                        self.vocab.add(w)
+                        self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
             if buildPredict:
             #
