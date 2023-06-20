@@ -113,11 +113,13 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
+        punct = "©®-%$!?:,;.\'\" @~&()="
+
         line1 = re.sub('[!?.;,:]', "><", line)
         sentences = [x.strip() for x in line1.split("><") if x !='']
 
         for i, item in enumerate(sentences):
-        #{    
+        #{
             word_sentence = [x.strip(string.punctuation) for x in item.split(" ") if (x != '')]
             sentences[i] = word_sentence
 
