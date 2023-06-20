@@ -127,7 +127,7 @@ class Sentencizer:
             for w in word_sentence:
             #{
                 #w = re.search("[\[\]\}\{=@\*]")
-                #if re.sub("[A-Za-z0-9#\'-]", w) == "":
+                if re.sub("[A-Za-z0-9#\'\.&+-]", "", w) == "":
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
                         tokens.append(w)
                         self.vocab.add(w)
