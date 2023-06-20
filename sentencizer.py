@@ -118,14 +118,13 @@ class Sentencizer:
 
         for i, item in enumerate(sentences):
         #{    
-            word_sentence = [x for x in item.split(" ") if (x != '')]
+            word_sentence = [x.strip(string.punctuation) for x in item.split(" ") if (x != '')]
             sentences[i] = word_sentence
 
             tokens = []
             for w in word_sentence:
             #{
-                w = w.strip(string.punctuation)
-                if ((w != '') and (w not in self.stopwords) and not w.isdigit() and len(w) > 1):
+                if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
                     tokens.append(w)
                     self.vocab.add(w)
                     self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
