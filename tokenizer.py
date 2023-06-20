@@ -22,6 +22,10 @@ def tokenize(line, stopwords):
 
     # normalize apostrophs
     translation = {
+        0xfffd: 0x0020, 0x00b7: 0x0020, 0xfeff: 0x0020, 0x2026: 0x0020,
+        0x2713: 0x0020, 0x205F: 0x0020, 0x202c: 0x0020, 0x202a: 0x0020, 
+        0x200e: 0x0020, 0x200d: 0x0020, 0x200c: 0x0020, 0x200b: 0x0020,
+        0x2002: 0x0020, 0x2003: 0x0020,
         0x2015: 0x002d, 0x201e: 0x0020, 0x2028: 0x0020, 0x2032: 0x0027,
         0x2012: 0x002d, 0x0080: 0x0020, 0x0094: 0x0020, 0x009c: 0x0020,
         0xFE0F: 0x0020, 0x200a: 0x0020, 0x202f: 0x0020, 0x2033: 0x0020,
@@ -43,16 +47,14 @@ def tokenize(line, stopwords):
 
     for id, word in enumerate(text):
 
-        word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
+        word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word).lower()
 
-        cword = word.strip(punct)
+        cword = word.strip(punct).lower()
 
-        if is_digit_inside(cword.lower()):
+        if is_digit_inside(cword):
             #word = re.sub(r'[-+\$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
             word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
-            cword = word.lower()
-        else:
-            cword = cword.lower()
+            cword = word
 
         if cword in stopwords:
             text[id] = re.sub(cword, "", word, flags=re.I)
