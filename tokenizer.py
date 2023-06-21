@@ -3,7 +3,7 @@ import re
 import string
 from regulars import is_digit_inside
 
-def tokenize(line, stopwords):
+def tokenize(line, stopwords, case_sensitive = False):
     punct = "©®-%$!?:,;.\'\" "
 
     # remove html
@@ -45,8 +45,30 @@ def tokenize(line, stopwords):
     
     word_it = "IT"
 
-    for id, word in enumerate(text):
+    if case_sensitive:
+    #
+        for id, word in enumerate(text):
+            word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
 
+            cword = word.strip(punct)
+
+            if is_digit_inside(cword.lower()):
+                #word = re.sub(r'[-+\$]*(?:\d+[%]*(?:\.\,\:\d*[%]*)?|\.\,\:\d+[%]*)', "", word)
+                word =  re.sub(r'[-+\$]*(?:\d+(?:\.\d*)?|(?::\d*)?|\.\d+)[%]*', "", word, flags=re.I)
+                cword = word.lower()
+            else:
+                cword = cword.lower()
+
+            if cword in stopwords:
+                text[id] = re.sub(cword, "", word, flags=re.I)
+            else:
+                text[id] = word if (len(word)) else ""
+        
+        return  ' '.join([w for w in text if len(w.strip()) > 0])
+    # else:
+    #
+    for id, word in enumerate(text):
+    #
         word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word).lower()
 
         cword = word.strip(punct).lower()
@@ -60,6 +82,8 @@ def tokenize(line, stopwords):
             text[id] = re.sub(cword, "", word, flags=re.I)
         else:
             text[id] = word if (len(word)) else ""
-
+    #
     line = ' '.join([w for w in text if len(w.strip()) > 0])
     return line
+#
+#################################################################################################

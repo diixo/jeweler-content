@@ -16,7 +16,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
-       
+
     count = 0
     while True:
     #{
@@ -26,12 +26,17 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 
         if count > lines_indent:
         #{
-            line = tokenize(line, sentencizer.stopwords)
+            line = tokenize(line, sentencizer.stopwords, case_sensitive=True)
 
-            sentencizer.update(line, buildPredict)
+            result = sentencizer.update(line, buildPredict)
 
             if len(line) > 0:
-                fw.write(line + "\n")
+                if True:
+                        fw.write(line + "\n")
+                else:
+                    for sent in result:
+                        fw.write(" ".join([w for w in sent]) + " ")
+                    fw.write('\n')
 
             print(count)
         #}
@@ -48,7 +53,8 @@ def main():
     #analyze("data/jeweler-content.txt", 23)
 
     #analyze("data/train-nn.txt")
-    analyze("E:/jeweler_content.txt", 23)
+    analyze("E:/jeweler_content.txt", 23, buildPredict=False)
+
     #phrase, result = sentencizer.predict_next("text clustering")
 
     #analyze("data/dataset.txt")
