@@ -192,7 +192,7 @@ class Sentencizer:
             self.vocab = sorted(self.vocab)
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("dict.utf8", 'w', encoding='utf-8')
+            f = open("vocab.utf8", 'w', encoding='utf-8')
             for w in self.vocab:
                 if w not in self.dictionary:
                     f.write(w + "\n")
@@ -201,7 +201,7 @@ class Sentencizer:
             print("<< vocab")
             print(">> vocab-freq")
 
-            f = open("dict-freq.utf8", 'w', encoding='utf-8')
+            f = open("vocab-freq.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
                 if kv[0] not in self.dictionary:
                     f.write(kv[0] + " ; " + str(kv[1]) + "\n")
