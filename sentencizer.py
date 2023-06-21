@@ -100,6 +100,7 @@ class Sentencizer:
         self.bigrams_freq_dict  = {}  # freq_dict for bigrams
         self.trigrams_freq_dict = {}  # freq_dict for trigrams
         self.dictionary         = set()
+        self.readDictionary()
 
     def __iter__(self):
         return self
@@ -151,9 +152,7 @@ class Sentencizer:
         #}
         return sentences
     ##########################################################
-    def finalize(self):
-        print("finalizing >>")
-
+    def readDictionary(self):
         diix = Path("./dict/diixonary.txt")
         if diix.exists():
             self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
@@ -166,8 +165,9 @@ class Sentencizer:
 
         self.dictionary.update(self.stopwords)
         self.dictionary = set(sorted(self.dictionary))
-
-        print("sorting <<")
+    ##########################################################
+    def finalize(self):
+        print("finalizing >>")
 
         if len(self.unigrams) > 0:
         #{
