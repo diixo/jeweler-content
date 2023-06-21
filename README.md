@@ -1,3 +1,3 @@
 ## jeweler-content
 
-Natural Language handler the text from DataBase.
+Natural Language text handler for DataBase.
