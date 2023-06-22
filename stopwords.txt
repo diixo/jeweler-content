@@ -113,6 +113,7 @@ doubtlessly
 down
 downward
 downwards
+dr
 due
 during
 each
@@ -259,6 +260,8 @@ more
 moreover
 most
 mostly
+mr
+mrs
 much
 must
 mustn't
@@ -586,3 +589,4 @@ october
 november
 december
 ua
+2nd
