@@ -103,7 +103,6 @@ qualcomm
 samsung's
 vodafone
 spacex
-acer
 reuters
 msi
 poco
@@ -246,3 +245,10 @@ boeing
 dogecoin
 yahoo
 cisco
+polestar
+titanium
+tegra
+amd
+catalyst
+jqwidgets
+suzuki
