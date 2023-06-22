@@ -89,10 +89,12 @@ class Sentencizer:
         s = set()
         s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
         
-        #path = Path("./dict/ignore.txt")
+        self.tms = set()
+        #path = Path("./dict/trademarks.txt")
         #if path.exists():
         #
-        #    s.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+        #    self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
+        #    self.tms = set(sorted(self.tms))
         #
         self.stopwords = sorted(s)
 
