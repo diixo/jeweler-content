@@ -496,7 +496,6 @@ deficiencies
 business’s
 success
 bing
-yahoo
 visibility
 no-brainer
 beneficiary
@@ -6501,7 +6500,6 @@ blender
 mssql
 nodejs
 roaming
-cisco
 gateway
 prerouting
 pyinstaller

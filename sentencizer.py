@@ -88,15 +88,19 @@ class Sentencizer:
         self.trigrams = set()
         s = set()
         s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
+        self.stopwords = sorted(s)
         
         self.tms = set()
-        #path = Path("./dict/trademarks.txt")
-        #if path.exists():
-        #
-        #    self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
-        #    self.tms = set(sorted(self.tms))
-        #
-        self.stopwords = sorted(s)
+        path = Path("./dict/trademarks.txt")
+        if path.exists():
+            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
+            self.tms = set(sorted(self.tms))
+
+        self.ignore = set()
+        path = Path("./dict/ignore.txt")
+        if path.exists():
+            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+            self.ignore = set(sorted(self.ignore))
 
         self.unigrams_freq_dict = {}  # freq_dict for unigrams
         self.bigrams_freq_dict  = {}  # freq_dict for bigrams
@@ -125,18 +129,31 @@ class Sentencizer:
         for i, item in enumerate(sentences):
         #{
             word_sentence = [x.strip(string.punctuation) for x in item.split(" ") if (x != '')]
-            sentences[i] = word_sentence
+            #sentences[i] = word_sentence
 
             tokens = []
+            skip = False
             for w in word_sentence:
             #{
                 #w = re.search("[\[\]\}\{=@\*]")
                 if re.sub("[A-Za-z0-9#\'\.&+-]", "", w) == "":
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
+                        if w in self.tms:
+                            skip = True
+                            continue
+                        if w in self.ignore:
+                            skip = False
+                            continue
+                        if skip:
+                            if w in self.dictionary:
+                                skip = False
+                            else:
+                                continue
                         tokens.append(w)
                         self.vocab.add(w)
                         self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
+            sentences[i] = tokens
             if buildPredict:
             #
                 ngrams_1 = ngrams(tokens, 1)

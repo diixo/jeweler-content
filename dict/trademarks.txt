@@ -244,3 +244,5 @@ palm
 lamborghini
 boeing
 dogecoin
+yahoo
+cisco
