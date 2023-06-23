@@ -227,7 +227,7 @@ class Sentencizer:
                 if w in self.dictionary:
                     continue
 
-                f.write(w + "\n")
+                f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
 
             f.close()
             print("<< vocab")
@@ -240,8 +240,7 @@ class Sentencizer:
                 if kv[0] in self.dictionary:
                     continue
 
-                if (self.isConstructed(kv[0])):
-                    f.write(kv[0] + " ; " + str(kv[1]) + "\n")
+                f.write(kv[0] + " ; " + str(kv[1]) + "\n")
             #
             f.close()
             print("<< vocab-freq")

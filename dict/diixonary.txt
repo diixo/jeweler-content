@@ -10895,3 +10895,6 @@ amoled
 campus
 round-up
 i_t
+multi-cloud
+high-definition
+ai-driven
