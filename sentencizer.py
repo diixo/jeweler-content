@@ -91,16 +91,7 @@ class Sentencizer:
         self.stopwords = sorted(s)
         
         self.tms = set()
-        path = Path("./dict/trademarks.txt")
-        if path.exists():
-            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
-            self.tms = set(sorted(self.tms))
-
         self.ignore = set()
-        path = Path("./dict/ignore.txt")
-        if path.exists():
-            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
-            self.ignore = set(sorted(self.ignore))
 
         self.unigrams_freq_dict = {}  # freq_dict for unigrams
         self.bigrams_freq_dict  = {}  # freq_dict for bigrams
@@ -188,6 +179,18 @@ class Sentencizer:
 
         self.dictionary.update(self.stopwords)
         self.dictionary = set(sorted(self.dictionary))
+
+        # read additional dictionaries
+
+        path = Path("./dict/trademarks.txt")
+        if path.exists():
+            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
+            self.tms = set(sorted(self.tms))
+
+        path = Path("./dict/ignore.txt")
+        if path.exists():
+            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+            self.ignore = set(sorted(self.ignore))
     ##########################################################
     def finalize(self):
         print("finalizing >>")
@@ -213,23 +216,50 @@ class Sentencizer:
         #{
             print(">> vocab")
             self.vocab = sorted(self.vocab)
-            self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open("vocab.utf8", 'w', encoding='utf-8')
             for w in self.vocab:
-                if w not in self.dictionary:
-                    f.write(w + "\n")
+                if w in self.dictionary:
+                    continue
+                ws = w.split('-')
+                if len(ws) > 1:
+                #
+                    cntr = 0
+                    for ww in ws:
+                    #
+                        if (ww not in self.stopwords) and (ww not in self.dictionary):
+                            break
+                        cntr += 1
+                    #
+                    if (len(ws) == cntr):
+                        f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
+                #
             f.close()
-
             print("<< vocab")
-            print(">> vocab-freq")
+
+            self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open("vocab-freq.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
-                if kv[0] not in self.dictionary:
-                    f.write(kv[0] + " ; " + str(kv[1]) + "\n")
-            f.close()
+            #
+                if kv[0] in self.dictionary:
+                    continue
 
+                ws = kv[0].split('-')
+                if len(ws) > 1:
+                #
+                    cntr = 0
+                    for ww in ws:
+                    #
+                        if (ww not in self.stopwords) and (ww not in self.dictionary):
+                            break
+                        cntr += 1
+                    #
+                    if (len(ws) == cntr):
+                        f.write(kv[0] + " ; " + str(kv[1]) + "\n")
+                #
+            #
+            f.close()
             print("<< vocab-freq")
         #}
         print("<< finalizing")
