@@ -183,7 +183,7 @@ class Sentencizer:
             self.ignore = set(sorted(self.ignore))
     ##########################################################
     def isConstructed(self, word: string) -> bool:
-        ws = word.split('-')
+        ws = re.split('[-]', word)
         if len(ws) > 1:
         #
             cntr = 0
@@ -227,8 +227,7 @@ class Sentencizer:
                 if w in self.dictionary:
                     continue
 
-                if (self.isConstructed(w)):
-                    f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
+                f.write(w + "\n")
 
             f.close()
             print("<< vocab")
