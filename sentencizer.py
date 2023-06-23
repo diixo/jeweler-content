@@ -129,24 +129,14 @@ class Sentencizer:
                 #w = re.search("[\[\]\}\{=@\*]")
                 if re.sub("[A-Za-z0-9#\'\._&+-]", "", w) == "":
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
-                        #if (w not in self.tms) and (w not in self.dictionary):
-                        #    self.vocab.add(w)
-                        #    self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
-                        #if w not in self.dictionary:
-                        #    continue
-                        if w in self.tms:
-                            skip = True
-                            continue
-                        if w in self.ignore:
-                            continue
-                        if skip:
-                            if w in self.dictionary or self.isConstructed(w):
-                                skip = False
-                            else:
-                                continue
-                        tokens.append(w)
-                        self.vocab.add(w)
-                        self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+
+                        #if (w not in self.tms) and (w not in self.ignore):
+                        #    tokens.append(w)
+
+                        if w in self.dictionary or self.isConstructed(w):
+                            tokens.append(w)
+                            self.vocab.add(w)
+                            self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
             sentences[i] = tokens
             if buildPredict:
