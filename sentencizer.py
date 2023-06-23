@@ -140,7 +140,7 @@ class Sentencizer:
                         if w in self.ignore:
                             continue
                         if skip:
-                            if w in self.dictionary:
+                            if w in self.dictionary or self.isConstructed(w):
                                 skip = False
                             else:
                                 continue
