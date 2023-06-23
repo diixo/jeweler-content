@@ -48,7 +48,7 @@ def tokenize(line, stopwords, case_sensitive = False):
     if case_sensitive:
     #
         for id, word in enumerate(text):
-            word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word)
+            word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I_T", word)
 
             cword = word.strip(punct)
 

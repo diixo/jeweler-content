@@ -192,6 +192,21 @@ class Sentencizer:
             self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
             self.ignore = set(sorted(self.ignore))
     ##########################################################
+    def isConstructed(self, word: string) -> bool:
+        ws = word.split('-')
+        if len(ws) > 1:
+        #
+            cntr = 0
+            for w in ws:
+            #
+                if (w not in self.stopwords) and (w not in self.dictionary):
+                    break
+                cntr += 1
+            #
+            return (len(ws) == cntr)
+        #
+        return False
+    ##########################################################
     def finalize(self):
         print("finalizing >>")
 
@@ -221,19 +236,10 @@ class Sentencizer:
             for w in self.vocab:
                 if w in self.dictionary:
                     continue
-                ws = w.split('-')
-                if len(ws) > 1:
-                #
-                    cntr = 0
-                    for ww in ws:
-                    #
-                        if (ww not in self.stopwords) and (ww not in self.dictionary):
-                            break
-                        cntr += 1
-                    #
-                    if (len(ws) == cntr):
-                        f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
-                #
+
+                if (self.isConstructed(w)):
+                    f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
+
             f.close()
             print("<< vocab")
 
@@ -245,19 +251,8 @@ class Sentencizer:
                 if kv[0] in self.dictionary:
                     continue
 
-                ws = kv[0].split('-')
-                if len(ws) > 1:
-                #
-                    cntr = 0
-                    for ww in ws:
-                    #
-                        if (ww not in self.stopwords) and (ww not in self.dictionary):
-                            break
-                        cntr += 1
-                    #
-                    if (len(ws) == cntr):
-                        f.write(kv[0] + " ; " + str(kv[1]) + "\n")
-                #
+                if (self.isConstructed(kv[0])):
+                    f.write(kv[0] + " ; " + str(kv[1]) + "\n")
             #
             f.close()
             print("<< vocab-freq")
