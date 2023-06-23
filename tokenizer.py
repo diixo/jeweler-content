@@ -66,7 +66,7 @@ def tokenize(line, stopwords, case_sensitive = False):
         
         return  ' '.join([w for w in text if len(w.strip()) > 0])
     # else:
-    #
+    # optimized version:
     for id, word in enumerate(text):
     #
         word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word).lower()

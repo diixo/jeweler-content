@@ -252,3 +252,5 @@ amd
 catalyst
 jqwidgets
 suzuki
+github
+navi
