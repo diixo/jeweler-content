@@ -127,7 +127,7 @@ class Sentencizer:
             for w in word_sentence:
             #{
                 #w = re.search("[\[\]\}\{=@\*]")
-                if re.sub("[A-Za-z0-9#\'\._&+-]", "", w) == "":
+                if re.sub("[A-Za-z0-9#\'\./_&+-]", "", w) == "":
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
 
                         #if (w not in self.tms) and (w not in self.ignore):
@@ -183,7 +183,7 @@ class Sentencizer:
             self.ignore = set(sorted(self.ignore))
     ##########################################################
     def isConstructed(self, word: string) -> bool:
-        ws = re.split('[-]', word)
+        ws = re.split('[/-]', word)
         if len(ws) > 1:
         #
             cntr = 0
@@ -258,7 +258,7 @@ class Sentencizer:
         return
     ##########################################################
     def word_tokenize(self, in_str, stopwords = None):
-        word_list = re.findall("(\w[\w'\.&-]*\w|\w)", in_str)
+        word_list = re.findall("(\w[\w'\./&-]*\w|\w)", in_str)
         if word_list:
             if stopwords:
                 return [w for w in word_list if w not in stopwords]
