@@ -187,7 +187,7 @@ class Sentencizer:
             cntr = 0
             for w in ws:
             #
-                if (w not in self.stopwords) and (w not in self.dictionary):
+                if ((w not in self.stopwords) and (w not in self.dictionary)) or (w in self.tms):
                     break
                 cntr += 1
             #

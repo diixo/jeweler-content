@@ -39,3 +39,4 @@ eu-startups
 Jobitt
 Hackaday.io
 NotebookCheck
+Hackernews

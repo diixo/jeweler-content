@@ -261,3 +261,6 @@ shazam
 shazam's
 benq
 siemens
+activision
+elon
+bing
