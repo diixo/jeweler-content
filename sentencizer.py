@@ -232,7 +232,7 @@ class Sentencizer:
 
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("vocab-freq.utf8", 'w', encoding='utf-8')
+            f = open("vocab-soft.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
             #
                 if kv[0] in self.dictionary:
