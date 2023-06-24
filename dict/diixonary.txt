@@ -493,7 +493,7 @@ listings
 areas
 worth
 deficiencies
-business’s
+business's
 success
 bing
 visibility
@@ -597,7 +597,7 @@ formula
 significance
 size
 linear
-site’s
+site's
 relevancy
 off-page
 headline
@@ -606,8 +606,8 @@ sentences
 frequency
 flag
 hurts
-page’s
-engine’s
+page's
+engine's
 ability
 index
 indexes
@@ -736,7 +736,6 @@ mathematics
 statistics
 large-scale
 practitioner
-duckduckgo
 growth
 milestone
 billion
@@ -744,7 +743,6 @@ year-over-year
 history
 privacy
 dig
-duckduckgo’s
 average
 daily
 slowest
@@ -772,7 +770,6 @@ concern
 tradeoff
 majority
 touts
-google’s
 encourages
 sources
 webinar
@@ -786,7 +783,7 @@ advantage
 opportunities
 finer
 points
-company’s
+company's
 bottom
 goals
 session
@@ -795,10 +792,10 @@ version
 citation
 networking
 kinds
-searcher’s
+searcher's
 info
 consumer
-location’s
+location's
 photos
 directory
 optimizations
@@ -843,7 +840,7 @@ array
 trustworthy
 verdict
 ultimate
-beginner’s
+beginner's
 ready
 advanced
 country
@@ -1054,11 +1051,10 @@ sellers
 ecommerce
 giant
 disadvantage
-traffic’s
+traffic's
 pixels
 effectiveness
 transparency
-amazon’s
 profitability
 calculations
 credit
@@ -1312,7 +1308,7 @@ robustness
 explorations
 capacity
 conclusions
-network’s
+network's
 designs
 fully-convolutional
 confounding
@@ -2471,7 +2467,6 @@ terminology
 var
 array's
 object's
-object’s
 fibonacci
 converter
 reusable
@@ -4185,10 +4180,10 @@ conflict
 tuple
 two-phase
 conflicting
-read–read
-write–write
-write–read
-read–write
+read-read
+write-write
+write-read
+read-write
 removal
 equal-size
 rooted
@@ -4201,7 +4196,7 @@ subproblem
 ancestor
 descendant
 backtrack
-depth–first
+depth-first
 child
 prerequisite
 descendants
@@ -4237,7 +4232,7 @@ decodings
 alphabet
 single-digit
 two-digit
-n–digit
+n-digit
 boundary
 degree
 undirected
@@ -4279,7 +4274,7 @@ previous-current-next
 subsequences
 threaded
 single-threaded
-double–threaded
+double-threaded
 alphabetical
 lexicographical
 lexicographically
@@ -9163,7 +9158,7 @@ fullest
 optimisation
 bivariate
 exponents
-one’s
+one's
 unturned
 inter-connected
 reprogramming
@@ -10275,7 +10270,7 @@ cyclical
 fast-forwarded
 captions
 tasking
-someone’s
+someone's
 extrapolation
 conceivable
 semi-automatically
@@ -10288,12 +10283,12 @@ noised
 resiliency
 illumination
 contactless
-data’s
+data's
 deprivation
 boxing
 neglecting
 neglectful
-model’s
+model's
 elliptical
 steepest
 dispersion
@@ -10735,7 +10730,6 @@ transcribing
 volumetric
 waitlist
 whiteboard
-​​ranked
 exchangeable
 unraveling
 reprocessing

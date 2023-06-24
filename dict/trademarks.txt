@@ -254,3 +254,5 @@ jqwidgets
 suzuki
 github
 navi
+duckduckgo
+duckduckgo's
