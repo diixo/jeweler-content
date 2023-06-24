@@ -34,7 +34,6 @@ nokia
 lenovo
 miui
 ryzen
-chatgpt
 honor
 radeon
 xperia
@@ -81,7 +80,6 @@ nokia
 lenovo
 miui
 ryzen
-chatgpt
 honor
 radeon
 xperia
@@ -256,3 +254,10 @@ github
 navi
 duckduckgo
 duckduckgo's
+gmail
+zte
+walmart
+shazam
+shazam's
+benq
+siemens

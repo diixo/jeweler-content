@@ -16,7 +16,7 @@ AIN.UA
 dev.ua
 betalist
 iLenta
-notebookcheck
+NotebookCheck.net
 itc
 saashub
 datasciencecentral
@@ -31,3 +31,11 @@ futurenow
 autotechinsight
 overclockers
 javatpoint
+engadget
+digitaltrends
+producthunt
+saashub
+eu-startups
+Jobitt
+Hackaday.io
+NotebookCheck

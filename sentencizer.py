@@ -131,8 +131,6 @@ class Sentencizer:
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
 
                         #if (w not in self.tms) and (w not in self.ignore):
-                        #    tokens.append(w)
-
                         if w in self.dictionary or self.isConstructed(w):
                             tokens.append(w)
                             self.vocab.add(w)

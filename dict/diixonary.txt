@@ -10892,3 +10892,7 @@ i_t
 multi-cloud
 high-definition
 ai-driven
+smartwatches
+chatgpt
+dimensity
+lowering
