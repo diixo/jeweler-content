@@ -169,7 +169,7 @@ class Sentencizer:
             print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
                 len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
 
-            f = open("unigrams.utf8", 'w', encoding='utf-8')
+            f = open("unigrams-cyr.utf8", 'w', encoding='utf-8')
             for w in self.unigrams:
                 if w[0] not in self.dictionary:
                     f.write(w[0] + "\n")
@@ -182,7 +182,7 @@ class Sentencizer:
 
         print(">> vocab")
 
-        f = open("unigrams.utf8", 'w', encoding='utf-8')
+        f = open("vocab-cyr.utf8", 'w', encoding='utf-8')
         for w in self.vocab:
             if w not in self.dictionary:
                 f.write(w + "\n")

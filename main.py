@@ -12,7 +12,7 @@ def analyze(filePath, lines_indent = -1):
     path = Path(filePath)
     if path.exists() == False: return
 
-    newName = path.stem + ".utf8"
+    newName = path.stem + "-cyr.utf8"
 
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
