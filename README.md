@@ -1,3 +1,3 @@
 ## jeweler-content
 
-Text handler for DataBase.
+Table text handler of DataBase.
