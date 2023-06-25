@@ -130,8 +130,7 @@ class Sentencizer:
                 if re.sub("[A-Za-z0-9#\'\./_&+-]", "", w) == "":
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
 
-                        #if (w not in self.tms) and (w not in self.ignore):
-                        if w in self.dictionary or self.isConstructed(w):
+                        if (w in self.dictionary) or self.isConstructed(w):
                             tokens.append(w)
                             self.vocab.add(w)
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1

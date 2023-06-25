@@ -10900,3 +10900,4 @@ permissionless
 nft
 nfts
 computer-science
+affirmation
