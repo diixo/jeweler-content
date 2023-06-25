@@ -182,7 +182,8 @@ class Sentencizer:
     ##########################################################
     def isConstructed(self, word: string) -> bool:
         ws = re.split('[/-]', word)
-        if len(ws) > 1:
+        sz = len(ws)
+        if (sz > 1) and (sz <= 3):
         #
             cntr = 0
             for w in ws:
@@ -232,7 +233,7 @@ class Sentencizer:
 
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("vocab-soft.utf8", 'w', encoding='utf-8')
+            f = open("vocab-sort.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
             #
                 if kv[0] in self.dictionary:
