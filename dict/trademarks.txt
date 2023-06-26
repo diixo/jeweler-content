@@ -71,7 +71,6 @@ at&t
 grammarly
 ps5
 bmw
-geforce
 nexus
 snapdragon
 cs
@@ -79,7 +78,6 @@ tesla
 nokia
 lenovo
 miui
-ryzen
 honor
 radeon
 xperia
@@ -99,7 +97,6 @@ vivo
 google's
 qualcomm
 samsung's
-vodafone
 spacex
 reuters
 msi
@@ -127,7 +124,6 @@ nissan
 ubisoft
 binance
 viber
-ransomware
 uber
 intel's
 disney
@@ -273,3 +269,15 @@ bitcoins
 xerox
 facebook's
 msn
+Transcend
+SanDisk
+Seagate
+Humble
+TomTom
+Pokemon
+Geekbench
+Alphabet
+Mediatek
+Minecraft
+Fujifilm
+discord

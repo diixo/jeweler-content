@@ -8,6 +8,7 @@ Speedhunters
 DataScienceCentral.com
 GeeksforGeeks
 Techopedia
+Techopedia's
 Simplilearn's
 Simplilearn
 TechStartups
@@ -41,3 +42,7 @@ Hackaday.io
 NotebookCheck
 Hackernews
 mb
+TechCrunch
+TechCrunch's
+LIGA.net
+AIN.Capital
