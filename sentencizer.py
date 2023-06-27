@@ -205,16 +205,21 @@ class Sentencizer:
             self.bigrams  = sorted(self.bigrams)
             self.trigrams = sorted(self.trigrams)
 
-            print("<< unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
-
-            print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
-                len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
+            print(">> unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
 
             f = open("unigrams.utf8", 'w', encoding='utf-8')
             for w in self.unigrams:
                 if w[0] not in self.dictionary:
                     f.write(w[0] + "\n")
             f.close()
+
+            f = open("bigrams.utf8", 'w', encoding='utf-8')
+            for w in self.bigrams:
+                f.write(w[0] + ", " + w[1] + "\n")
+            f.close()
+
+            print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
+                len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
         #}
         else:
         #{

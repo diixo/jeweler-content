@@ -50,7 +50,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 ###############################################################
 
 def main():
-    #analyze("data/jeweler-content.txt", 23)
+    #analyze("data/jeweler-content.txt", 23, buildPredict=True)
 
     #analyze("data/train-nn.txt")
     analyze("E:/jeweler_content.txt", 23, buildPredict=True)
