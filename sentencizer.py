@@ -113,7 +113,7 @@ class Sentencizer:
     def update(self, line, buildPredict=False):
         punctuation = "©®-%$!?:,;.\'\" @~&()=*"
 
-        line1 = re.sub('[!?.;,:]', "><", line)
+        line1 = re.sub('[!?\.;,:]', "><", line)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
         # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
 
@@ -136,7 +136,6 @@ class Sentencizer:
                             self.vocab.add(w)
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
-            sentences[i] = tokens
             if buildPredict:
             #
                 ngrams_1 = ngrams(tokens, 1)
@@ -151,6 +150,8 @@ class Sentencizer:
                 self.bigrams.update(ngrams_2)   # unique inserting
                 self.trigrams.update(ngrams_3)  # unique inserting
             #
+            tokens.append(";")
+            sentences[i] = tokens
         #}
         return sentences
     ##########################################################

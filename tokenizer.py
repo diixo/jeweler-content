@@ -38,7 +38,7 @@ def tokenize(line, stopwords, case_sensitive = False):
     # remove cyrillic
     line = re.sub(r'[А-їЁІЇҐґЄ№]', "", line)
     line = re.sub(r'[\(\)<>\[\]]', " ", line)
-    line = re.sub("\|", " ! ", line).strip()
+    line = re.sub("\|", " ; ", line).strip()
 
     text = [item for item in re.split('[\ ]', line) if len(item.strip()) > 0 and not re.search(r'http|www|href|rel=|url=|noopener|noreferrer|class=|text=', 
         item, re.IGNORECASE)]
@@ -69,7 +69,7 @@ def tokenize(line, stopwords, case_sensitive = False):
     # optimized version:
     for id, word in enumerate(text):
     #
-        word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I-T", word).lower()
+        word = re.sub(r'\b{}\b'.format(re.escape(word_it)), "I_T", word).lower()
 
         cword = word.strip(punct).lower()
 
