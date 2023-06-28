@@ -113,7 +113,7 @@ class Sentencizer:
     def update(self, line, buildPredict=False):
         punctuation = "©®-%$!?:,;.\'\" @~&()=*"
 
-        line1 = re.sub('[!?\.;,:]', "><", line)
+        line1 = re.sub('[!?;,:]', "><", line)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
         # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
 

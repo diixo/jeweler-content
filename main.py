@@ -31,13 +31,14 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
             result = sentencizer.update(line, buildPredict)
 
             if len(line) > 0:
-                if True:
-                        fw.write(line + ";" + str(count) + "\n")
+            #
+                if False:
+                        fw.write(line + " ;" + str(count) + "\n")
                 else:
                     for sent in result:
                         fw.write(" ".join([w for w in sent]))
-                    fw.write(";" + str(count) + '\n')
-
+                    fw.write(" ;" + str(count) + '\n')
+            #
             print(count)
         #}
         count += 1
