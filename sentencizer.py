@@ -83,6 +83,7 @@ class Sentencizer:
         self.stopwords = set()
         self.vocab = set()
         self.vocab_freq = {}
+        self.u_vocab_freq = {}
         self.unigrams = set()
         self.bigrams = set()
         self.trigrams = set()
@@ -131,10 +132,12 @@ class Sentencizer:
                     if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
 
                         if (w in self.dictionary) or self.isConstructed(w):
-                        #if (w not in self.tms) and (w not in self.ignore):
                             tokens.append(w)
                             self.vocab.add(w)
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                        else:
+                            if (w not in self.tms) and (w not in self.ignore):
+                                self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
             #}
             if buildPredict:
             #
@@ -199,6 +202,24 @@ class Sentencizer:
     ##########################################################
     def finalize(self):
         print("finalizing >>")
+
+        if len(self.u_vocab_freq) > 0:
+        #
+            print(">> u_vocab-freq")
+            self.vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
+
+            f = open("un-vocab-sort.utf8", 'w', encoding='utf-8')
+            for kv in self.vocab_freq:
+            #
+                word = kv[0]
+                ws = re.split('[_/-]', word)
+                sz = len(ws)
+                if (sz >= 1) and (sz < 3) and (kv[1] >= 20):
+                    f.write(word + " ; " + str(kv[1]) + "\n")
+            #
+            f.close()
+            print("<< u_vocab-freq")
+        #
 
         if len(self.unigrams) > 0:
         #{

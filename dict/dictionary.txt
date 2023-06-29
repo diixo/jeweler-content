@@ -6413,3 +6413,7 @@ unsee
 attune
 eclipse
 eclipsed
+exemplifying
+recount
+recounts
+recounted

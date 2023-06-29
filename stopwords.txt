@@ -340,6 +340,7 @@ preferably
 presently
 principally
 probably
+purportedly
 rather
 really
 reasonably
@@ -350,6 +351,7 @@ regardless
 regularly
 related
 relatively
+reputedly
 respectively
 roughly
 round

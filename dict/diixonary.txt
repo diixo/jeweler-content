@@ -10990,3 +10990,7 @@ filemanager
 webinterface
 filestash
 publicly
+pdfs
+global's
+processor's
+chip's

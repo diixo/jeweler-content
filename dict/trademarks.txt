@@ -283,3 +283,5 @@ Optimus
 Datsun
 Verbatim
 yoga
+meta's
+mac's
