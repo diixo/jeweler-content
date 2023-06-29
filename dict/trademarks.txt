@@ -82,7 +82,6 @@ honor
 radeon
 xperia
 mac
-nintendo
 realme
 instagram
 oppo
@@ -93,7 +92,6 @@ aws
 meizu
 macos
 t-mobile
-vivo
 google's
 qualcomm
 samsung's
@@ -281,3 +279,7 @@ Mediatek
 Minecraft
 Fujifilm
 discord
+Optimus
+Datsun
+Verbatim
+yoga

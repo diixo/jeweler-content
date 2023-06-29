@@ -216,7 +216,7 @@ class Sentencizer:
 
             f = open("bigrams.utf8", 'w', encoding='utf-8')
             for w in self.bigrams:
-                f.write(w[0] + ", " + w[1] + "\n")
+                f.write(w[0] + "; " + w[1] + "\n")
             f.close()
 
             print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
