@@ -292,6 +292,7 @@ normally
 not
 nothing
 now
+now's
 nowaday
 nowaday's
 nowadays

@@ -1,5 +1,6 @@
 ProstoMob
 Phandroid
+itechua.com
 iTechua
 IGate.com.ua
 ITC.ua
@@ -22,6 +23,7 @@ itc
 saashub
 datasciencecentral
 wccftech
+wccftech's
 igate
 dou
 cryptomisto
@@ -30,6 +32,7 @@ imore
 inventure
 futurenow
 autotechinsight
+overclockers.ua
 overclockers
 javatpoint
 engadget

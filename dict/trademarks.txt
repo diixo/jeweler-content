@@ -3,6 +3,7 @@ google
 samsung
 galaxy
 apple
+apple's
 iphone
 xiaomi
 microsoft
@@ -285,3 +286,7 @@ Verbatim
 yoga
 meta's
 mac's
+sigma
+zenfone
+tsmc
+Jupyter

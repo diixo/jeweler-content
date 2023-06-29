@@ -214,7 +214,7 @@ class Sentencizer:
                 word = kv[0]
                 ws = re.split('[_/-]', word)
                 sz = len(ws)
-                if (sz >= 1) and (sz < 3) and (kv[1] >= 20):
+                if (sz == 1) and (kv[1] >= 20):
                     f.write(word + " ; " + str(kv[1]) + "\n")
             #
             f.close()

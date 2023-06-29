@@ -2717,7 +2717,6 @@ swift
 version-specific
 cocoa
 cocoa-touch
-apple's
 cl
 django
 angular
@@ -8278,7 +8277,6 @@ take-off
 pored
 exposure
 potent
-now's
 tech-forward
 pervade
 pervaded
@@ -8517,7 +8515,6 @@ text-processing
 seasonality
 addicted
 gameplay
-refreshes
 in-built
 briefs
 defeated
@@ -8629,7 +8626,6 @@ preply
 distancing
 protective
 re-use
-repurpose
 drive-up
 smackdown
 dreadful
@@ -10994,3 +10990,17 @@ pdfs
 global's
 processor's
 chip's
+archiver
+handset
+charger
+earbuds
+lidar
+voicemail
+remotion
+increasingly
+collectible
+aftermath
+aftermath's
+pre-ordering
+pre-order
+operationalizing
