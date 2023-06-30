@@ -11006,3 +11006,12 @@ critique
 c#
 plurality
 computationally
+.asp
+gradle's
+pywebio
+lexer
+webassemblyjs
+.net4
+.net5
+.net6
+inquirer
