@@ -290,3 +290,6 @@ sigma
 zenfone
 tsmc
 Jupyter
+tsmc's
+nvidia
+european

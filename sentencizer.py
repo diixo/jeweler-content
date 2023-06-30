@@ -112,7 +112,7 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
-        punctuation = "©®-%$!?:,;.\'\" @~&()=*"
+        punctuation = "©®-%$!?:,;.\'\" @~&()=*#_<=>{|}/[]^"
 
         line1 = re.sub('[!?;,:]', "><", line)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']

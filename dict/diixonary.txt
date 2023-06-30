@@ -968,7 +968,6 @@ transcoding
 specialization
 charsets
 symbol
-european
 exercise
 icu
 precision
@@ -6516,7 +6515,6 @@ windowscommand
 gnome
 commandline
 untracked
-nvidia
 lubuntu
 utorrent
 cinnamon
@@ -11004,3 +11002,4 @@ aftermath's
 pre-ordering
 pre-order
 operationalizing
+critique
