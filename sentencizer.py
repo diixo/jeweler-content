@@ -112,15 +112,19 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
-        punctuation = "©®-%$!?:,;.\'\" @~&()=*#_<=>{|}[/]^"
+        punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^"
 
-        line1 = re.sub('[!?;,:]', "><", line)
+        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
         # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
 
         for i, item in enumerate(sentences):
         #{
-            word_sentence = [x.strip(string.punctuation) for x in item.split(" ") if (x != '')]
+            #word_sentence = [x.strip(string.punctuation) if x not in self.dictionary else x for x in item.split(" ") if (x != '')]    #!!!
+            
+            word_sentence = [x.strip(punctuation) if x.strip(punctuation) in self.dictionary else x.strip(string.punctuation) 
+                                for x in item.split(" ") if (x != '')]
+
             #sentences[i] = word_sentence
 
             tokens = []

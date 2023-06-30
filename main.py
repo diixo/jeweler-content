@@ -17,14 +17,14 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
 
-    count = 0
+    count = 1
     while True:
     #{
         line = fh.readline()
         if not line:
             break
 
-        if count > lines_indent:
+        if count >= lines_indent:
         #{
             line = tokenize(line, sentencizer.stopwords, case_sensitive=True)
 

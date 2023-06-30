@@ -6420,3 +6420,8 @@ recounts
 recounted
 repurpose
 repurposed
+reproject
+reprojects
+reprojected
+operationalize
+operationalized
