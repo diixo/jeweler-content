@@ -33,7 +33,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
             if len(line) > 0:
             #
                 if False:
-                        fw.write(line + " ;" + str(count) + "\n")
+                    fw.write(line + " ;" + str(count) + "\n")
                 else:
                     for sent in result:
                         fw.write(" ".join([w for w in sent]))

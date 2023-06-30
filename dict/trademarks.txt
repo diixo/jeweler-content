@@ -292,3 +292,5 @@ tsmc
 Jupyter
 tsmc's
 nvidia
+firefox
+firefox's
