@@ -298,3 +298,4 @@ avast
 coursera
 infopulse
 depositphotos
+solidworks
