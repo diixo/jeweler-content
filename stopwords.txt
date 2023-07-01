@@ -105,6 +105,7 @@ didn't
 do
 does
 doesn't
+doesnt
 doing
 don't
 done
