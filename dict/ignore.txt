@@ -51,3 +51,5 @@ LIGA.net
 AIN.Capital
 hillel
 InfoWorld
+tech.eu
+freecodecamp.org

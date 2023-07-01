@@ -11064,7 +11064,6 @@ patcher
 webhost
 autobuild
 carefully
-it-specialists
 retractable
 headband
 ultrabooks
@@ -11108,3 +11107,8 @@ mcu's
 editor's
 matplotib
 itexpert
+cpython
+mcu
+realism
+scene's
+clue
