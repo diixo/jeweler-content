@@ -11064,7 +11064,7 @@ patcher
 webhost
 autobuild
 carefully
-i_t-specialists
+it-specialists
 retractable
 headband
 ultrabooks
@@ -11095,3 +11095,16 @@ gpg
 multiselect
 specifically
 datamanagement
+apu
+apu's
+framerate
+parallax
+php6
+php7
+trackpad
+chatgpt's
+trigonometry
+mcu's
+editor's
+matplotib
+itexpert
