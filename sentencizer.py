@@ -114,7 +114,8 @@ class Sentencizer:
     def update(self, line, buildPredict=False):
         punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^"
 
-        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line)
+        line1 = line.replace(". ", "!")
+        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
         # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
 
@@ -166,12 +167,10 @@ class Sentencizer:
         diix = Path("./dict/diixonary.txt")
         if diix.exists():
             self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
-            #print("diixonary.sz=", len(self.dictionary))
 
         diix = Path("./dict/dictionary.txt")
         if diix.exists():
             self.dictionary.update([line.replace('\n', '') for line in open("./dict/dictionary.txt", 'r', encoding='utf-8').readlines()])
-            #print("dictionary.sz=", len(self.dictionary))
 
         self.dictionary.update(self.stopwords)
         self.dictionary = set(sorted(self.dictionary))

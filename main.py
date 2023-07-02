@@ -39,7 +39,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
                     #
                         fw.write(" ".join([w for w in sent]))
                     #
-                    fw.write(" ;" + str(count) + '\n')
+                    fw.write(";" + str(count) + '\n')
             #
             print(count)
         #}
