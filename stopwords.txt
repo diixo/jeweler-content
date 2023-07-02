@@ -576,6 +576,7 @@ oct
 aug
 apr
 sep
+sept
 monday
 tuesday
 wednesday
@@ -597,3 +598,4 @@ november
 december
 ua
 2nd
+weekend
