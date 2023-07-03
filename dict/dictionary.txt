@@ -2587,7 +2587,6 @@ entering
 installing
 clicking
 hides
-firstly
 delimited
 navigating
 instructing
@@ -6421,3 +6420,6 @@ reprojects
 reprojected
 operationalize
 operationalized
+kernelized
+kernelizes
+kernelize

@@ -599,3 +599,6 @@ december
 ua
 2nd
 weekend
+firstly
+thirdly
+secondly

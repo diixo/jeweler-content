@@ -121,7 +121,7 @@ class Sentencizer:
 
         for i, item in enumerate(sentences):
         #{
-            #word_sentence = [x.strip(string.punctuation) if x not in self.dictionary else x for x in item.split(" ") if (x != '')]    #!!!
+            #word_sentence = [x.strip(string.punctuation) if x not in self.dictionary else x for x in item.split(" ") if (x != '')]
             
             word_sentence = [x.strip(punctuation) if x.strip(punctuation) in self.dictionary else x.strip(string.punctuation) 
                                 for x in item.split(" ") if (x != '')]
