@@ -112,7 +112,7 @@ class Sentencizer:
 
     ##########################################################
     def update(self, line, buildPredict=False):
-        punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^"
+        punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^\\"
 
         line1 = line.replace(". ", "!")
         line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
