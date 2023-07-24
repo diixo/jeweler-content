@@ -123,6 +123,7 @@ during
 each
 each-other
 easily
+eg
 either
 else
 else's
@@ -488,7 +489,6 @@ we'll
 we're
 we've
 welcome
-weld
 were
 weren't
 what
@@ -497,6 +497,8 @@ what're
 what's
 whatever
 whatever's
+whatfor
+whatis
 whats
 whatsoever
 when
@@ -514,6 +516,7 @@ wherefor
 wherefore
 wherefrom
 wherein
+whereis
 whereon
 wheresoever
 whereto
