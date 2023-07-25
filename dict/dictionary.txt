@@ -305,8 +305,6 @@ named
 checking
 though
 override
-aren't
-there's
 invoked
 defined
 iterations
@@ -328,7 +326,6 @@ remaining
 meaning
 monitor
 reading
-it's
 listens
 defines
 keeps
@@ -376,16 +373,11 @@ edited
 stripped
 note
 noticing
-don't
-can't
-i'm
 lets
-we're
 now
 tend
 definitely
 undeclared
-what's
 tried
 says
 assuming
@@ -2827,7 +2819,6 @@ answers
 sale
 completing
 fulfills
-that'll
 gains
 fly
 order
@@ -3884,7 +3875,6 @@ troubleshoot
 harms
 undergoes
 undergo
-let`s
 underlines
 restricts
 respects
@@ -4450,7 +4440,6 @@ offloads
 wondered
 takeaways
 takeaway
-weren't
 re-think
 imagining
 individualized
@@ -4923,7 +4912,6 @@ twisted
 twisting
 twitch
 twitching
-would've
 uglify
 unbind
 unapply
@@ -4985,7 +4973,6 @@ brushes
 brushing
 cabled
 overlooking
-should've
 mess-up
 handed
 scoped
@@ -5111,7 +5098,6 @@ urged
 traveled
 liking
 apologizes
-what're
 re-working
 irritated
 apologizing
