@@ -209,10 +209,10 @@ class Sentencizer:
         if len(self.u_vocab_freq) > 0:
         #
             print(">> u_vocab-freq")
-            self.vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
+            self.u_vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open("un-vocab-sort.utf8", 'w', encoding='utf-8')
-            for kv in self.vocab_freq:
+            for kv in self.u_vocab_freq:
             #
                 word = kv[0]
                 ws = re.split('[_/-]', word)
