@@ -6321,3 +6321,4 @@ rescales
 conjunct
 conjuncts
 upshift
+tighten
