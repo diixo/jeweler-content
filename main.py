@@ -57,10 +57,11 @@ def main():
 
     #analyze("data/train-nn.txt")
     analyze("E:/jeweler_content.txt", 23, buildPredict=True)
+    #analyze("E:/paperswithcode-801309.txt", buildPredict=False)
 
     #phrase, result = sentencizer.predict_next("text clustering")
 
-    #analyze("data/dataset.txt")
+    #analyze("data/train-nn.txt", buildPredict=False)
     #phrase, result = sentencizer.predict_next("data science")
 
 ###############################################################
