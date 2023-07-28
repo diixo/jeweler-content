@@ -6328,3 +6328,11 @@ retargeted
 upsample
 cutout
 rediscover
+variate
+variates
+prescribe
+fluctuates
+coexists
+regularizes
+impede
+regulates
