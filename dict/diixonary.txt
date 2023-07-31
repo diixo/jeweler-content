@@ -11632,3 +11632,8 @@ entropic
 conductivity
 superconductivity
 renormalization
+interplay
+entangled
+integrable
+damping
+euler
