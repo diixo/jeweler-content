@@ -109,7 +109,8 @@ class Sentencizer:
     def update(self, line):
         result = []
 
-        line1 = re.sub('[!?.;,:]', "><", line)
+        line1 = line.replace(". ", "!")
+        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
 
         for i, item in enumerate(sentences):

@@ -31,7 +31,7 @@ def analyze(filePath, lines_indent = -1):
             sentencizer.update(line)
 
             if len(line) > 0:
-                fw.write(line + "\n")
+                fw.write(line + " ;" + str(count) + '\n')
 
             print(count)
         #}
