@@ -106,8 +106,8 @@ class Sentencizer:
         raise StopIteration
 
     ##########################################################
-    def update(self, line):
-        punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^"
+    def update(self, line, buildPredict=False):
+        punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^\\"
         result = []
 
         line1 = line.replace(". ", "!")
@@ -116,7 +116,7 @@ class Sentencizer:
 
         for i, item in enumerate(sentences):
         #{    
-            word_sentence = [x.strip() for x in item.split(" ") if (x != '')]
+            word_sentence = [x.strip(punctuation) for x in item.split(" ") if (x != '')]
 
             tokens = []
             for w in word_sentence:
@@ -127,7 +127,7 @@ class Sentencizer:
                     self.vocab.add(w)
                     self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
             #}
-            if False:
+            if buildPredict:
             #
                 ngrams_1 = ngrams(tokens, 1)
                 ngrams_2 = ngrams(tokens, 2)
@@ -141,8 +141,10 @@ class Sentencizer:
                 self.bigrams.update(ngrams_2)   # unique inserting
                 self.trigrams.update(ngrams_3)  # unique inserting
             #
+            tokens.append(";")
+            sentences[i] = tokens
         #}
-        return
+        return sentences
     ##########################################################
     def finalize(self):
         print("finalizing >>")
@@ -193,7 +195,7 @@ class Sentencizer:
         print("<< vocab")
         print(">> vocab-freq")
 
-        f = open("unigrams-freq.utf8", 'w', encoding='utf-8')
+        f = open("vocab-freq-cyr.utf8", 'w', encoding='utf-8')
         for kv in self.vocab_freq:
             if kv[0] not in self.dictionary:
                 f.write(kv[0] + " ; " + str(kv[1]) + "\n")
