@@ -11312,7 +11312,7 @@ distinguisher
 changeover
 unbranched
 executability
-actionability 
+actionability
 conferring
 relearning
 disagreeing
@@ -11461,7 +11461,6 @@ resolvable
 additively
 definability
 multigraphs
-retract
 devoid
 permissioned
 diagonally
@@ -11472,7 +11471,7 @@ supercluster
 rectifiable
 translationally
 favourably 
-theorists 
+theorists
 nominally
 equipments
 subtyping
@@ -11665,13 +11664,11 @@ timescales
 recombination
 gnns
 coexistence
-perceptual 
+perceptual
 compositions
 topologically
 releaming
-clamped
 contrastive
-entangled
 memoryless
 predecessors
 plausibility
@@ -11681,3 +11678,7 @@ stateless
 abbreviations
 surveillance
 computex
+championship
+fps
+bionic
+mods

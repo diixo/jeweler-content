@@ -302,3 +302,4 @@ solidworks
 grammarly's
 udemy
 ideapad
+zenbook
