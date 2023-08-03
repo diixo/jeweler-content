@@ -10633,6 +10633,8 @@ non-responsive
 future-based
 unfitting
 forward-looking
+autosar
+yocto
 mcvp
 react.js
 attestation
@@ -11660,3 +11662,5 @@ welling
 circuitry
 stateless
 abbreviations
+surveillance
+computex
