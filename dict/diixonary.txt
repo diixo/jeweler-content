@@ -11770,3 +11770,6 @@ ember.js
 hyperx
 ipfs
 auth
+warfare
+doom
+quake
