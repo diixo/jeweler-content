@@ -10,6 +10,7 @@ DataScienceCentral.com
 GeeksforGeeks
 Techopedia
 Techopedia's
+simplilearn.com
 Simplilearn's
 Simplilearn
 TechStartups
@@ -55,3 +56,4 @@ tech.eu
 freecodecamp.org
 platfor.ma
 hackster.io
+unit.city
