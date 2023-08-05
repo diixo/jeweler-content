@@ -11773,3 +11773,12 @@ auth
 warfare
 doom
 quake
+nintendo's
+vuetify
+playtech
+starfield
+qemu
+wildfire
+battlegrounds
+1440p
+speedtest
