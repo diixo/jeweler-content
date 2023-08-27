@@ -6355,3 +6355,6 @@ nominates
 objected
 congratulates
 congratulated
+entrust
+rides
+rided
