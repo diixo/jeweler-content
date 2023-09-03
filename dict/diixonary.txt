@@ -11822,3 +11822,14 @@ stderr
 factoring
 pickle
 mocked
+stylistic
+vgg19
+disparities
+stripping
+analyzable
+conjugation
+colloquial
+punctuations
+underlined
+extrinsic
+perplexity

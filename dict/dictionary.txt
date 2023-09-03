@@ -6372,3 +6372,9 @@ re-raise
 free-up
 unblocks
 speed-up
+washed-out
+calibrating
+disambiguate
+plunge
+backoff
+back-off
