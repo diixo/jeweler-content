@@ -6378,3 +6378,5 @@ disambiguate
 plunge
 backoff
 back-off
+dialling
+dialled

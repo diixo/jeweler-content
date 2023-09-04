@@ -11833,3 +11833,11 @@ punctuations
 underlined
 extrinsic
 perplexity
+synthesizer
+synths
+modulating
+oscilloscope
+subtractive
+modulations
+synth
+waveshaping
