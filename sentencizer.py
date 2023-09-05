@@ -25,7 +25,7 @@ class Sentencizer:
         self.tms        = set()
         self.ignore     = set()
         self.dictionary = set()
-        self.readDictionary()
+        self.load_dictionaries()
 
     def __iter__(self):
         return self
@@ -37,7 +37,38 @@ class Sentencizer:
             return result
         raise StopIteration
 
+    def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
+        for tpl in ngramList:
+            if tpl in ngram_freq_dict:
+                ngram_freq_dict[tpl] += 1
+            else:
+                ngram_freq_dict[tpl] = 1
+
+    def load_dictionaries(self):
+        diix = Path("./dict/diixonary.txt")
+        if diix.exists():
+            self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
+
+        diix = Path("./dict/dictionary.txt")
+        if diix.exists():
+            self.dictionary.update([line.replace('\n', '') for line in open("./dict/dictionary.txt", 'r', encoding='utf-8').readlines()])
+
+        self.dictionary.update(self.stopwords)
+        self.dictionary = set(sorted(self.dictionary))
+
+        # read additional dictionaries
+
+        path = Path("./dict/trademarks.txt")
+        if path.exists():
+            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
+            self.tms = set(sorted(self.tms))
+
+        path = Path("./dict/ignore.txt")
+        if path.exists():
+            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+            self.ignore = set(sorted(self.ignore))
     ##########################################################
+
     def update(self, line, buildPredict=False):
         punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^\\"
 
@@ -81,30 +112,6 @@ class Sentencizer:
             sentences[i] = tokens
         #}
         return sentences
-    ##########################################################
-    def readDictionary(self):
-        diix = Path("./dict/diixonary.txt")
-        if diix.exists():
-            self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
-
-        diix = Path("./dict/dictionary.txt")
-        if diix.exists():
-            self.dictionary.update([line.replace('\n', '') for line in open("./dict/dictionary.txt", 'r', encoding='utf-8').readlines()])
-
-        self.dictionary.update(self.stopwords)
-        self.dictionary = set(sorted(self.dictionary))
-
-        # read additional dictionaries
-
-        path = Path("./dict/trademarks.txt")
-        if path.exists():
-            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
-            self.tms = set(sorted(self.tms))
-
-        path = Path("./dict/ignore.txt")
-        if path.exists():
-            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
-            self.ignore = set(sorted(self.ignore))
     ##########################################################
     def isConstructed(self, word: string) -> bool:
         ws = re.split('[/-]', word)
@@ -176,15 +183,7 @@ class Sentencizer:
             print("<< vocab-freq")
         #}
         print("<< finalizing")
-        return
-    ##########################################################
-    def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
-        for tpl in ngramList:
-            if tpl in ngram_freq_dict:
-                ngram_freq_dict[tpl] += 1
-            else:
-                ngram_freq_dict[tpl] = 1
-        return
+
     ##########################################################
     def predict_next(self, line):
         str_line = tokenize(line, self.stopwords)
