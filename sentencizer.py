@@ -27,13 +27,6 @@ class Sentencizer:
         self.load_dictionaries()
 
 
-    def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
-        for tpl in ngramList:
-            if tpl in ngram_freq_dict:
-                ngram_freq_dict[tpl] += 1
-            else:
-                ngram_freq_dict[tpl] = 1
-
     def load_dictionaries(self):
         diix = Path("./dict/diixonary.txt")
         if diix.exists():

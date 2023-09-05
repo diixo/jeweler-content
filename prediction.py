@@ -127,6 +127,13 @@ class Prediction:
    ##########################################################
    def size(self):
       return len(self.unigrams)
+
+   def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
+      for tpl in ngramList:
+         if tpl in ngram_freq_dict:
+               ngram_freq_dict[tpl] += 1
+         else:
+               ngram_freq_dict[tpl] = 1
    ##########################################################
 
    def add_tokens(self, tokens: list):
