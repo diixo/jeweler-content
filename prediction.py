@@ -8,7 +8,7 @@ def ngrams(content, n):
    ngramList = [tuple(content[i:i+n]) for i in range(len(content)-n+1)]
    return ngramList
 ########################################################################
-def word_tokenize(str_line: str, stopwords = None):
+def str_tokenize(str_line: str, stopwords = None):
    word_list = re.findall("(\w[\w'\./&-]*\w|\w)", str_line)
    if word_list:
       if stopwords:
@@ -92,7 +92,7 @@ class Prediction:
    ##########################################################
    def predict(self, line):
       work_line = tokenize(line, self.stopwords)
-      tokenList = word_tokenize(work_line)
+      tokenList = str_tokenize(work_line)
         
       ngram = {1:[], 2:[]}
 
@@ -101,7 +101,7 @@ class Prediction:
    ##########################################################
 
    def predict_next(self, str_line):
-      tokenList = word_tokenize(str_line)
+      tokenList = str_tokenize(str_line)
       sz = len(tokenList)
 
       bigrams_probDist = {}
