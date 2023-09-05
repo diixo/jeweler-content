@@ -118,7 +118,7 @@ class Sentencizer:
     def finalize(self):
         print("finalizing >>")
         if len(self.u_vocab_freq) > 0:
-        #
+        #{
             print(">> u_vocab-freq")
             self.u_vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
 
@@ -135,7 +135,7 @@ class Sentencizer:
             f.close()
             fc.close()
             print("<< u_vocab-freq")
-        #
+        #}
 
         if self.prediction.size() > 0:
             self.prediction.finalize()
