@@ -175,8 +175,8 @@ class Prediction:
       f.close()
 
       f = open("bigrams.utf8", 'w', encoding='utf-8')
-      for w in self.bigrams:
-         f.write(w[0] + "; " + w[1] + "\n")
+      for ws, k in self.bigrams_freq_dict.items():
+         f.write(f"{ws[0]}; {ws[1]}; {str(k)}" + "\n")
       f.close()
 
       print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
