@@ -91,10 +91,7 @@ class Prediction:
          ngram[i+1] = list(ngrams(tokenList, i+1))[-1]
 
    ##########################################################
-   def predict_next(self, line):
-      work_line = tokenize(line, self.stopwords)
-      tokenList = self.word_tokenize(work_line)
-
+   def predict_next(self, tokenList):
       sz = len(tokenList)
 
       bigrams_probDist = {}
@@ -119,7 +116,10 @@ class Prediction:
       return []
    ##########################################################
 
-   def add_tokens(self, tokens):
+   def size(self):
+      return len(self.unigrams)
+
+   def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)
       ngrams_2 = ngrams(tokens, 2)
       ngrams_3 = ngrams(tokens, 3)
