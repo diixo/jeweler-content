@@ -1,4 +1,4 @@
-
+import re
 from collections import Counter
 from tokenizer import tokenize
 
@@ -7,6 +7,15 @@ from tokenizer import tokenize
 def ngrams(content, n):
    ngramList = [tuple(content[i:i+n]) for i in range(len(content)-n+1)]
    return ngramList
+########################################################################
+def word_tokenize(str_line: str, stopwords = None):
+   word_list = re.findall("(\w[\w'\./&-]*\w|\w)", str_line)
+   if word_list:
+      if stopwords:
+         return [w for w in word_list if w not in stopwords]
+      else:
+         return word_list
+   return []
 ########################################################################
 def predict_next_word_smoothed(last_word, probDist):
    next_word = {}
@@ -83,15 +92,16 @@ class Prediction:
    ##########################################################
    def predict(self, line):
       work_line = tokenize(line, self.stopwords)
-      tokenList = self.word_tokenize(work_line)
+      tokenList = word_tokenize(work_line)
         
       ngram = {1:[], 2:[]}
 
       for i in range(2):
          ngram[i+1] = list(ngrams(tokenList, i+1))[-1]
-
    ##########################################################
-   def predict_next(self, tokenList):
+
+   def predict_next(self, str_line):
+      tokenList = word_tokenize(str_line)
       sz = len(tokenList)
 
       bigrams_probDist = {}
@@ -107,18 +117,18 @@ class Prediction:
       if (sz == 1):
          token = tokenList[0]
          pred1, pred2 = predict_next_3_words_smoothed(token, bigrams_probDist)
-         return (work_line, [[item1[0] for item1 in pred1], [item2[0] for item2 in pred2]])
+         return (str_line, [[item1[0] for item1 in pred1], [item2[0] for item2 in pred2]])
 
       if (sz == 2):
          pair = [tokenList[0], tokenList[1]]
          pred_3 = predict_next_3_words(pair, trigrams_probDist)
-         return (work_line, [item[0] for item in pred_3])
+         return (str_line, [item[0] for item in pred_3])
       return []
    ##########################################################
-
    def size(self):
       return len(self.unigrams)
-
+   ##########################################################
+   
    def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)
       ngrams_2 = ngrams(tokens, 2)
@@ -152,4 +162,3 @@ class Prediction:
 
       print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
          len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
-   ##########################################################

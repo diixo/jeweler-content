@@ -186,16 +186,6 @@ class Sentencizer:
                 ngram_freq_dict[tpl] = 1
         return
     ##########################################################
-    def word_tokenize(self, in_str, stopwords = None):
-        word_list = re.findall("(\w[\w'\./&-]*\w|\w)", in_str)
-        if word_list:
-            if stopwords:
-                return [w for w in word_list if w not in stopwords]
-            else:
-                return word_list
-        return []
-    ##########################################################
     def predict_next(self, line):
-        work_line = tokenize(line, self.stopwords)
-        tokenList = self.word_tokenize(work_line)
-        return self.prediction.predict_next(tokenList)
+        str_line = tokenize(line, self.stopwords)
+        return self.prediction.predict_next(str_line)
