@@ -100,8 +100,6 @@ class Sentencizer:
         #}
         return sentences
     ##########################################################
-    def apply_word(self, word: str) -> bool:
-        return True
 
     def isConstructed(self, word: string) -> bool:
         ws = re.split('[/-]', word)

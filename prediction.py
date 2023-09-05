@@ -81,7 +81,7 @@ def predict_next_3_words(token, probDist):
 
 class Prediction:
    
-   def __init__(self, stopwordsPath="stopwords.txt"):
+   def __init__(self):
       self.unigrams = set()
       self.bigrams = set()
       self.trigrams = set()
