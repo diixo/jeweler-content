@@ -122,18 +122,18 @@ class Sentencizer:
             print(">> u_vocab-freq")
             self.u_vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("un-vocab-sort.utf8", 'w', encoding='utf-8')
-            fc = open("un-vocab-sort-candidates.utf8", 'w', encoding='utf-8')
+            f1 = open("un-vocab-sort-1.utf8", 'w', encoding='utf-8')
+            f2 = open("un-vocab-sort-2.utf8", 'w', encoding='utf-8')
             for kv in self.u_vocab_freq:
                 word = kv[0]
                 ws = re.split('[_/-]', word)
                 sz = len(ws)
                 if (sz == 1) and (kv[1] >= 20):
-                    f.write(word + " ; " + str(kv[1]) + "\n")
+                    f1.write(word + " ; " + str(kv[1]) + "\n")
                 if (sz == 2):
-                    fc.write(word + " ; " + str(kv[1]) + "\n")
-            f.close()
-            fc.close()
+                    f2.write(word + " ; " + str(kv[1]) + "\n")
+            f1.close()
+            f2.close()
             print("<< u_vocab-freq")
         #}
 
