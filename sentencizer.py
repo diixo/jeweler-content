@@ -7,6 +7,13 @@ from collections import Counter
 from pathlib import Path
 from prediction import Prediction
 
+def is_word(word: str, stopwords=set()):
+    #word = re.search("[\[\]\}\{=@\*]")
+    if (re.sub("[A-Za-z0-9#\'\./_&+-]", "", word) == "") and len(word) > 1:
+        if ((word not in stopwords) and not word.isdigit()):
+            return True
+    return False
+
 
 class Sentencizer:
 
@@ -73,20 +80,18 @@ class Sentencizer:
             skip = False
             for w in word_sentence:
             #{
-                #w = re.search("[\[\]\}\{=@\*]")
-                if re.sub("[A-Za-z0-9#\'\./_&+-]", "", w) == "":
-                    if ((w not in self.stopwords) and not w.isdigit() and len(w) > 1):
+                if is_word(w, self.stopwords):
 
-                        if (w in self.dictionary) or self.isConstructed(w):
-                            tokens.append(w)
-                            self.vocab.add(w)
-                            self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
-                        elif w in self.tms:
-                            if not buildPredict:
-                                tokens.append(w) 
-                        else:
-                            if (w not in self.tms) and (w not in self.ignore):
-                                self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
+                    if (w in self.dictionary) or self.isConstructed(w):
+                        tokens.append(w)
+                        self.vocab.add(w)
+                        self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                    elif w in self.tms:
+                        if not buildPredict:
+                            tokens.append(w) 
+                    else:
+                        if (w not in self.tms) and (w not in self.ignore):
+                            self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
             #}
             if buildPredict:
                 self.prediction.add_tokens(tokens)
@@ -96,6 +101,9 @@ class Sentencizer:
         #}
         return sentences
     ##########################################################
+    def apply_word(self, word: str) -> bool:
+        return True
+
     def isConstructed(self, word: string) -> bool:
         ws = re.split('[/-]', word)
         sz = len(ws)
