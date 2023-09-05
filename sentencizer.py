@@ -57,25 +57,28 @@ class Sentencizer:
             self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
             self.ignore = set(sorted(self.ignore))
     ##########################################################
+    def slice_to_sentences(self, str_line: str):
+
+        line1 = str_line.replace(". ", "!")
+        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
+        return [x.strip().lower() for x in line1.split("><") if x !='']
+        # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
 
     def update(self, str_line: str, buildPredict=False):
         punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^\\"
 
-        line1 = str_line.replace(". ", "!")
-        line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
-        sentences = [x.strip().lower() for x in line1.split("><") if x !='']
-        # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
+        sentences = self.slice_to_sentences(str_line)
 
         for i, item in enumerate(sentences):
         #{
-            #word_sentence = [x.strip(string.punctuation) if x not in self.dictionary else x for x in item.split(" ") if (x != '')]
+            #words_list = [x.strip(string.punctuation) if x not in self.dictionary else x for x in item.split(" ") if (x != '')]
             
-            word_sentence = [x.strip(punctuation) if x.strip(punctuation) in self.dictionary else x.strip(string.punctuation) 
+            words_list = [x.strip(punctuation) if x.strip(punctuation) in self.dictionary else x.strip(string.punctuation) 
                                 for x in item.split(" ") if (x != '')]
 
-            #sentences[i] = word_sentence
+            #sentences[i] = words_list
             tokens = []
-            for w in word_sentence:
+            for w in words_list:
             #{
                 if is_word(w, self.stopwords):
                     if (w in self.dictionary) or self.isConstructed(w):
@@ -162,8 +165,8 @@ class Sentencizer:
             print("<< vocab-freq")
         #}
         print("<< finalizing")
-
     ##########################################################
+
     def predict_next(self, line: str):
         str_line = tokenize(line, self.stopwords)
         return self.prediction.predict_next(str_line)
