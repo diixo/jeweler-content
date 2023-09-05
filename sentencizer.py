@@ -12,7 +12,6 @@ class Sentencizer:
 
     def __init__(self, stopwordsPath="stopwords.txt"):
         self.sentences = []
-        self._index = 0
         self.stopwords = set()
         self.vocab = set()
         self.vocab_freq = {}
@@ -27,15 +26,6 @@ class Sentencizer:
         self.dictionary = set()
         self.load_dictionaries()
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self._index < len(self.sentences):
-            result = self.sentences[self._index]
-            self._index += 1
-            return result
-        raise StopIteration
 
     def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
         for tpl in ngramList:
