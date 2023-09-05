@@ -128,7 +128,7 @@ class Prediction:
    def size(self):
       return len(self.unigrams)
    ##########################################################
-   
+
    def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)
       ngrams_2 = ngrams(tokens, 2)
@@ -162,3 +162,9 @@ class Prediction:
 
       print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
          len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
+##########################################################
+def main():
+   pass    
+
+if __name__ == "__main__":
+   main()

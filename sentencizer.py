@@ -175,6 +175,6 @@ class Sentencizer:
         print("<< finalizing")
 
     ##########################################################
-    def predict_next(self, line):
+    def predict_next(self, line: str):
         str_line = tokenize(line, self.stopwords)
         return self.prediction.predict_next(str_line)
