@@ -56,9 +56,8 @@ def main():
     #analyze("E:/jeweler_content.txt", 23, buildPredict=False)
     #analyze("E:/jeweler_content-2511937.txt", 23, buildPredict=False)
 
+    #analyze("data/train-nn.txt", buildPredict=True)
     #phrase, result = sentencizer.predict_next("text clustering")
-
-    #analyze("data/train-nn.txt", buildPredict=False)
     #phrase, result = sentencizer.predict_next("data science")
 
 ###############################################################
