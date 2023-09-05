@@ -70,7 +70,7 @@ def predict_next_3_words(token, probDist):
    return pred
 ########################################################################
 
-class Sentencizer:
+class Prediction:
    
    def __init__(self, stopwordsPath="stopwords.txt"):
       self.unigrams = set()
