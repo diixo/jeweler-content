@@ -51,8 +51,9 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 def main():
     #analyze("data/jeweler-content.txt", 24, buildPredict=False)
 
-    #analyze("data/train-nn.txt")
-    analyze("E:/jeweler_content.txt", 23, buildPredict=False)
+    analyze("data/dataset.txt", buildPredict=True)
+
+    #analyze("E:/jeweler_content.txt", 23, buildPredict=False)
     #analyze("E:/jeweler_content-2511937.txt", 23, buildPredict=False)
 
     #phrase, result = sentencizer.predict_next("text clustering")

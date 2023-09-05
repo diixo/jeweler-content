@@ -118,14 +118,18 @@ class Sentencizer:
         return 0
     ##########################################################
     def finalize(self):
+        str_path = "./__build/"
+        with Path(str_path) as path:
+            if not path.exists(): path.mkdir()
+
         print("finalizing >>")
         if len(self.u_vocab_freq) > 0:
         #{
             print(">> u_vocab-freq")
             self.u_vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f1 = open("un-vocab-sort-1.utf8", 'w', encoding='utf-8')
-            f2 = open("un-vocab-sort-2.utf8", 'w', encoding='utf-8')
+            f1 = open(str_path + "un-vocab-sort-1.utf8", 'w', encoding='utf-8')
+            f2 = open(str_path + "un-vocab-sort-2.utf8", 'w', encoding='utf-8')
             for kv in self.u_vocab_freq:
                 word = kv[0]
                 ws = re.split('[_/-]', word)
@@ -146,7 +150,7 @@ class Sentencizer:
             print(">> vocab")
             self.vocab = sorted(self.vocab)
 
-            f = open("vocab-new.utf8", 'w', encoding='utf-8')
+            f = open(str_path + "vocab-new.utf8", 'w', encoding='utf-8')
             for w in self.vocab:
                 if w in self.dictionary:
                     continue
@@ -157,7 +161,7 @@ class Sentencizer:
             ##################################################################################
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("vocab-new-sort.utf8", 'w', encoding='utf-8')
+            f = open(str_path + "vocab-new-sort.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
                 if kv[0] in self.dictionary:
                     continue

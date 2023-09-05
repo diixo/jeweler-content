@@ -1,6 +1,7 @@
 import re
 from collections import Counter
 from tokenizer import tokenize
+from pathlib import Path
 
 ########################################################################
 # nltk.ngrams
@@ -162,19 +163,23 @@ class Prediction:
       self.trigrams.update(ngrams_3)  # unique inserting
 
    def finalize(self, dictionary = set()):
+      str_path = "./__prediction/"
+      with Path(str_path) as path:
+         if not path.exists(): path.mkdir()
+
       self.unigrams = sorted(self.unigrams)
       self.bigrams  = sorted(self.bigrams)
       self.trigrams = sorted(self.trigrams)
 
       print(">> unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
 
-      f = open("unigrams.utf8", 'w', encoding='utf-8')
+      f = open(str_path + "unigrams.utf8", 'w', encoding='utf-8')
       for w in self.unigrams:
          if w[0] not in dictionary:
             f.write(w[0] + "\n")
       f.close()
 
-      f = open("bigrams.utf8", 'w', encoding='utf-8')
+      f = open(str_path + "bigrams.utf8", 'w', encoding='utf-8')
       for ws, k in self.bigrams_freq_dict.items():
          f.write(f"{ws[0]}; {ws[1]}; {str(k)}" + "\n")
       f.close()
