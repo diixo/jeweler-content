@@ -5,7 +5,7 @@ from operator import itemgetter
 from tokenizer import tokenize
 from collections import Counter
 from pathlib import Path
-from prediction import Prediction
+from prediction import Prediction, splitToList
 
 def is_word(word: str, stopwords=set()):
     #word = re.search("[\[\]\}\{=@\*]")
@@ -81,7 +81,11 @@ class Sentencizer:
             for w in words_list:
             #{
                 if is_word(w, self.stopwords):
-                    if (w in self.dictionary) or self.isConstructed(w):
+                    if buildPredict:
+                        ws = splitToList(w, self.stopwords, self.dictionary, self.tms)    # split as word/word/word
+                        if len(ws) > 1: self.prediction.add_tokens(ws)
+                    ##########################################################
+                    if (w in self.dictionary) or (self.constructedSize(w) > 0):
                         tokens.append(w)
                         self.vocab.add(w)
                         self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
@@ -101,7 +105,7 @@ class Sentencizer:
         return sentences
     ##########################################################
 
-    def isConstructed(self, word: str) -> bool:
+    def constructedSize(self, word: str) -> int:
         ws = re.split('[/-]', word)
         sz = len(ws)
         if (sz > 1) and (sz <= 3):
@@ -110,8 +114,8 @@ class Sentencizer:
                 if ((w in self.stopwords) or (w in self.dictionary)) and (w not in self.tms):
                     cntr += 1
                 else: break
-            return (sz == cntr)
-        return False
+            if (sz == cntr): return sz
+        return 0
     ##########################################################
     def finalize(self):
         print("finalizing >>")
@@ -136,7 +140,7 @@ class Sentencizer:
         #}
 
         if self.prediction.size() > 0:
-            self.prediction.finalize()
+            self.prediction.finalize(self.dictionary)
         else:
         #{
             print(">> vocab")

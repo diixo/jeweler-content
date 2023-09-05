@@ -16,6 +16,18 @@ def str_tokenize(str_line: str, stopwords = None):
       else:
          return word_list
    return []
+
+def splitToList(word: str, stopwords=set(), dictionary=set(), tms=set()) -> list:
+   ws = re.split('[/]', word)
+   sz = len(ws)
+   if (sz > 1) and (sz <= 3):
+      cntr = 0
+      for w in ws:
+            if (w not in stopwords) and (w in dictionary) and (w not in tms):
+               cntr += 1
+            else: break
+      if (sz == cntr): return ws
+   return []
 ########################################################################
 def predict_next_word_smoothed(last_word, probDist):
    next_word = {}
@@ -149,7 +161,7 @@ class Prediction:
       self.bigrams.update(ngrams_2)   # unique inserting
       self.trigrams.update(ngrams_3)  # unique inserting
 
-   def finalize(self):
+   def finalize(self, dictionary = set()):
       self.unigrams = sorted(self.unigrams)
       self.bigrams  = sorted(self.bigrams)
       self.trigrams = sorted(self.trigrams)
@@ -158,7 +170,7 @@ class Prediction:
 
       f = open("unigrams.utf8", 'w', encoding='utf-8')
       for w in self.unigrams:
-         if w[0] not in self.dictionary:
+         if w[0] not in dictionary:
             f.write(w[0] + "\n")
       f.close()
 
