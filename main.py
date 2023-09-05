@@ -31,16 +31,12 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
             result = sentencizer.update(line, buildPredict)
 
             if len(line) > 0:
-            #
                 if False:
                     fw.write(line + " ;" + str(count) + "\n")
                 else:
                     for sent in result:
-                    #
                         fw.write(" ".join([w for w in sent]))
-                    #
                     fw.write(";" + str(count) + '\n')
-            #
             print(count)
         #}
         count += 1
@@ -53,11 +49,11 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 ###############################################################
 
 def main():
-    #analyze("data/jeweler-content.txt", 23, buildPredict=True)
+    #analyze("data/jeweler-content.txt", 24, buildPredict=False)
 
     #analyze("data/train-nn.txt")
-    analyze("E:/jeweler_content.txt", 23, buildPredict=True)
-    #analyze("E:/paperswithcode-801309.txt", buildPredict=False)
+    analyze("E:/jeweler_content.txt", 23, buildPredict=False)
+    #analyze("E:/jeweler_content-2511937.txt", 23, buildPredict=False)
 
     #phrase, result = sentencizer.predict_next("text clustering")
 

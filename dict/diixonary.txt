@@ -11853,3 +11853,4 @@ revanced
 e-ink
 deeplearning
 jinja
+selfhosted

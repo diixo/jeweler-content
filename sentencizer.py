@@ -101,7 +101,7 @@ class Sentencizer:
         return sentences
     ##########################################################
 
-    def isConstructed(self, word: string) -> bool:
+    def isConstructed(self, word: str) -> bool:
         ws = re.split('[/-]', word)
         sz = len(ws)
         if (sz > 1) and (sz <= 3):
@@ -110,7 +110,7 @@ class Sentencizer:
                 if ((w in self.stopwords) or (w in self.dictionary)) and (w not in self.tms):
                     cntr += 1
                 else: break
-            return (len(ws) == cntr)
+            return (sz == cntr)
         return False
     ##########################################################
     def finalize(self):
@@ -126,7 +126,7 @@ class Sentencizer:
                 word = kv[0]
                 ws = re.split('[_/-]', word)
                 sz = len(ws)
-                if (sz == 1) and (kv[1] >= 20):
+                if (sz == 1):
                     f1.write(word + " ; " + str(kv[1]) + "\n")
                 if (sz == 2):
                     f2.write(word + " ; " + str(kv[1]) + "\n")
@@ -142,7 +142,7 @@ class Sentencizer:
             print(">> vocab")
             self.vocab = sorted(self.vocab)
 
-            f = open("vocab.utf8", 'w', encoding='utf-8')
+            f = open("vocab-new.utf8", 'w', encoding='utf-8')
             for w in self.vocab:
                 if w in self.dictionary:
                     continue
@@ -153,7 +153,7 @@ class Sentencizer:
             ##################################################################################
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
-            f = open("vocab-sort.utf8", 'w', encoding='utf-8')
+            f = open("vocab-new-sort.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
                 if kv[0] in self.dictionary:
                     continue
