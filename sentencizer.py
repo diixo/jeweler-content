@@ -81,7 +81,6 @@ class Sentencizer:
             for w in word_sentence:
             #{
                 if is_word(w, self.stopwords):
-
                     if (w in self.dictionary) or self.isConstructed(w):
                         tokens.append(w)
                         self.vocab.add(w)
@@ -108,21 +107,16 @@ class Sentencizer:
         ws = re.split('[/-]', word)
         sz = len(ws)
         if (sz > 1) and (sz <= 3):
-        #
             cntr = 0
             for w in ws:
-            #
-                if ((w not in self.stopwords) and (w not in self.dictionary)) or (w in self.tms):
-                    break
-                cntr += 1
-            #
+                if ((w in self.stopwords) or (w in self.dictionary)) and (w not in self.tms):
+                    cntr += 1
+                else: break
             return (len(ws) == cntr)
-        #
         return False
     ##########################################################
     def finalize(self):
         print("finalizing >>")
-
         if len(self.u_vocab_freq) > 0:
         #
             print(">> u_vocab-freq")
@@ -130,21 +124,17 @@ class Sentencizer:
 
             f = open("un-vocab-sort.utf8", 'w', encoding='utf-8')
             for kv in self.u_vocab_freq:
-            #
                 word = kv[0]
                 ws = re.split('[_/-]', word)
                 sz = len(ws)
                 if (sz == 1) and (kv[1] >= 20):
                     f.write(word + " ; " + str(kv[1]) + "\n")
-            #
             f.close()
             print("<< u_vocab-freq")
         #
 
         if self.prediction.size() > 0:
-        #{
             self.prediction.finalize()
-        #}
         else:
         #{
             print(">> vocab")
@@ -156,20 +146,17 @@ class Sentencizer:
                     continue
 
                 f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
-
             f.close()
             print("<< vocab")
-
+            ##################################################################################
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open("vocab-sort.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
-            #
                 if kv[0] in self.dictionary:
                     continue
 
                 f.write(kv[0] + " ; " + str(kv[1]) + "\n")
-            #
             f.close()
             print("<< vocab-freq")
         #}
