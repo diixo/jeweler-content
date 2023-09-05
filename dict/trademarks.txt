@@ -1,5 +1,3 @@
-android
-google
 samsung
 galaxy
 apple
@@ -130,7 +128,6 @@ bbc
 lifecell
 adobe
 nvidia's
-ubuntu
 logitech
 microsoft's
 hackster
@@ -245,7 +242,6 @@ amd
 catalyst
 jqwidgets
 suzuki
-github
 navi
 duckduckgo
 duckduckgo's

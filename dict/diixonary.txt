@@ -14,6 +14,7 @@ programming
 language
 linux
 windows
+android
 arm
 socs
 architecture
@@ -78,6 +79,9 @@ platform
 choice
 instructions
 source
+debian
+ubuntu
+opensuse
 terminal
 machine
 commands
@@ -91,6 +95,7 @@ cables
 fast
 news
 website
+github
 picture
 contributions
 logo
@@ -311,6 +316,7 @@ words
 tasks
 procedure
 results
+google
 algorithm
 article
 rankings
@@ -11841,3 +11847,9 @@ subtractive
 modulations
 synth
 waveshaping
+rpg
+tracer
+revanced
+e-ink
+deeplearning
+jinja

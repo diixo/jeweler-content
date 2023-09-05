@@ -47,7 +47,6 @@ class Sentencizer:
         self.dictionary = set(sorted(self.dictionary))
 
         # read additional dictionaries
-
         path = Path("./dict/trademarks.txt")
         if path.exists():
             self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
@@ -59,10 +58,10 @@ class Sentencizer:
             self.ignore = set(sorted(self.ignore))
     ##########################################################
 
-    def update(self, line, buildPredict=False):
+    def update(self, str_line: str, buildPredict=False):
         punctuation = "©®-%$!?:,;\'\" @~&()=*_<=>{|}[/]^\\"
 
-        line1 = line.replace(". ", "!")
+        line1 = str_line.replace(". ", "!")
         line1 = re.sub('[!?;,:\[\]\(\)]', "><", line1)
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
         # x.strip().lower() - used as kayer point for tokenize.case_sensitive switching.
@@ -75,9 +74,7 @@ class Sentencizer:
                                 for x in item.split(" ") if (x != '')]
 
             #sentences[i] = word_sentence
-
             tokens = []
-            skip = False
             for w in word_sentence:
             #{
                 if is_word(w, self.stopwords):
@@ -123,13 +120,17 @@ class Sentencizer:
             self.u_vocab_freq = sorted(self.u_vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open("un-vocab-sort.utf8", 'w', encoding='utf-8')
+            fc = open("un-vocab-sort-candidates.utf8", 'w', encoding='utf-8')
             for kv in self.u_vocab_freq:
                 word = kv[0]
                 ws = re.split('[_/-]', word)
                 sz = len(ws)
                 if (sz == 1) and (kv[1] >= 20):
                     f.write(word + " ; " + str(kv[1]) + "\n")
+                if (sz == 2):
+                    fc.write(word + " ; " + str(kv[1]) + "\n")
             f.close()
+            fc.close()
             print("<< u_vocab-freq")
         #
 
