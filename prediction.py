@@ -92,9 +92,9 @@ class Prediction:
       self.trigrams_freq_dict = {}  # freq_dict for trigrams
 
    ##########################################################
-   def predict(self, line):
-      work_line = tokenize(line, self.stopwords)
-      tokenList = str_tokenize(work_line)
+   def predict(self, str_line: str, stopwords = set()):
+      work_str = tokenize(str_line, stopwords)
+      tokenList = str_tokenize(work_str)
         
       ngram = {1:[], 2:[]}
 
@@ -102,7 +102,7 @@ class Prediction:
          ngram[i+1] = list(ngrams(tokenList, i+1))[-1]
    ##########################################################
 
-   def predict_next(self, str_line):
+   def predict_next(self, str_line: str):
       tokenList = str_tokenize(str_line)
       sz = len(tokenList)
 
