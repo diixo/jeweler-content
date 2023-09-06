@@ -177,11 +177,12 @@ class Prediction:
       self.bigrams  = sorted(self.bigrams)
       self.trigrams = sorted(self.trigrams)
 
-      f = open(str_path + "unigrams.utf8", 'w', encoding='utf-8')
+      f = open(str_path + "unigrams-new-sort.utf8", 'w', encoding='utf-8')
       counter1 = 0
       counter_n = 0
       counter_1 = 0
-      for w, v in self.unigrams_freq_dict.items():
+      for w in self.unigrams:
+         v = self.unigrams_freq_dict[w]
          if w[0] not in dictionary:
             f.write(w[0] + "\n")
             counter_n += 1
@@ -189,9 +190,10 @@ class Prediction:
          counter1 += v
       f.close()
 
-      f = open(str_path + "bigrams.utf8", 'w', encoding='utf-8')
+      f = open(str_path + "bigrams-sort.utf8", 'w', encoding='utf-8')
       counter2 = 0
-      for ws, v in self.bigrams_freq_dict.items():
+      for ws in self.bigrams:
+         v = self.bigrams_freq_dict[ws]
          f.write(f"{ws[0]}; {ws[1]}; {str(v)}" + "\n")
          counter2 += v
       f.close()
