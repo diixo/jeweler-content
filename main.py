@@ -44,7 +44,6 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
     fh.close()
     fw.close()
     sentencizer.finalize()
-    return
 
 ###############################################################
 

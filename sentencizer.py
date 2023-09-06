@@ -35,13 +35,18 @@ class Sentencizer:
 
 
     def load_dictionaries(self):
-        diix = Path("./dict/diixonary.txt")
+        rel = "./dict/"
+        diix = Path(rel + "diixonary.txt")
         if diix.exists():
-            self.dictionary.update([line.replace('\n', '') for line in open("./dict/diixonary.txt", 'r', encoding='utf-8').readlines()])
+            self.dictionary.update([line.replace('\n', '') for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
 
-        diix = Path("./dict/dictionary.txt")
+        diix = Path(rel + "dictionary.txt")
         if diix.exists():
-            self.dictionary.update([line.replace('\n', '') for line in open("./dict/dictionary.txt", 'r', encoding='utf-8').readlines()])
+            self.dictionary.update([line.replace('\n', '') for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
+
+        diix = Path(rel + "mistakes-db.txt")
+        if diix.exists():
+            self.dictionary.update([line.replace('\n', '') for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
 
         self.dictionary.update(self.stopwords)
         self.dictionary = set(sorted(self.dictionary))
@@ -49,12 +54,12 @@ class Sentencizer:
         # read additional dictionaries
         path = Path("./dict/trademarks.txt")
         if path.exists():
-            self.tms.update([line.replace('\n', '').lower() for line in open("./dict/trademarks.txt", 'r', encoding='utf-8').readlines()])
+            self.tms.update([line.replace('\n', '').lower() for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
             self.tms = set(sorted(self.tms))
 
         path = Path("./dict/ignore.txt")
         if path.exists():
-            self.ignore.update([line.replace('\n', '').lower() for line in open("./dict/ignore.txt", 'r', encoding='utf-8').readlines()])
+            self.ignore.update([line.replace('\n', '').lower() for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
             self.ignore = set(sorted(self.ignore))
     ##########################################################
     def slice_to_sentences(self, str_line: str):
@@ -170,7 +175,7 @@ class Sentencizer:
             f.close()
             print("<< vocab-freq")
         #}
-        print("<<-- finalizing")
+        print(f"<<-- finalizing [dictionary.sz={len(self.dictionary)}, stopwords.sz={len(self.stopwords)}]")
     ##########################################################
 
     def predict_next(self, line: str):
