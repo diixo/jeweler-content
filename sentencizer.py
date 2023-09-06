@@ -5,7 +5,7 @@ from operator import itemgetter
 from tokenizer import tokenize
 from collections import Counter
 from pathlib import Path
-from prediction import Prediction, splitToList
+from prediction import Prediction
 
 def is_word(word: str, stopwords=set()):
     #word = re.search("[\[\]\}\{=@\*]")
@@ -82,9 +82,8 @@ class Sentencizer:
             #{
                 if is_word(w, self.stopwords):
                     if buildPredict:
-                        ws = splitToList(w, self.stopwords, self.dictionary, self.tms)    # split as word/word/word
-                        if len(ws) > 1: self.prediction.add_tokens(ws)
-                    ##########################################################
+                        self.prediction.add_token(w, self.stopwords, self.dictionary, self.tms)
+                    ###########################################################
                     if (w in self.dictionary) or (self.constructedSize(w) > 0):
                         tokens.append(w)
                         self.vocab.add(w)
@@ -106,6 +105,8 @@ class Sentencizer:
     ##########################################################
 
     def constructedSize(self, word: str) -> int:
+        if word in self.dictionary : return 0
+
         ws = re.split('[/-]', word)
         sz = len(ws)
         if (sz > 1) and (sz <= 3):
@@ -122,7 +123,7 @@ class Sentencizer:
         with Path(str_path) as path:
             if not path.exists(): path.mkdir()
 
-        print("finalizing >>")
+        print("finalizing -->>")
         if len(self.u_vocab_freq) > 0:
         #{
             print(">> u_vocab-freq")
@@ -147,30 +148,29 @@ class Sentencizer:
             self.prediction.finalize(self.dictionary)
         else:
         #{
-            print(">> vocab")
+            print(">> vocab...")
             self.vocab = sorted(self.vocab)
 
             f = open(str_path + "vocab-new.utf8", 'w', encoding='utf-8')
             for w in self.vocab:
                 if w in self.dictionary:
                     continue
-
                 f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
             f.close()
             print("<< vocab")
             ##################################################################################
+            print(">> vocab-freq...")
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
 
             f = open(str_path + "vocab-new-sort.utf8", 'w', encoding='utf-8')
             for kv in self.vocab_freq:
                 if kv[0] in self.dictionary:
                     continue
-
                 f.write(kv[0] + " ; " + str(kv[1]) + "\n")
             f.close()
             print("<< vocab-freq")
         #}
-        print("<< finalizing")
+        print("<<-- finalizing")
     ##########################################################
 
     def predict_next(self, line: str):

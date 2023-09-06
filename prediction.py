@@ -18,17 +18,6 @@ def str_tokenize(str_line: str, stopwords = None):
          return word_list
    return []
 
-def splitToList(word: str, stopwords=set(), dictionary=set(), tms=set()) -> list:
-   ws = re.split('[/]', word)
-   sz = len(ws)
-   if (sz > 1) and (sz <= 3):
-      cntr = 0
-      for w in ws:
-            if (w not in stopwords) and (w in dictionary) and (w not in tms):
-               cntr += 1
-            else: break
-      if (sz == cntr): return ws
-   return []
 ########################################################################
 def predict_next_word_smoothed(last_word, probDist):
    next_word = {}
@@ -149,6 +138,21 @@ class Prediction:
                ngram_freq_dict[tpl] = 1
    ##########################################################
 
+   def add_token(self, word: str, stopwords=set(), dictionary=set(), tms=set()):
+      if word in dictionary : return
+
+      ws = re.split('[/]', word)
+      sz = len(ws)
+      if (sz > 1) and (sz <= 3):
+         cntr = 0
+         for w in ws:
+               if (w not in stopwords) and (w in dictionary) and (w not in tms):
+                  cntr += 1
+               else: break
+         if (sz == cntr):
+            self.add_tokens(ws)
+
+   ##########################################################
    def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)
       ngrams_2 = ngrams(tokens, 2)
@@ -163,6 +167,8 @@ class Prediction:
       self.trigrams.update(ngrams_3)  # unique inserting
 
    def finalize(self, dictionary = set()):
+      if self.size() == 0: return
+
       str_path = "./__prediction/"
       with Path(str_path) as path:
          if not path.exists(): path.mkdir()
@@ -171,24 +177,27 @@ class Prediction:
       self.bigrams  = sorted(self.bigrams)
       self.trigrams = sorted(self.trigrams)
 
-      print(">> unigrams, bigrams, trigrams: ({}), ({}), ({})".format(len(self.unigrams), len(self.bigrams), len(self.trigrams)))
-
       f = open(str_path + "unigrams.utf8", 'w', encoding='utf-8')
-      for w in self.unigrams:
+      counter1 = 0
+      counter_n = 0
+      counter_1 = 0
+      for w, v in self.unigrams_freq_dict.items():
          if w[0] not in dictionary:
             f.write(w[0] + "\n")
+            counter_n += 1
+            counter_1 += v
+         counter1 += v
       f.close()
 
       f = open(str_path + "bigrams.utf8", 'w', encoding='utf-8')
-      for ws, k in self.bigrams_freq_dict.items():
-         f.write(f"{ws[0]}; {ws[1]}; {str(k)}" + "\n")
+      counter2 = 0
+      for ws, v in self.bigrams_freq_dict.items():
+         f.write(f"{ws[0]}; {ws[1]}; {str(v)}" + "\n")
+         counter2 += v
       f.close()
 
-      print("<< unigrams_fr_dict, bigrams_fr_dict, trigrams_fr_dict: ({}), ({}), ({})".format(
-         len(self.unigrams_freq_dict), len(self.bigrams_freq_dict), len(self.trigrams_freq_dict)))
-##########################################################
-def main():
-   pass    
+      print(">> unigrams, bigrams, trigrams: ({})={}, ({})={}, ({})".format(
+         len(self.unigrams), counter1, len(self.bigrams), counter2, len(self.trigrams)))
 
-if __name__ == "__main__":
-   main()
+      print(f"<< unigrams_fr_dict, candidates new: ({counter_n})={counter_1}")
+##########################################################
