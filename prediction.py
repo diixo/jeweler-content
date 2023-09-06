@@ -201,5 +201,5 @@ class Prediction:
       print(">> unigrams, bigrams, trigrams: ({})={}, ({})={}, ({})".format(
          len(self.unigrams), counter1, len(self.bigrams), counter2, len(self.trigrams)))
 
-      print(f"<< unigrams_fr_dict, candidates new: ({counter_n})={counter_1}")
+      print(f"<< unigrams, candidates new: ({counter_n})={counter_1}")
 ##########################################################
