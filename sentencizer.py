@@ -51,15 +51,15 @@ class Sentencizer:
         self.dictionary.update(self.stopwords)
         self.dictionary = set(sorted(self.dictionary))
 
-        # read additional dictionaries
+        # load additional dictionaries
         path = Path("./dict/trademarks.txt")
         if path.exists():
-            self.tms.update([line.replace('\n', '').lower() for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
+            self.tms.update([line.replace('\n', '').lower() for line in open(rel + path.name, 'r', encoding='utf-8').readlines()])
             self.tms = set(sorted(self.tms))
 
         path = Path("./dict/ignore.txt")
         if path.exists():
-            self.ignore.update([line.replace('\n', '').lower() for line in open(rel + diix.name, 'r', encoding='utf-8').readlines()])
+            self.ignore.update([line.replace('\n', '').lower() for line in open(rel + path.name, 'r', encoding='utf-8').readlines()])
             self.ignore = set(sorted(self.ignore))
     ##########################################################
     def slice_to_sentences(self, str_line: str):
@@ -81,7 +81,6 @@ class Sentencizer:
             words_list = [x.strip(punctuation) if x.strip(punctuation) in self.dictionary else x.strip(string.punctuation) 
                                 for x in item.split(" ") if (x != '')]
 
-            #sentences[i] = words_list
             tokens = []
             for w in words_list:
             #{
