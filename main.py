@@ -6,7 +6,7 @@ from tokenizer import tokenize
 ###############################################################
 sentencizer = Sentencizer()
 
-def analyze(filePath, lines_indent = -1, buildPredict = False):
+def analyze(filePath, line_read = 1, buildPredict = False):
     global sentencizer
 
     path = Path(filePath)
@@ -22,9 +22,10 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
     #{
         line = fh.readline()
         if not line:
+            print(count)
             break
 
-        if count >= lines_indent:
+        if count >= line_read:
         #{
             line = tokenize(line, sentencizer.stopwords, case_sensitive=True)
 
@@ -37,7 +38,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
                     for sent in result:
                         fw.write(" ".join([w for w in sent]))
                     fw.write(";" + str(count) + '\n')
-            print(count)
+            if (count % 100 == 0) : print(count)
         #}
         count += 1
     #}
