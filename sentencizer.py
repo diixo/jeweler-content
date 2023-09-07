@@ -88,10 +88,23 @@ class Sentencizer:
                     if buildPredict:
                         self.prediction.add_token(w, self.stopwords, self.dictionary, self.tms)
                     ###########################################################
-                    if (w in self.dictionary) or (self.constructedSize(w) > 0):
+                    ws = re.split('[/]', w)
+                    if (w in self.dictionary) or self.is_constructed(w):
                         tokens.append(w)
                         self.vocab.add(w)
                         self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                    elif len(ws) > 1:
+                        cntr = 0
+                        for wi in ws:
+                            if (wi in self.dictionary) or self.is_constructed(wi):
+                                self.vocab.add(wi)
+                                self.vocab_freq[wi] = self.vocab_freq.get(wi, 0) + 1
+                                cntr += 1
+
+                        if cntr == len(ws):
+                            tokens.append(w)
+                            if buildPredict: self.prediction.add_token(w)
+
                     else:
                         if w in self.tms:
                             if not buildPredict: tokens.append(w) 
@@ -108,10 +121,10 @@ class Sentencizer:
         return sentences
     ##########################################################
 
-    def constructedSize(self, word: str) -> int:
-        if word in self.dictionary : return 0
+    def is_constructed(self, word: str) -> bool:
+        if word in self.dictionary : return False
 
-        ws = re.split('[/-]', word)
+        ws = re.split('[-]', word)
         sz = len(ws)
         if (sz > 1) and (sz <= 3):
             cntr = 0
@@ -119,8 +132,8 @@ class Sentencizer:
                 if ((w in self.stopwords) or (w in self.dictionary)) and (w not in self.tms):
                     cntr += 1
                 else: break
-            if (sz == cntr): return sz
-        return 0
+            return (sz == cntr)
+        return False
     ##########################################################
     def finalize(self):
         str_path = "./__build/"
