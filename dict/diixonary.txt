@@ -11881,3 +11881,16 @@ sub-manifold
 dbscan
 gradient-based
 binning
+performers
+randomizer
+locker
+ubiquity
+oracle's
+beginnings
+digitaltransformation
+featureengineering
+designthinking
+valueengineering
+userscript
+trackpoint
+elliptic
