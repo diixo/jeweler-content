@@ -24,10 +24,8 @@ class Sentencizer:
         self.vocab_freq = {}
         self.u_vocab_freq = {}
         self.prediction = Prediction()
-        s = set()
-        s.update([line.replace('\n', '') for line in open(stopwordsPath, 'r', encoding='utf-8').readlines()])
-        self.stopwords = sorted(s)
-        
+
+        self.stopwords  = set()
         self.tms        = set()
         self.ignore     = set()
         self.dictionary = set()
@@ -35,6 +33,12 @@ class Sentencizer:
 
 
     def load_dictionaries(self):
+        diix = Path("stopwords.txt")
+        if diix.exists():
+            self.stopwords = sorted(
+                [line.replace('\n', '') for line in open(diix.name, 'r', encoding='utf-8').readlines()])
+            self.stopwords = set(self.stopwords)
+
         rel = "./dict/"
         diix = Path(rel + "diixonary.txt")
         if diix.exists():
@@ -85,26 +89,22 @@ class Sentencizer:
             for w in words_list:
             #{
                 if is_word(w, self.stopwords):
-                    if buildPredict:
-                        self.prediction.add_token(w, self.stopwords, self.dictionary, self.tms)
-                    ###########################################################
                     ws = re.split('[/]', w)
-                    if (w in self.dictionary) or self.is_constructed(w):
+                    cntr = 0
+                    for wi in ws:
+                        if (wi in self.dictionary) or self.is_constructed(wi):
+                            self.vocab.add(wi)
+                            self.vocab_freq[wi] = self.vocab_freq.get(wi, 0) + 1
+                            cntr += 1
+
+                    if cntr == len(ws):
+                        if cntr > 1:
+                            #добавляем кандидата, который не был добавлен целиком, формат: word/word/...
+                            self.vocab.add(w)
+                            self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
                         tokens.append(w)
-                        self.vocab.add(w)
-                        self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
-                    elif len(ws) > 1:
-                        cntr = 0
-                        for wi in ws:
-                            if (wi in self.dictionary) or self.is_constructed(wi):
-                                self.vocab.add(wi)
-                                self.vocab_freq[wi] = self.vocab_freq.get(wi, 0) + 1
-                                cntr += 1
-
-                        if cntr == len(ws):
-                            tokens.append(w)
-                            if buildPredict: self.prediction.add_token(w)
-
+                        if buildPredict:
+                            self.prediction.add_token(w, self.stopwords, self.dictionary, self.tms)
                     else:
                         if w in self.tms:
                             if not buildPredict: tokens.append(w) 
@@ -163,7 +163,7 @@ class Sentencizer:
 
         if self.prediction.size() > 0:
             self.prediction.finalize(self.dictionary)
-        else:
+        if True:
         #{
             print(">> vocab...")
             self.vocab = sorted(self.vocab)

@@ -184,7 +184,7 @@ class Prediction:
       for w in self.unigrams:
          v = self.unigrams_freq_dict[w]
          if w[0] not in dictionary:
-            f.write(w[0] + "\n")
+            f.write(f"{w[0]} ; {v}\n")
             counter_n += 1
             counter_1 += v
          counter1 += v
