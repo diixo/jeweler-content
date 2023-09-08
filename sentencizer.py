@@ -17,10 +17,10 @@ def is_word(word: str, stopwords=set()):
 
 class Sentencizer:
 
-    def __init__(self, stopwordsPath="stopwords.txt"):
-        self.sentences = []
-        self.stopwords = set()
-        self.vocab = set()
+    def __init__(self):
+        self.sentences  = []
+        self.stopwords  = set()
+        self.vocab      = set()
         self.vocab_freq = {}
         self.u_vocab_freq = {}
         self.prediction = Prediction()
