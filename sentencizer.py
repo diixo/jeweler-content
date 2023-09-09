@@ -86,6 +86,7 @@ class Sentencizer:
                                 for x in item.split(" ") if (x != '')]
 
             tokens = []
+            pred_tokens = []
             for w in words_list:
             #{
                 if is_word(w, self.stopwords):
@@ -104,6 +105,7 @@ class Sentencizer:
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
                             if buildPredict: self.prediction.add_tokens(re.split('[/]', w))
                         tokens.append(w)
+                        if buildPredict: pred_tokens.append(w)
                     else:
                         if len(ws) > 0 and buildPredict:    # if mix words: known/known/unknown
                             for wi in ws:
@@ -111,13 +113,13 @@ class Sentencizer:
                                     self.prediction.add_word(wi)
 
                         if w in self.tms:
-                            if not buildPredict: tokens.append(w) 
+                            tokens.append(w)
                         else:
                             if (w not in self.ignore):
                                 self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
             #}
             if buildPredict:
-                self.prediction.add_tokens(tokens)
+                self.prediction.add_tokens(pred_tokens)
 
             tokens.append(";")
             sentences[i] = tokens
