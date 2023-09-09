@@ -6,7 +6,7 @@ from tokenizer import tokenize
 ###############################################################
 sentencizer = Sentencizer()
 
-def analyze(filePath, lines_indent = -1, buildPredict = False):
+def analyze(filePath, line_read = 1, buildPredict = False):
     global sentencizer
 
     path = Path(filePath)
@@ -17,47 +17,47 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
     fh = open(filePath, 'r', encoding='utf-8')
     fw = open(newName,  'w', encoding='utf-8')
 
-    count = 0
+    count = 1
     while True:
     #{
         line = fh.readline()
         if not line:
+            print(count)
             break
 
-        if count > lines_indent:
+        if count >= line_read:
         #{
             line = tokenize(line, sentencizer.stopwords, case_sensitive=True)
 
             result = sentencizer.update(line, buildPredict)
 
             if len(line) > 0:
-                if True:
-                        fw.write(line + "\n")
+                if False:
+                    fw.write(line + " ;" + str(count) + "\n")
                 else:
                     for sent in result:
-                        fw.write(" ".join([w for w in sent]) + " ")
-                    fw.write('\n')
-
-            print(count)
+                        fw.write(" ".join([w for w in sent]))
+                    fw.write(";" + str(count) + '\n')
+            if (count % 100 == 0) : print(count)
         #}
         count += 1
     #}
     fh.close()
     fw.close()
     sentencizer.finalize()
-    return
 
 ###############################################################
 
 def main():
-    #analyze("data/jeweler-content.txt", 23)
+    #analyze("data/jeweler-content.txt", 24, buildPredict=False)
 
-    #analyze("data/train-nn.txt")
-    analyze("E:/jeweler_content.txt", 23, buildPredict=True)
+    analyze("data/dataset.txt", buildPredict=True)
 
+    #analyze("E:/jeweler_content.txt", 23, buildPredict=False)
+    #analyze("E:/jeweler_content-2511937.txt", 23, buildPredict=False)
+
+    #analyze("data/train-nn.txt", buildPredict=True)
     #phrase, result = sentencizer.predict_next("text clustering")
-
-    #analyze("data/dataset.txt")
     #phrase, result = sentencizer.predict_next("data science")
 
 ###############################################################

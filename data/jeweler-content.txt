@@ -20,7 +20,7 @@
 |elastic_index|int(11)|No|0
 |created_at|timestamp|No|current_timestamp()
 |updated_at|timestamp|No|0000-00-00 00:00:00
-== Dumping data for table jeweler_content
+== 3d-icon/GLOSV Dumping data for table jeweler_content
 
 0000-00-00 00:00:00 $0000.00,00
 |Decisions Part 1: Creating an AI-driven Decision Factory - DataScienceCentral.com|#DataScience #AI #ML #DigitalTransformation #IOT #EdgeAnalytics #DataMonetization #DataEconomics #Nanoeconomics #Economics #DataManagement #DataEngineering #FeatureEngineering #DesignThinking #DataProducts #DataMesh #ValueEngineering #BigData #BigDataMBA #DataLiteracy

@@ -8,3 +8,5 @@ dist/
 *eggs*
 *idea
 *.utf8
+__build/
+__prediction/

@@ -61,6 +61,7 @@ as
 aside
 assuredly
 at
+atleast
 away
 back
 backward
@@ -84,6 +85,7 @@ but
 by
 can
 can't
+cann't
 cannot
 cant
 certainly
@@ -105,8 +107,10 @@ didn't
 do
 does
 doesn't
+doesnt
 doing
 don't
+don'ts
 done
 dont
 doubtlessly
@@ -119,6 +123,7 @@ during
 each
 each-other
 easily
+eg
 either
 else
 else's
@@ -216,6 +221,7 @@ into
 inward
 is
 isn't
+isnt
 it
 it'd
 it'l
@@ -292,6 +298,7 @@ normally
 not
 nothing
 now
+now's
 nowaday
 nowaday's
 nowadays
@@ -340,6 +347,7 @@ preferably
 presently
 principally
 probably
+purportedly
 rather
 really
 reasonably
@@ -350,6 +358,7 @@ regardless
 regularly
 related
 relatively
+reputedly
 respectively
 roughly
 round
@@ -429,6 +438,7 @@ thereout
 theres
 thereto
 thereupon
+therewith
 these
 they
 they'd
@@ -480,7 +490,6 @@ we'll
 we're
 we've
 welcome
-weld
 were
 weren't
 what
@@ -489,6 +498,8 @@ what're
 what's
 whatever
 whatever's
+whatfor
+whatis
 whats
 whatsoever
 when
@@ -506,6 +517,7 @@ wherefor
 wherefore
 wherefrom
 wherein
+whereis
 whereon
 wheresoever
 whereto
@@ -569,6 +581,7 @@ oct
 aug
 apr
 sep
+sept
 monday
 tuesday
 wednesday
@@ -590,3 +603,7 @@ november
 december
 ua
 2nd
+weekend
+firstly
+thirdly
+secondly
