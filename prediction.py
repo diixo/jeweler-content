@@ -183,8 +183,8 @@ class Prediction:
          counter2 += v
       f.close()
 
-      print(">> unigrams, bigrams, trigrams: ({})={}, ({})={}, ({})".format(
+      print(">> unigrams, bigrams, trigrams: sz={}({}), sz={}({}), sz={}".format(
          len(self.unigrams), counter1, len(self.bigrams), counter2, len(self.trigrams)))
 
-      print(f"<< unigrams, candidates new: ({counter_n})={counter_1}")
+      print(f"<< unigrams, candidates new.sz={counter_n}({counter_1})")
 ##########################################################

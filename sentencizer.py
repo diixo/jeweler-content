@@ -168,12 +168,14 @@ class Sentencizer:
             self.vocab = sorted(self.vocab)
 
             f = open(str_path + "vocab-new.utf8", 'w', encoding='utf-8')
+            cnt = 0
             for w in self.vocab:
                 if w in self.dictionary:
                     continue
+                cnt += 1
                 f.write(w + " ; " + str(self.vocab_freq[w]) + "\n")
             f.close()
-            print("<< vocab")
+            print(f"<< vocab, candidates new.sz={cnt} (all.sz={len(self.vocab)})")
             ##################################################################################
             print(">> vocab-freq...")
             self.vocab_freq = sorted(self.vocab_freq.items(), key=itemgetter(1), reverse=True)
