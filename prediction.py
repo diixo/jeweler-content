@@ -137,6 +137,10 @@ class Prediction:
    def size(self):
       return len(self.unigrams)
 
+   def add_word(self, word: str):
+      ngrams_1 = ngrams([word], 1)
+      add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
+      self.unigrams.update(ngrams_1)  # unique inserting
 
    def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)

@@ -99,14 +99,19 @@ class Sentencizer:
 
                     if cntr == len(ws):
                         if cntr > 1:
-                            #добавляем кандидата, который не был добавлен целиком, формат: word/word/...
+                            #add candidate, that was not added entire before, format: known/known/known
                             self.vocab.add(w)
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
                             if buildPredict: self.prediction.add_tokens(re.split('[/]', w))
                         tokens.append(w)
                     else:
+                        if len(ws) > 0: # if mix words: known/known/unknown
+                            for wi in ws:
+                                if (wi in self.dictionary) or self.is_constructed(wi):
+                                    self.prediction.add_word(wi)
+
                         if w in self.tms:
-                            tokens.append(w) 
+                            if not buildPredict: tokens.append(w) 
                         else:
                             if (w not in self.ignore):
                                 self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
