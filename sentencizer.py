@@ -106,7 +106,7 @@ class Sentencizer:
                         tokens.append(w)
                     else:
                         if w in self.tms:
-                            if not buildPredict: tokens.append(w) 
+                            tokens.append(w) 
                         else:
                             if (w not in self.ignore):
                                 self.u_vocab_freq[w] = self.u_vocab_freq.get(w, 0) + 1
