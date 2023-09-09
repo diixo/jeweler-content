@@ -36,8 +36,8 @@ def analyze(filePath, line_read = 1, buildPredict = False):
                     fw.write(line + " ;" + str(count) + "\n")
                 else:
                     for sent in result:
-                        fw.write(" ".join([w for w in sent]))
-                    fw.write(";" + str(count) + '\n')
+                        fw.write(" ".join([w for w in sent]) + "; ")
+                    fw.write(str(count) + '\n')
             if (count % 100 == 0) : print(count)
         #}
         count += 1

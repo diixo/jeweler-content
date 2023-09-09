@@ -123,7 +123,6 @@ class Sentencizer:
             if buildPredict:
                 self.prediction.add_tokens(pred_tokens)
 
-            tokens.append(";")
             sentences[i] = tokens
         #}
         return sentences
