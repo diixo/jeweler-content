@@ -102,9 +102,8 @@ class Sentencizer:
                             #добавляем кандидата, который не был добавлен целиком, формат: word/word/...
                             self.vocab.add(w)
                             self.vocab_freq[w] = self.vocab_freq.get(w, 0) + 1
+                            if buildPredict: self.prediction.add_tokens(re.split('[/]', w))
                         tokens.append(w)
-                        if buildPredict:
-                            self.prediction.add_token(w, self.stopwords, self.dictionary, self.tms)
                     else:
                         if w in self.tms:
                             if not buildPredict: tokens.append(w) 

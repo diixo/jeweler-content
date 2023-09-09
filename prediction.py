@@ -9,6 +9,13 @@ def ngrams(content, n):
    ngramList = [tuple(content[i:i+n]) for i in range(len(content)-n+1)]
    return ngramList
 ########################################################################
+def add_ngrams_freqDict(ngram_freq_dict, ngramList):
+   for tpl in ngramList:
+      if tpl in ngram_freq_dict:
+            ngram_freq_dict[tpl] += 1
+      else:
+            ngram_freq_dict[tpl] = 1
+##########################################################
 def str_tokenize(str_line: str, stopwords = None):
    word_list = re.findall("(\w[\w'\./&-]*\w|\w)", str_line)
    if word_list:
@@ -130,37 +137,15 @@ class Prediction:
    def size(self):
       return len(self.unigrams)
 
-   def add_ngrams_freqDict(self, ngram_freq_dict, ngramList):
-      for tpl in ngramList:
-         if tpl in ngram_freq_dict:
-               ngram_freq_dict[tpl] += 1
-         else:
-               ngram_freq_dict[tpl] = 1
-   ##########################################################
 
-   def add_token(self, word: str, stopwords=set(), dictionary=set(), tms=set()):
-      if word in dictionary : return
-
-      ws = re.split('[/]', word)
-      sz = len(ws)
-      if (sz > 1) and (sz <= 3):
-         cntr = 0
-         for w in ws:
-               if (w not in stopwords) and (w in dictionary) and (w not in tms):
-                  cntr += 1
-               else: break
-         if (sz == cntr):
-            self.add_tokens(ws)
-
-   ##########################################################
    def add_tokens(self, tokens: list):
       ngrams_1 = ngrams(tokens, 1)
       ngrams_2 = ngrams(tokens, 2)
       ngrams_3 = ngrams(tokens, 3)
 
-      self.add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
-      self.add_ngrams_freqDict(self.bigrams_freq_dict,  ngrams_2)
-      self.add_ngrams_freqDict(self.trigrams_freq_dict, ngrams_3)
+      add_ngrams_freqDict(self.unigrams_freq_dict, ngrams_1)
+      add_ngrams_freqDict(self.bigrams_freq_dict,  ngrams_2)
+      add_ngrams_freqDict(self.trigrams_freq_dict, ngrams_3)
 
       self.unigrams.update(ngrams_1)  # unique inserting
       self.bigrams.update(ngrams_2)   # unique inserting
