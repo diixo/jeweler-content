@@ -105,7 +105,7 @@ class Sentencizer:
                             if buildPredict: self.prediction.add_tokens(re.split('[/]', w))
                         tokens.append(w)
                     else:
-                        if len(ws) > 0: # if mix words: known/known/unknown
+                        if len(ws) > 0 and buildPredict:    # if mix words: known/known/unknown
                             for wi in ws:
                                 if (wi in self.dictionary) or self.is_constructed(wi):
                                     self.prediction.add_word(wi)
