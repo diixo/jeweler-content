@@ -53,8 +53,14 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 
 ###############################################################
 
+def extract_cyr(string: str):
+    result = re.sub(r'[^А-Яа-яЁё]', ' ', 'Привет, мир, хэllo!')
+    result = result.split()
+    print(result)
+    print(re.findall(r'[А-Яа-яЁё]+', 'Привет, миrldмир!'))
+
+
 def main():
-    #print(re.findall(r'[А-Яа-яЁё]+', 'Привет, мир!'))
 
     #analyze("data/jeweler-content.txt", 23)
 
