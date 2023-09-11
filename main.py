@@ -2,7 +2,7 @@
 from pathlib import Path
 from sentencizer import Sentencizer
 from tokenizer import tokenize
-
+import re
 ###############################################################
 sentencizer = Sentencizer()
 
@@ -54,6 +54,8 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
 ###############################################################
 
 def main():
+    #print(re.findall(r'[А-Яа-яЁё]+', 'Привет, мир!'))
+
     #analyze("data/jeweler-content.txt", 23)
 
     #analyze("data/train-nn.txt")
