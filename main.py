@@ -22,6 +22,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
     #{
         line = fh.readline()
         if not line:
+            print(count)
             break
 
         if count >= lines_indent:
@@ -41,7 +42,7 @@ def analyze(filePath, lines_indent = -1, buildPredict = False):
                     #
                     fw.write(";" + str(count) + '\n')
             #
-            print(count)
+            if count % 100 == 0: print(count)
         #}
         count += 1
     #}
@@ -56,7 +57,7 @@ def main():
     #analyze("data/jeweler-content.txt", 23)
 
     #analyze("data/train-nn.txt")
-    analyze("E:/jeweler_content-2511937.txt")
+    analyze("E:/jeweler_content-2569456.txt")
     #phrase, result = sentencizer.predict_next("text clustering")
 
     #analyze("data/dataset.txt")
