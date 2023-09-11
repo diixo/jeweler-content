@@ -115,8 +115,9 @@ class Sentencizer:
         sentences = [x.strip().lower() for x in line1.split("><") if x !='']
 
         for i, item in enumerate(sentences):
-        #{    
-            word_sentence = [x.strip(punctuation) for x in item.split(" ") if (x != '')]
+        #{
+            #word_sentence = [x.strip(punctuation) for x in item.split(" ") if (x != '')]
+            word_sentence = re.findall(r'[А-Яа-яЁёЄєІіЇїҐґ\'-]+', item.lower())
 
             tokens = []
             for w in word_sentence:
