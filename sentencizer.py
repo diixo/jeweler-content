@@ -19,7 +19,7 @@ def predict_next_word_smoothed(last_word, probDist):
         if k[0] == last_word[0]:
             next_word[k[1]] = probDist[k]
     k = Counter(next_word)
-    high = k.most_common(1) 
+    high = k.most_common(1)
     return high[0]
 ########################################################################
 def predict_next_3_words_smoothed(token, probDist):
@@ -30,7 +30,7 @@ def predict_next_3_words_smoothed(token, probDist):
         if i[0] == token:
             next_word[i[1]] = probDist[i]
     k = Counter(next_word)
-    high = k.most_common(2) 
+    high = k.most_common(2)
     w1a = high[0]
     w1b = high[1]
     w2a = predict_next_word_smoothed(w1a, probDist)
@@ -51,7 +51,7 @@ def predict_next_word(last_word, probDist):
         if k[0:2] == last_word:
             next_word[k[2]] = probDist[k]
     k = Counter(next_word)
-    high = k.most_common(1) 
+    high = k.most_common(1)
     return high[0]
 ########################################################################
 def predict_next_3_words(token, probDist):
