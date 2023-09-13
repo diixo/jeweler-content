@@ -6,6 +6,9 @@ import re
 # real number:
 # re.search('[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?', str)
 
+def is_digit(word: str):
+    return False
+
 def is_digit_inside(str):
     if re.search('(?<![A-Za-z0-9\$])[-+\$]*(?:\d+[%]*(?:\.,:\d*[%]*)?|\.,:\d+[%]*)(?![^\ ,!?])', str) is None:
         return False
@@ -90,8 +93,7 @@ def str_tokenize_nltk(s: str):
 ##########################################
 def str_tokenize(s: str):
     s = re.findall("(\w[\w'\.&-]*\w|\w)", s)
-    if s:
-        return s
+    if s: return s
     return []
 ##########################################
 
