@@ -7,7 +7,8 @@ import re
 # re.search('[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?', str)
 
 def is_digit(word: str):
-    return False
+    ss = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[ %\"\'\)]*', "", word)
+    return not ss
 
 def is_digit_inside(str):
     if re.search('(?<![A-Za-z0-9\$])[-+\$]*(?:\d+[%]*(?:\.,:\d*[%]*)?|\.,:\d+[%]*)(?![^\ ,!?])', str) is None:
@@ -99,6 +100,13 @@ def str_tokenize(s: str):
 
 if __name__ == "__main__":
 
-    s = "John's mom went there, but he wasn't Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+    s = "John's mom went there, but he wasn't c++ Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
     list_0 = str_tokenize_nltk(s)
     list_1 = str_tokenize(s)
+    print(list_0)
+    print(list_1)
+
+    d_test = [ "160", "160)", "160.0", "+160", "+160.0", "$0.2%", "$.225%", "$.225%", "$.225%", "$.225%%", "$+.225%", "$,225%", "$:225%", "$+55%%%" ]
+
+    for i in d_test:
+        print(is_digit(i))
