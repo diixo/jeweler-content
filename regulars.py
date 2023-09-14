@@ -7,7 +7,7 @@ import re
 # re.search('[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?', str)
 
 def is_digit(word: str):
-    ss = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[ %\"\'\)]*', "", word)
+    ss = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[ %\"\'\)\+]*', "", word)
     return not ss
 
 def is_digit_inside(str):
@@ -109,4 +109,4 @@ if __name__ == "__main__":
 
     d_test = [ "160", "160)", "160.0", "+160", "+160.0", "$0.2%", "$.225%", "$.225%", "$.225%", "$.225%%", "$+.225%", "$,225%", "$:225%", "$+55%%%" ]
 
-    #for i in d_test: print(is_digit(i))
+    for i in d_test: print(is_digit(i))
