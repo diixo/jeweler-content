@@ -93,14 +93,14 @@ def str_tokenize_nltk(s: str):
     return
 ##########################################
 def str_tokenize(s: str):
-    s = re.findall("(\w[\w'\.&-]*\w|\w\+*)", s)
+    s = re.findall("(\w[\w'\.&-]*\w|\w\+*#?)", s)
     if s: return s
     return []
 ##########################################
 
 if __name__ == "__main__":
 
-    s = "John's mom went there, but he wasn't c++, Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+    s = "John's mom went there, but he wasn't c++ c#, Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
     list_0 = str_tokenize_nltk(s)
     list_1 = str_tokenize(s)
     print(s)
