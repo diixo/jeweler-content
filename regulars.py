@@ -6,6 +6,10 @@ import re
 # real number:
 # re.search('[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?', str)
 
+def is_digit(word: str):
+    ss = re.sub(r'[$]?[-+]?[\d]*[.,\:]?[\d]+[ %\"\'\)\+]*', "", word)
+    return not ss
+
 def is_digit_inside(str):
     if re.search('(?<![A-Za-z0-9\$])[-+\$]*(?:\d+[%]*(?:\.,:\d*[%]*)?|\.,:\d+[%]*)(?![^\ ,!?])', str) is None:
         return False
@@ -82,19 +86,29 @@ def test():
 #test()
 ##########################################
 #nltk-version
-def word_tokenize_all():
-    s = "John's mom went there, but he wasn't Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+def str_tokenize_nltk(s: str):
     s = re.findall("(\w[\w'\.&-]*\w|\w|[\'%:!;,&\$\?\./])", s) # nltk-version
     if s:
         print(s)
     return
 ##########################################
-def word_tokenize():
-    s = "John's mom went there, but he wasn't Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
-    s = re.findall("(\w[\w'\.&-]*\w|\w)", s)
-    if s:
-        return s
+def str_tokenize(s: str):
+    s = re.findall("(\.?\w[\w'\.&-]*\w|\w\+*#?)", s)
+    if s: return s
     return []
 ##########################################
-#word_tokenize_all()
-#word_tokenize()
+
+if __name__ == "__main__":
+
+    d_test = [ "160", "160)", "160.0", "+160", "+160.0", "$0.2%", "$.225%", "$.225%", 
+                "$.225%", "$.225%%", "$+.225%", "$,225%", "$:225%", "$+55%%%" ]
+    for i in d_test: print(is_digit(i))
+    ################################################################################
+
+    s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+    list_0 = str_tokenize_nltk(s)
+    list_1 = str_tokenize(s)
+    print(s)
+    print(list_0)
+    print(list_1)
+

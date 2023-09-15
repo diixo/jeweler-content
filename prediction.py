@@ -2,6 +2,7 @@ import re
 from collections import Counter
 from tokenizer import tokenize
 from pathlib import Path
+import regulars as regulars
 
 ########################################################################
 # nltk.ngrams
@@ -17,7 +18,7 @@ def add_ngrams_freqDict(ngram_freq_dict, ngramList):
             ngram_freq_dict[tpl] = 1
 ##########################################################
 def str_tokenize(str_line: str, stopwords = None):
-   word_list = re.findall("(\w[\w'\./&-]*\w|\w)", str_line)
+   word_list = regulars.str_tokenize(str_line)
    if word_list:
       if stopwords:
          return [w for w in word_list if w not in stopwords]
