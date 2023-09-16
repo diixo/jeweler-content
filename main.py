@@ -22,7 +22,7 @@ def analyze(filePath, line_read = 1, buildPredict = False):
     #{
         line = fh.readline()
         if not line:
-            print(count)
+            print(f"<<-- done: {count}")
             break
 
         if count >= line_read:
@@ -38,7 +38,7 @@ def analyze(filePath, line_read = 1, buildPredict = False):
                     for sent in result:
                         fw.write(" ".join([w for w in sent]))
                     fw.write(";" + str(count) + '\n')
-            if (count % 100 == 0) : print(count)
+            if (count % 100 == 0) : print(f"...on: {count}")
         #}
         count += 1
     #}
