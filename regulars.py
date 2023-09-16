@@ -18,6 +18,15 @@ def is_digit_inside(str):
     return re.search('(?<![A-Za-z.])[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?!\d\w)', str)
     return re.search('(?<!\d[A-Za-z])[-+$ ]?(?:\d+(?:\.\:\d*)?|\.\:\,\d+)[$%]*(?![A-Za-z\-])', str)
 ##########################################
+
+def extract_hostname():
+    url = "https://www.codingdeeply.com/get-domain-from-url-in-python/"
+
+    pattern = r"(?P<domain>[\w\-]+\.+[\w\-]+)"
+    match = re.search(pattern, url)
+    domain = match.group("domain")
+    print(domain)
+
 def test():
 
     ss = "$0.2%"
