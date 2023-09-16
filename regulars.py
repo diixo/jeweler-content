@@ -105,7 +105,7 @@ if __name__ == "__main__":
     for i in d_test: print(is_digit(i))
     ################################################################################
 
-    s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+    s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A, i_t at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
     list_0 = str_tokenize_nltk(s)
     list_1 = str_tokenize(s)
     print(s)
