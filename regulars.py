@@ -97,11 +97,10 @@ def test():
 #nltk-version
 def str_tokenize_nltk(s: str):
     s = re.findall("(\w[\w'\.&-]*\w|\w|[\'%:!;,&\$\?\./])", s) # nltk-version
-    if s:
-        print(s)
-    return
+    if s: return s
+    return []
 ##########################################
-def str_tokenize(s: str):
+def str_tokenize_words(s: str):
     s = re.findall("(\.?\w[\w'\.&-]*\w|\w\+*#?)", s)
     if s: return s
     return []
@@ -116,7 +115,7 @@ if __name__ == "__main__":
 
     s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A, i_t at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
     list_0 = str_tokenize_nltk(s)
-    list_1 = str_tokenize(s)
+    list_1 = str_tokenize_words(s)
     print(s)
     print(list_0)
     print(list_1)
