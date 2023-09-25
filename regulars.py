@@ -94,12 +94,19 @@ def test():
 #print(is_digit_inside("i5-13500"))
 #test()
 ##########################################
-#nltk-version
+# nltk-version
 def str_tokenize_nltk(s: str):
     s = re.findall("(\w[\w'\.&-]*\w|\w|[\'%:!;,&\$\?\./])", s) # nltk-version
     if s: return s
     return []
 ##########################################
+# modified nltk version
+def str_tokenize_n(s: str):
+    s = re.findall("(\.?\w[\w'\.&-]*\w|\w\+*#?|[\'%:!;,&\$\?\./])", s)
+    if s: return s
+    return []
+##########################################
+# split to words only
 def str_tokenize_words(s: str):
     s = re.findall("(\.?\w[\w'\.&-]*\w|\w\+*#?)", s)
     if s: return s
@@ -113,10 +120,12 @@ if __name__ == "__main__":
     for i in d_test: print(is_digit(i))
     ################################################################################
 
-    s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A, i_t at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
+    s = "John's mom went there, but he wasn't c++, c#, .net, Q&A/Q-A, #nope i_t at-all'. So' she said: 'Where are& viix.co. !!' 'A a'"
     list_0 = str_tokenize_nltk(s)
     list_1 = str_tokenize_words(s)
+    list_2 = str_tokenize_n(s)
     print(s)
     print(list_0)
+    print(list_2)
     print(list_1)
 
