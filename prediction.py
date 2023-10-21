@@ -193,3 +193,10 @@ class Prediction:
 
       print(f"<< unigrams, candidates new.sz={counter_n}({counter_1})")
 ##########################################################
+def main():
+   prediction = Prediction()
+   prediction.predict_next("ai based")
+
+###############################################################
+if __name__ == "__main__":
+   main()
